@@ -78,8 +78,14 @@ const styles = theme => ({
     '& $input': {
       transition: theme.transitions.create('width'),
       width: 200,
+      [theme.breakpoints.down('xs')]: {
+        width: 50,
+      },
       '&:focus': {
         width: 250,
+        [theme.breakpoints.down('xs')]: {
+          width: 100,
+        },
       },
     },
   },

@@ -12,13 +12,14 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { Contextes, EnPlus } from './tileData';
 import AppSearch from'./AppSearch';
 import Link from './Link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { Player, ControlBar, VolumeMenuButton } from 'video-react';
 import video from '/Users/samueljollois/Documents/GitHub/NIELS/src/video/videoPresentation.m4v';
+import logo from './logo.png';
 import "video-react/dist/video-react.css";
 
 // Disaply a progress bar between route transitions
@@ -54,9 +55,11 @@ const styles = theme => ({
   },
   grow: {
     flex: '1 1 auto',
+    alignItems: 'center',
   },
   growOpen: {
       flex: "1 1 auto",
+      alignItems: 'center',
   },
   title: {
     marginLeft: 24,
@@ -70,6 +73,7 @@ const styles = theme => ({
   },
   appBar: {
     position: 'absolute',
+    height:"100px",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -93,7 +97,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: 'relative',
-    height: 'calc(100vh - 8px)',
+    height: 'calc(100vh + 100px)',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -102,7 +106,7 @@ const styles = theme => ({
   },
   drawerPaperClose: {
     width: 60,
-    height: 'calc(100vh - 8px)',
+    height: 'calc(100vh + 100px)',
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -117,6 +121,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    height:"100px",
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
@@ -124,7 +129,7 @@ const styles = theme => ({
     width: '100%',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: 24,
+    padding: 50,
     height: 'calc(100vh - 130px)',
     marginTop: 56,
     [theme.breakpoints.up('sm')]: {
@@ -169,9 +174,9 @@ class MiniDrawer extends React.Component {
                 <MenuIcon />
                                 
               </IconButton>
-              <Typography variant="title" color="inherit">
-                NIELS
-              </Typography>
+              <Link href="/" onClick={this.handleDrawerToggle} className={classNames(this.state.open && classes.hide)}>
+                  <img src={logo} className="App-logo" alt="logo" height="100px"/>
+              </Link>
               <div className={classNames(classes.grow, this.state.open && classes.growOpen)}/>               
               <AppSearch/>
             </Toolbar>             
@@ -185,19 +190,17 @@ class MiniDrawer extends React.Component {
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
-              <Link className={classes.title} href="/" onClick={this.handleDrawerToggle}>
-            <Typography variant="title" gutterBottom color="inherit">
-              NIELS
-            </Typography>
-          </Link>
+              <Link href="/" onClick={this.handleDrawerToggle}>
+                 <img src={logo} className="App-logo" alt="logo" height="75px"/>
+              </Link>
                 <IconButton onClick={this.handleDrawerClose}>
                   {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
               </div>
               <Divider />
-              <List className={classes.list}>{mailFolderListItems}</List>
+              <List className={classes.list}>{Contextes}</List>
               <Divider />
-              <List className={classes.list}>{otherMailFolderListItems}</List>
+              <List className={classes.list}>{EnPlus}</List>
             </div>
           </Drawer>
           <main className={classes.content}>

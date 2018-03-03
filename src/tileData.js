@@ -9,7 +9,7 @@ import Favorite from 'material-ui-icons/Favorite';
 import History from 'material-ui-icons/History';
 import Help from 'material-ui-icons/Help';
 
-export const mailFolderListItems = (
+export const Contextes = (
   <div>
     <ListItem button>
       <ListItemIcon>
@@ -44,7 +44,7 @@ export const mailFolderListItems = (
   </div>
 );
 
-export const otherMailFolderListItems = (
+export const EnPlus = (
   <div>
     <ListItem button>
       <ListItemIcon>

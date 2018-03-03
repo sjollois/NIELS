@@ -17,6 +17,8 @@ import AppSearch from'./AppSearch';
 import Link from './Link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import { Player } from 'video-react';
+
 // Disaply a progress bar between route transitions
 NProgress.configure({
     template: `
@@ -197,7 +199,7 @@ class MiniDrawer extends React.Component {
             </div>
           </Drawer>
           <main className={classes.content}>
-            <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+            <Typography>{'Contenu de la page d\'accueil'}</Typography>
           </main>
         </div>
       </div>

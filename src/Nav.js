@@ -17,7 +17,7 @@ import AppSearch from'./AppSearch';
 import Link from './Link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { Player } from 'video-react';
+import { Player, ControlBar, VolumeMenuButton } from 'video-react';
 import video from '/Users/samueljollois/Documents/GitHub/NIELS/src/video/videoPresentation.m4v';
 import "video-react/dist/video-react.css";
 
@@ -203,8 +203,12 @@ class MiniDrawer extends React.Component {
           <main className={classes.content}>
             <Typography>{'Contenu de la page d\'accueil'}</Typography>
             <Player>
-              <fluid enabled />
+              <muted true/>
+              <playsInline true />
               <source src={video} />
+              <ControlBar>
+                <VolumeMenuButton disabled />
+            </ControlBar>
             </Player>
           </main>
         </div>

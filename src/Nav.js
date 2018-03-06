@@ -17,10 +17,12 @@ import AppSearch from'./AppSearch';
 import Link from './Link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { Player, ControlBar, VolumeMenuButton } from 'video-react';
+import { Player, ControlBar, VolumeMenuButton, BigPlayButton } from 'video-react';
 import video from '/Users/samueljollois/Documents/GitHub/NIELS/src/video/videoPresentation.m4v';
+import imageVideo from '/Users/samueljollois/Documents/GitHub/NIELS/src/video/imageVideo.png';
 import logo from './logo.png';
 import "video-react/dist/video-react.css";
+import Footer from './AppFooter';
 
 // Disaply a progress bar between route transitions
 NProgress.configure({
@@ -44,34 +46,32 @@ NProgress.configure({
     NProgress.done();
   };
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const styles = theme => ({
   root: {
     display: 'flex',
-    alignItems: 'stretch',
     minHeight: '100vh - 30px',
     width: '100%',
   },
   grow: {
     flex: '1 1 auto',
-    alignItems: 'center',
   },
   growOpen: {
-      flex: "1 1 auto",
-      alignItems: 'center',
+      flex: '1 1 auto',
   },
   title: {
     marginLeft: 24,
     flex: '0 1 auto',
   },
   appFrame: {
-    position: 'relative',
     display: 'flex',
     width: '100%',
     height: '100%',
   },
   appBar: {
+    display: 'flex',
+    justifyContent: 'center',
     position: 'absolute',
     height:"100px",
     zIndex: theme.zIndex.drawer + 1,
@@ -79,9 +79,8 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-  },
+    },
   appBarShift: {
-    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -90,7 +89,7 @@ const styles = theme => ({
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 36,
+    marginRight: 12,
   },
   hide: {
     display: 'none',
@@ -121,27 +120,48 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginLeft: '10px',
     height:"100px",
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
   content: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: '100%',
-    flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: 50,
+    padding:40,
     height: 'calc(100vh - 130px)',
-    marginTop: 56,
+    marginTop: 100,
     [theme.breakpoints.up('sm')]: {
       height: 'calc(100vh - 130px)',
       marginTop: 64,
+      padding:60,
+      mobile: false,
     },
+    [theme.breakpoints.up('md')]: {
+      padding:100,
+    },
+  },
+
+  AppLogo: {
+    height: 100,
+    [theme.breakpoints.down('xs')]: {
+      height: 50,
+    },
+
+  },
+
+  MiniLogo: {
+    height: 50,
   },
 });
 
 class MiniDrawer extends React.Component {
   state = {
     open: false,
+    mobile: true
   };
 
   handleDrawerOpen = () => {
@@ -160,10 +180,11 @@ class MiniDrawer extends React.Component {
     const { classes, theme } = this.props;
 
     return (
+      <div>
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <AppBar className={classNames(classes.appBar, this.state.open && classes.appBarShift)}>
-            <Toolbar disableGutters={!this.state.open} margin="0">
+            <Toolbar disableGutters={!this.state.open}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -174,8 +195,8 @@ class MiniDrawer extends React.Component {
                 <MenuIcon />
                                 
               </IconButton>
-              <Link href="/" onClick={this.handleDrawerToggle} className={classNames(this.state.open && classes.hide)}>
-                  <img src={logo} className="App-logo" alt="logo" height="100px"/>
+               <Link href="/" onClick={this.handleDrawerToggle}>
+                  <img src={logo} className={classNames(classes.AppLogo, this.state.open && classes.hide)} alt="logo"/>
               </Link>
               <div className={classNames(classes.grow, this.state.open && classes.growOpen)}/>               
               <AppSearch/>
@@ -189,9 +210,9 @@ class MiniDrawer extends React.Component {
             open={this.state.open}
           >
             <div className={classes.drawerInner}>
-              <div className={classes.drawerHeader}>
+              <div className={classes.drawerHeader}> 
               <Link href="/" onClick={this.handleDrawerToggle}>
-                 <img src={logo} className="App-logo" alt="logo" height="75px"/>
+                  <img src={logo} className={classNames(classes.MiniLogo)} alt="logo"/>
               </Link>
                 <IconButton onClick={this.handleDrawerClose}>
                   {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -204,17 +225,22 @@ class MiniDrawer extends React.Component {
             </div>
           </Drawer>
           <main className={classes.content}>
-            <Typography>{'Contenu de la page d\'accueil'}</Typography>
-            <Player>
-              <muted true/>
-              <playsInline true />
-              <source src={video} />
+            <Typography align ='center' color='primary' variant="headline">{'Contenu de la page d\'accueil'}</Typography>
+             <br /> <br />
+            <Player poster={imageVideo} playsInline>
+              <muted true />
+              <fluid true/>
+              <preload auto />           
+              <source src={video}/>             
               <ControlBar>
                 <VolumeMenuButton disabled />
             </ControlBar>
+            <BigPlayButton position="center"/>
             </Player>
           </main>
         </div>
+      </div>
+      <Footer/>
       </div>
     );
   }

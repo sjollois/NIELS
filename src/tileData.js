@@ -50,19 +50,19 @@ export const EnPlus = (
       <ListItemIcon>
         <Favorite />
       </ListItemIcon>
-      <ListItemText primary="Mes phrases préférées" />
+      <ListItemText primary="Mes phrases" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <History />
       </ListItemIcon>
-      <ListItemText primary="Historique des phrases choisies" />
+      <ListItemText primary="Mon historique" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <Help />
       </ListItemIcon>
-      <ListItemText primary="Aide & Explication" />
+      <ListItemText primary="Aide" />
     </ListItem>
   </div>
 );

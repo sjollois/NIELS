@@ -227,7 +227,7 @@ class MiniDrawer extends React.Component {
           <main className={classes.content}>
             <Typography align ='center' color='primary' variant="headline">{'Contenu de la page d\'accueil'}</Typography>
              <br /> <br />
-            <Player poster={imageVideo} playsInline>
+            <Player poster={imageVideo} playsInline aspectRatio="16:9">
               <muted true />
               <fluid true/>
               <preload auto />           

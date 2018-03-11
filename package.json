@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "history": "^4.7.2",
+    "lodash": "^4.17.5",
     "material-design-icons": "^3.0.1",
     "material-ui": "^1.0.0-beta.33",
     "material-ui-icons": "^1.0.0-beta.17",
@@ -11,10 +12,14 @@
     "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "typeface-roboto": "0.0.54",
-    "video-react": "^0.9.4"
+    "video-react": "^0.9.4",
+    "warning": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

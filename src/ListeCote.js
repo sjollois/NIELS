@@ -31,7 +31,7 @@ import AccountBalance from "material-ui-icons/AccountBalance";
 import Icon from "react-icons-kit";
 import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
 import Flight from "material-ui-icons/Flight";
-import Bus from "material-ui-icons/DirectionBus";
+import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
 import Divider from "material-ui/Divider";

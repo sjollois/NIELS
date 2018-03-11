@@ -13,7 +13,16 @@ import Help from "material-ui-icons/Help";
 import Collapse from "material-ui/transitions/Collapse";
 import ExpandLess from "material-ui-icons/ExpandLess";
 import ExpandMore from "material-ui-icons/ExpandMore";
-import StarBorder from "material-ui-icons/StarBorder";
+import AttachMoney from "material-ui-icons/AttachMoney";
+import LocationCity from "material-ui-icons/LocationCity";
+import LocalPostOffice from "material-ui-icons/LocalPostOffice";
+import School from "material-ui-icons/School";
+import Store from "material-ui-icons/Store";
+import Hotel from "material-ui-icons/Hotel";
+import LocalLibrary from "material-ui-icons/LocalLibrary";
+import ShoppingBasket from "material-ui-icons/ShoppingBasket";
+import Restaurant from "material-ui-icons/Restaurant";
+
 import Divider from "material-ui/Divider";
 
 const styles = theme => ({
@@ -24,11 +33,27 @@ const styles = theme => ({
 
 class ListeCote extends React.Component {
   state = {
-    open1: false
+    open1: false, open2: false, open3: false, open4: false, open5: false
   };
 
-  handleClick = () => {
+  handleClick1 = () => {
     this.setState({ open1: !this.state.open1 });
+  };
+
+  handleClick2 = () => {
+    this.setState({ open2: !this.state.open2 });
+  };
+
+  handleClick3 = () => {
+    this.setState({ open3: !this.state.open3 });
+  };
+
+  handleClick4 = () => {
+    this.setState({ open4: !this.state.open4 });
+  };
+
+  handleClick5 = () => {
+    this.setState({ open5: !this.state.open5 });
   };
 
   render() {
@@ -38,7 +63,7 @@ class ListeCote extends React.Component {
       <div>
         <Divider />
         <List component="nav">
-          <ListItem button onClick={this.handleClick}>
+          <ListItem button onClick={this.handleClick1}>
             <ListItemIcon>
               <Folder />
             </ListItemIcon>
@@ -49,18 +74,71 @@ class ListeCote extends React.Component {
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
-                  <StarBorder />
+                  <AttachMoney />
                 </ListItemIcon>
-                <ListItemText inset primary="Starred" />
+                <ListItemText inset primary="Banque" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <LocationCity />
+                </ListItemIcon>
+                <ListItemText inset primary="Mairie" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <LocalPostOffice />
+                </ListItemIcon>
+                <ListItemText inset primary="Poste" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <School />
+                </ListItemIcon>
+                <ListItemText inset primary="Scolarité" />
               </ListItem>
             </List>
           </Collapse>
-          <ListItem button>
+          <ListItem button onClick={this.handleClick2}>
             <ListItemIcon>
               <ShoppingCart />
             </ListItemIcon>
-            <ListItemText primary="Vente" />
+            <ListItemText inset primary="Vente" />
+            {this.state.open2 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
+          <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <Store />
+                </ListItemIcon>
+                <ListItemText inset primary="Épicerie" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <Hotel />
+                </ListItemIcon>
+                <ListItemText inset primary="Hôtel" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <LocalLibrary />
+                </ListItemIcon>
+                <ListItemText inset primary="Librairie" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <ShoppingBasket />
+                </ListItemIcon>
+                <ListItemText inset primary="Prêt-à-porter" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <Restaurant />
+                </ListItemIcon>
+                <ListItemText inset primary="Restauration" />
+              </ListItem>
+            </List>
+          </Collapse>
           <ListItem button>
             <ListItemIcon>
               <Hospital />

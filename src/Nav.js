@@ -107,7 +107,7 @@ const styles = theme => ({
     })
   },
   drawerPaperClose: {
-    width: 60,
+    width: 70,
     height: "calc(100vh + 100px)",
     overflowX: "hidden",
     transition: theme.transitions.create("width", {

@@ -35,6 +35,9 @@ import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
 import Divider from "material-ui/Divider";
+import Administratif from "./views/Administratif/Administratif";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 const styles = theme => ({
   nested: {
@@ -87,12 +90,14 @@ class ListeCote extends React.Component {
           </ListItem>
           <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
+            <Link to ="/Administratif">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <AttachMoney />
                 </ListItemIcon>
                 <ListItemText inset primary="Banque" />
               </ListItem>
+              </Link>
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <LocationCity />

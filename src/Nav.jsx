@@ -12,9 +12,7 @@ import ChevronLeftIcon from "material-ui-icons/ChevronLeft";
 import ChevronRightIcon from "material-ui-icons/ChevronRight";
 import ListeCote from "./ListeCote";
 import AppSearch from "./AppSearch";
-import Link from "./Link";
-import Router from "next/router";
-import NProgress from "nprogress";
+import Llink from "./Link";
 import {
   Player,
   ControlBar,
@@ -26,28 +24,9 @@ import imageVideo from "/Users/samueljollois/Documents/GitHub/NIELS/src/video/im
 import logo from "./logo.png";
 import "video-react/dist/video-react.css";
 import Footer from "./AppFooter";
-
-// Disaply a progress bar between route transitions
-NProgress.configure({
-  template: `
-      <div class="bar" role="bar">
-        <dt></dt>
-        <dd></dd>
-      </div>
-    `
-});
-
-Router.onRouteChangeStart = () => {
-  NProgress.start();
-};
-
-Router.onRouteChangeComplete = () => {
-  NProgress.done();
-};
-
-Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+import Administratif from "./views/Administratif/Administratif";
+import Home from "./views/Home/Home";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 const drawerWidth = 220;
 
@@ -182,6 +161,7 @@ class MiniDrawer extends React.Component {
     const { classes, theme } = this.props;
 
     return (
+      <Router>
       <div>
         <div className={classes.root}>
           <div className={classes.appFrame}>
@@ -203,7 +183,7 @@ class MiniDrawer extends React.Component {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Link href="/" onClick={this.handleDrawerToggle}>
+                <Link to="/" onClick={this.handleDrawerClose}>
                   <img
                     src={logo}
                     className={classNames(
@@ -234,7 +214,7 @@ class MiniDrawer extends React.Component {
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
-                  <Link href="/" onClick={this.handleDrawerToggle}>
+                  <Link to="/" onClick={this.handleDrawerClose}>
                     <img
                       src={logo}
                       className={classNames(classes.MiniLogo)}
@@ -253,9 +233,10 @@ class MiniDrawer extends React.Component {
               </div>
             </Drawer>
             <main className={classes.content}>
-              <Typography align="center" color="primary" variant="headline">
-                {"Contenu de la page d'accueil"}
-              </Typography>
+                <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/Administratif" component={Administratif} />
+                </Switch>
               <br /> <br />
               <Player poster={imageVideo} playsInline aspectRatio="16:9">
                 <muted true />
@@ -272,6 +253,7 @@ class MiniDrawer extends React.Component {
         </div>
         <Footer />
       </div>
+      </Router>
     );
   }
 }

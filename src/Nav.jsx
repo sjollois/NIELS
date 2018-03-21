@@ -11,14 +11,6 @@ import ChevronLeftIcon from "material-ui-icons/ChevronLeft";
 import ChevronRightIcon from "material-ui-icons/ChevronRight";
 import ListeCote from "./ListeCote";
 import AppSearch from "./AppSearch";
-import {
-  Player,
-  ControlBar,
-  VolumeMenuButton,
-  BigPlayButton
-} from "video-react";
-import video from "/Users/samueljollois/Documents/GitHub/NIELS/src/video/videoPresentation.m4v";
-import imageVideo from "/Users/samueljollois/Documents/GitHub/NIELS/src/video/imageVideo.png";
 import logo from "./logo.png";
 import "video-react/dist/video-react.css";
 import Footer from "./AppFooter";
@@ -139,10 +131,19 @@ const styles = theme => ({
 });
 
 class MiniDrawer extends React.Component {
-  state = {
-    open: false,
-    mobile: true
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      mobile: true
+    };
+    this.handleDrawerClose = this.handleDrawerClose.bind(this);
+}
+
+handleDrawerClose(){
+  this.setState({ open: false });
+};
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -228,7 +229,7 @@ class MiniDrawer extends React.Component {
                       )}
                     </IconButton>
                   </div>
-                  <ListeCote />
+                  <ListeCote action={this.handleDrawerClose}/>
                 </div>
               </Drawer>
               <main className={classes.content}>
@@ -253,7 +254,8 @@ class MiniDrawer extends React.Component {
 MiniDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  andleDrawerToggle: PropTypes.func.isRequired
+  handleDrawerClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(MiniDrawer);

@@ -35,7 +35,7 @@ import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
 import Divider from "material-ui/Divider";
-import Administratif from "./views/Administratif/Administratif";
+// eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 

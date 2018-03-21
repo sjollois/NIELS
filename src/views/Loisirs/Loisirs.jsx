@@ -1,13 +1,13 @@
 import React from "react";
 import Typography from "material-ui/Typography";
 
-class Administratif extends React.Component {
+class Loisirs extends React.Component {
   render() {
     return (
       <div>
         <main>
           <Typography align="center" color="primary" variant="headline">
-            {"Contenu de la page Administratif"}
+            {"Contenu de la page Loisirs"}
           </Typography>
         </main>
       </div>
@@ -15,4 +15,4 @@ class Administratif extends React.Component {
   }
 }
 
-export default (Administratif);
+export default (Loisirs);

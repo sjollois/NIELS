@@ -5,6 +5,7 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Link from './Link';
 
+
 const styleSheet = theme => ({
   root: {
     overflow: 'auto',
@@ -37,20 +38,20 @@ function AppFooter(props) {
             <Grid item xs={12} sm={6}>
               <ul className={classes.list}>
                 <li className={classes.listItem}>
-                  <Link href="https://github.com/sjollois/NIELS">GitHub</Link>
+                  <Link href="https://github.com/sjollois/NIELS" target="_blank">GitHub</Link>
                 </li>
                 <li className={classes.listItem}>
-                  <Link href="https://ensc.bordeaux-inp.fr/fr">ENSC</Link>
+                  <Link href="https://ensc.bordeaux-inp.fr/fr" target="_blank">ENSC</Link>
                 </li>
               </ul>
             </Grid>
             <Grid item xs={12} sm={6}>
               <ul className={classes.list}>
                 <li className={classes.listItem}>
-                  <Link href="/discover-more/roadmap">Roadmap</Link>
+                  <Link href="/discover-more/roadmap" target="_blank">Roadmap</Link>
                 </li>
                 <li className={classes.listItem}>
-                  <Link href="/discover-more/team">Team</Link>
+                  <Link href="/discover-more/team" target="_blank">Team</Link>
                 </li>
               </ul>
             </Grid>

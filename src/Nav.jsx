@@ -5,14 +5,12 @@ import classNames from "classnames";
 import Drawer from "material-ui/Drawer";
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
-import Typography from "material-ui/Typography";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
 import ChevronLeftIcon from "material-ui-icons/ChevronLeft";
 import ChevronRightIcon from "material-ui-icons/ChevronRight";
 import ListeCote from "./ListeCote";
 import AppSearch from "./AppSearch";
-import Llink from "./Link";
 import {
   Player,
   ControlBar,
@@ -25,8 +23,12 @@ import logo from "./logo.png";
 import "video-react/dist/video-react.css";
 import Footer from "./AppFooter";
 import Administratif from "./views/Administratif/Administratif";
+import Mobilite from "./views/Mobilité/Mobilite";
+import Loisirs from "./views/Loisirs/Loisirs";
+import Sante from "./views/Santé/Sante";
+import Vente from "./views/Vente/Vente";
 import Home from "./views/Home/Home";
-import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 const drawerWidth = 220;
 
@@ -108,9 +110,6 @@ const styles = theme => ({
     ...theme.mixins.toolbar
   },
   content: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     width: "100%",
     backgroundColor: theme.palette.background.default,
     padding: 20,
@@ -162,97 +161,90 @@ class MiniDrawer extends React.Component {
 
     return (
       <Router>
-      <div>
-        <div className={classes.root}>
-          <div className={classes.appFrame}>
-            <AppBar
-              className={classNames(
-                classes.appBar,
-                this.state.open && classes.appBarShift
-              )}
-            >
-              <Toolbar disableGutters={!this.state.open}>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={this.handleDrawerOpen}
-                  className={classNames(
-                    classes.menuButton,
-                    this.state.open && classes.hide
-                  )}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Link to="/" onClick={this.handleDrawerClose}>
-                  <img
-                    src={logo}
+        <div>
+          <div className={classes.root}>
+            <div className={classes.appFrame}>
+              <AppBar
+                className={classNames(
+                  classes.appBar,
+                  this.state.open && classes.appBarShift
+                )}
+              >
+                <Toolbar disableGutters={!this.state.open}>
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={this.handleDrawerOpen}
                     className={classNames(
-                      classes.AppLogo,
+                      classes.menuButton,
                       this.state.open && classes.hide
                     )}
-                    alt="logo"
-                  />
-                </Link>
-                <div
-                  className={classNames(
-                    classes.grow,
-                    this.state.open && classes.growOpen
-                  )}
-                />
-                <AppSearch />
-              </Toolbar>
-            </AppBar>
-            <Drawer
-              variant="permanent"
-              classes={{
-                paper: classNames(
-                  classes.drawerPaper,
-                  !this.state.open && classes.drawerPaperClose
-                )
-              }}
-              open={this.state.open}
-            >
-              <div className={classes.drawerInner}>
-                <div className={classes.drawerHeader}>
+                  >
+                    <MenuIcon />
+                  </IconButton>
                   <Link to="/" onClick={this.handleDrawerClose}>
                     <img
                       src={logo}
-                      className={classNames(classes.MiniLogo)}
+                      className={classNames(
+                        classes.AppLogo,
+                        this.state.open && classes.hide
+                      )}
                       alt="logo"
                     />
                   </Link>
-                  <IconButton onClick={this.handleDrawerClose}>
-                    {theme.direction === "rtl" ? (
-                      <ChevronRightIcon />
-                    ) : (
-                      <ChevronLeftIcon />
+                  <div
+                    className={classNames(
+                      classes.grow,
+                      this.state.open && classes.growOpen
                     )}
-                  </IconButton>
+                  />
+                  <AppSearch />
+                </Toolbar>
+              </AppBar>
+              <Drawer
+                variant="permanent"
+                classes={{
+                  paper: classNames(
+                    classes.drawerPaper,
+                    !this.state.open && classes.drawerPaperClose
+                  )
+                }}
+                open={this.state.open}
+              >
+                <div className={classes.drawerInner}>
+                  <div className={classes.drawerHeader}>
+                    <Link to="/" onClick={this.handleDrawerClose}>
+                      <img
+                        src={logo}
+                        className={classNames(classes.MiniLogo)}
+                        alt="logo"
+                      />
+                    </Link>
+                    <IconButton onClick={this.handleDrawerClose}>
+                      {theme.direction === "rtl" ? (
+                        <ChevronRightIcon />
+                      ) : (
+                        <ChevronLeftIcon />
+                      )}
+                    </IconButton>
+                  </div>
+                  <ListeCote />
                 </div>
-                <ListeCote />
-              </div>
-            </Drawer>
-            <main className={classes.content}>
+              </Drawer>
+              <main className={classes.content}>
                 <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/Administratif" component={Administratif} />
+                  <Route exact path="/" component={Home} />
+                  <Route path="/Administratif" component={Administratif} />
+                  <Route path="/Loisirs" component={Loisirs} />
+                  <Route path="/Mobilité" component={Mobilite} />
+                  <Route path="/Santé" component={Sante} />
+                  <Route path="/Vente" component={Vente} />
                 </Switch>
-              <br /> <br />
-              <Player poster={imageVideo} playsInline aspectRatio="16:9">
-                <muted true />
-                <fluid true />
-                <preload auto />
-                <source src={video} />
-                <ControlBar>
-                  <VolumeMenuButton disabled />
-                </ControlBar>
-                <BigPlayButton position="center" />
-              </Player>
-            </main>
+              </main>
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
       </Router>
     );
   }

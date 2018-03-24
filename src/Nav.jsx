@@ -102,9 +102,9 @@ const styles = theme => ({
     ...theme.mixins.toolbar
   },
   content: {
-    width: "100%",
+    width: "calc(100% - 80px)",
     backgroundColor: theme.palette.background.default,
-    padding: 20,
+    padding: 5,
     height: "calc(100vh - 130px)",
     marginTop: 100,
     [theme.breakpoints.up("sm")]: {

@@ -63,6 +63,7 @@ class Administratif extends React.Component {
               textColor="primary"
               fullWidth
               scrollable
+              scrollButtons="off"
               centered
             >
               <Tab icon={<AttachMoney />} label="Banque" />

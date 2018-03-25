@@ -64,6 +64,7 @@ class Loisirs extends React.Component {
               textColor="primary"
               fullWidth
               scrollable
+              scrollButtons="off"
               centered
             >
               <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque"/>

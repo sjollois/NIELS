@@ -63,7 +63,7 @@ class Vente extends React.Component {
               indicatorColor="primary"
               textColor="primary"
               scrollable
-              scrollButtons="auto"
+              scrollButtons="off"
               fullWidth
               centered
             >

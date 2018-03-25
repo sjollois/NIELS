@@ -60,6 +60,8 @@ class Sante extends React.Component {
               onChange={this.handleChange}
               indicatorColor="primary"
               textColor="primary"
+              scrollButtons="off"
+              scrollable
               fullWidth
               centered
             >

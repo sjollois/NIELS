@@ -10,6 +10,7 @@ import Hotel from "material-ui-icons/Hotel";
 import LocalLibrary from "material-ui-icons/LocalLibrary";
 import ShoppingBasket from "material-ui-icons/ShoppingBasket";
 import Restaurant from "material-ui-icons/Restaurant";
+import Questions from "./Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -28,7 +29,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   }
 });
 
@@ -66,11 +67,11 @@ class Vente extends React.Component {
               fullWidth
               centered
             >
-              <Tab icon={<Store/>} label="Épicerie"/>
-              <Tab icon={<Hotel/>} label="Hôtel"/>
-              <Tab icon={<LocalLibrary/>} label="Librairie"/>
-              <Tab icon={<ShoppingBasket/>} label="Prêt-à-porter"/>
-              <Tab icon={<Restaurant/>} label="Restauration"/>
+              <Tab icon={<Store />} label="Épicerie" />
+              <Tab icon={<Hotel />} label="Hôtel" />
+              <Tab icon={<LocalLibrary />} label="Librairie" />
+              <Tab icon={<ShoppingBasket />} label="Prêt-à-porter" />
+              <Tab icon={<Restaurant />} label="Restauration" />
             </Tabs>
           </AppBar>
           <SwipeableViews
@@ -80,27 +81,27 @@ class Vente extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                Questions sur l'Épicerie
+                <Questions />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                Questions sur l'Hôtel
+                <Questions />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                Questions sur la Librairie
+                <Questions />
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Prêt-à-porter
+                <Questions />
               </TabContainer>
             )}
             {value === 4 && (
               <TabContainer dir={theme.direction}>
-                Questions sur la Restauration
+                <Questions />
               </TabContainer>
             )}
           </SwipeableViews>

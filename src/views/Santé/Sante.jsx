@@ -8,6 +8,7 @@ import SwipeableViews from "react-swipeable-views";
 import HospitalIcons from "react-icons/lib/fa/hospital-o";
 import LocalPharmacy from "material-ui-icons/LocalPharmacy";
 import Medecin from "react-icons/lib/fa/stethoscope";
+import Questions from "./Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -26,7 +27,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   }
 });
 
@@ -62,9 +63,9 @@ class Sante extends React.Component {
               fullWidth
               centered
             >
-              <Tab icon={<HospitalIcons fontSize="25px"/>} label="Hôpital"/>
-              <Tab icon={<Medecin fontSize="25px"/>} label="Médecin"/>
-              <Tab icon={<LocalPharmacy/>} label="Pharmacie"/>
+              <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
+              <Tab icon={<Medecin fontSize="25px" />} label="Médecin" />
+              <Tab icon={<LocalPharmacy />} label="Pharmacie" />
             </Tabs>
           </AppBar>
           <SwipeableViews
@@ -74,17 +75,17 @@ class Sante extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                Questions sur l'Hôpital
+                <Questions />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Médecin
+                <Questions />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                Questions sur la Pharmacie
+                <Questions />
               </TabContainer>
             )}
           </SwipeableViews>

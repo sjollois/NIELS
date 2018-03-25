@@ -102,9 +102,9 @@ class ListeCote extends React.Component {
               <Link to="/Administratif" style={{ textDecoration: 'none' }}  onClick={this.handleClose}>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <AttachMoney />
+                    <AttachMoney/>
                   </ListItemIcon>
-                  <ListItemText inset primary="Banque" />
+                  <ListItemText inset primary="Banque"/>
                 </ListItem>
               </Link>
               <Link to="/Administratif" style={{ textDecoration: 'none' }} onClick={this.handleClose}>

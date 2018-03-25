@@ -10,6 +10,7 @@ import LocalMovies from "material-ui-icons/LocalMovies";
 import AccountBalance from "material-ui-icons/AccountBalance";
 import Icon from "react-icons-kit";
 import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
+import Questions from "./Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -78,22 +79,22 @@ class Loisirs extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                Questions sur la Bibliothèque
+                <Questions/>
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Cinéma
+                <Questions/>
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Musée
+                <Questions/>
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Sport
+                <Questions/>
               </TabContainer>
             )}
           </SwipeableViews>

@@ -9,6 +9,7 @@ import Flight from "material-ui-icons/Flight";
 import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
+import Questions from "./Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -77,22 +78,22 @@ class Mobilite extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                Questions sur l'Avion
+                <Questions/>
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Bus
+                <Questions/>
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                Questions sur l'Espaces publics
+                <Questions/>
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                Questions sur le Train
+                <Questions/>
               </TabContainer>
             )}
           </SwipeableViews>

@@ -9,6 +9,7 @@ import AttachMoney from "material-ui-icons/AttachMoney";
 import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
+import Questions from "./Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -27,7 +28,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    width: "100%",
+    width: "100%"
   }
 });
 
@@ -64,10 +65,10 @@ class Administratif extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<AttachMoney />} label="Banque"/>
-              <Tab icon={<LocationCity />} label="Mairie"/>
-              <Tab icon={<LocalPostOffice />} label="Poste"/>
-              <Tab icon={<School />} label="Scolarité"/>
+              <Tab icon={<AttachMoney />} label="Banque" />
+              <Tab icon={<LocationCity />} label="Mairie" />
+              <Tab icon={<LocalPostOffice />} label="Poste" />
+              <Tab icon={<School />} label="Scolarité" />
             </Tabs>
           </AppBar>
           <SwipeableViews
@@ -75,18 +76,26 @@ class Administratif extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-            {value === 0 && <TabContainer dir={theme.direction}>
-              Questions sur Banque
-            </TabContainer>}
-            {value === 1 && <TabContainer dir={theme.direction}>
-              Questions sur Mairie
-            </TabContainer>}
-            {value === 2 && <TabContainer dir={theme.direction}>
-              Questions sur Poste
-            </TabContainer>}
-            {value === 3 && <TabContainer dir={theme.direction}>
-              Questions sur Scolarité
-            </TabContainer>}
+            {value === 0 && (
+              <TabContainer dir={theme.direction}>
+                <Questions />
+              </TabContainer>
+            )}
+            {value === 1 && (
+              <TabContainer dir={theme.direction}>
+                <Questions />
+              </TabContainer>
+            )}
+            {value === 2 && (
+              <TabContainer dir={theme.direction}>
+                <Questions />
+              </TabContainer>
+            )}
+            {value === 3 && (
+              <TabContainer dir={theme.direction}>
+                <Questions />
+              </TabContainer>
+            )}
           </SwipeableViews>
         </div>
       </div>

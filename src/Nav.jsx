@@ -21,14 +21,19 @@ import Sante from "./views/Santé/Sante";
 import Vente from "./views/Vente/Vente";
 import Home from "./views/Home/Home";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Hidden from 'material-ui/Hidden';
 
 const drawerWidth = 220;
 
 const styles = theme => ({
   root: {
     display: "flex",
-    minHeight: "100vh - 30px",
-    width: "100%"
+    minHeight: "100vh",
+    width: "100%",
+    position: "relative",
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden"
   },
   grow: {
     flex: "1 1 auto"
@@ -43,7 +48,7 @@ const styles = theme => ({
   appFrame: {
     display: "flex",
     width: "100%",
-    height: "100%"
+    height: "100vh + 50px"
   },
   appBar: {
     display: "flex",
@@ -51,6 +56,9 @@ const styles = theme => ({
     position: "absolute",
     height: "100px",
     zIndex: theme.zIndex.drawer + 1,
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    },
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -69,6 +77,11 @@ const styles = theme => ({
   },
   hide: {
     display: "none"
+  },
+  navIconHide: {
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
   },
   drawerPaper: {
     position: "relative",
@@ -94,18 +107,15 @@ const styles = theme => ({
   },
   drawerHeader: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginLeft: "10px",
+    justifyContent: "center",
     height: "100px",
-    padding: "0 8px",
     ...theme.mixins.toolbar
   },
   content: {
     width: "calc(100% - 80px)",
     backgroundColor: theme.palette.background.default,
     padding: 5,
-    height: "calc(100vh - 130px)",
+    height: "100vh + 100px",
     marginTop: 100,
     [theme.breakpoints.up("sm")]: {
       height: "calc(100vh - 130px)",
@@ -126,12 +136,14 @@ const styles = theme => ({
   },
 
   MiniLogo: {
-    height: 70
+    height: 100,
+    [theme.breakpoints.down("xs")]: {
+      height: 70
+    }
   }
 });
 
 class MiniDrawer extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -139,11 +151,11 @@ class MiniDrawer extends React.Component {
       mobile: true
     };
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
-}
+  }
 
-handleDrawerClose(){
-  this.setState({ open: false });
-};
+  handleDrawerClose() {
+    this.setState({ open: false });
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -178,11 +190,13 @@ handleDrawerClose(){
                     onClick={this.handleDrawerOpen}
                     className={classNames(
                       classes.menuButton,
-                      this.state.open && classes.hide
+                      this.state.open && classes.hide,
+                      classes.navIconHide
                     )}
                   >
                     <MenuIcon />
                   </IconButton>
+                  <Hidden mdUp>
                   <Link to="/" onClick={this.handleDrawerClose}>
                     <img
                       src={logo}
@@ -193,6 +207,7 @@ handleDrawerClose(){
                       alt="logo"
                     />
                   </Link>
+                  </Hidden>
                   <div
                     className={classNames(
                       classes.grow,
@@ -202,7 +217,8 @@ handleDrawerClose(){
                   <AppSearch />
                 </Toolbar>
               </AppBar>
-              <Drawer
+              <Hidden mdUp>
+                <Drawer
                 variant="permanent"
                 classes={{
                   paper: classNames(
@@ -211,6 +227,9 @@ handleDrawerClose(){
                   )
                 }}
                 open={this.state.open}
+                ModalProps={{
+                  keepMounted: true // Better open performance on mobile.
+                }}
               >
                 <div className={classes.drawerInner}>
                   <div className={classes.drawerHeader}>
@@ -229,9 +248,35 @@ handleDrawerClose(){
                       )}
                     </IconButton>
                   </div>
-                  <ListeCote action={this.handleDrawerClose}/>
+                  <ListeCote action={this.handleDrawerClose} />
                 </div>
               </Drawer>
+              </Hidden>
+              <Hidden smDown implementation="css">
+                <Drawer
+                variant="permanent"
+                classes={{
+                  paper: classNames(
+                    classes.drawerPaper
+                  )
+                }}
+                open
+              >
+                <div className={classes.drawerInner}>
+                  <div className={classes.drawerHeader}>
+                    <Link to="/" onClick={this.handleDrawerClose}>
+                      <img
+                        src={logo}
+                        className={classNames(classes.MiniLogo)}
+                        alt="logo"
+                      />
+                    </Link>
+                  </div>
+                  <ListeCote action={this.handleDrawerClose} />
+                </div>
+              </Drawer>
+              </Hidden>
+              
               <main className={classes.content}>
                 <Switch>
                   <Route exact path="/" component={Home} />

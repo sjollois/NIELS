@@ -35,7 +35,7 @@ const styles = theme => ({
 
 class Loisirs extends React.Component {
   state = {
-    value: 0
+    value: this.props.location.param
   };
 
   handleChange = (event, value) => {
@@ -51,9 +51,6 @@ class Loisirs extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <Typography align="center" color="primary" variant="headline">
-          {"Contenu de la page Loisirs"}
-        </Typography>
         <br /> <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
@@ -64,7 +61,6 @@ class Loisirs extends React.Component {
               textColor="primary"
               fullWidth
               scrollable
-              scrollButtons="off"
               centered
             >
               <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque"/>

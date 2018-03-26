@@ -34,7 +34,7 @@ const styles = theme => ({
 
 class Administratif extends React.Component {
   state = {
-    value: 0
+    value: this.props.location.param
   };
 
   handleChange = (event, value) => {
@@ -50,9 +50,6 @@ class Administratif extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <Typography align="center" color="primary" variant="headline">
-          {"Contenu de la page Administratif"}
-        </Typography>
         <br /> <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
@@ -63,7 +60,6 @@ class Administratif extends React.Component {
               textColor="primary"
               fullWidth
               scrollable
-              scrollButtons="off"
               centered
             >
               <Tab icon={<AttachMoney />} label="Banque" />
@@ -77,22 +73,22 @@ class Administratif extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-            {value === 0 && (
+            {(value === 0) && (
               <TabContainer dir={theme.direction}>
                 <Questions />
               </TabContainer>
             )}
-            {value === 1 && (
+            {(value === 1) && (
               <TabContainer dir={theme.direction}>
                 <Questions />
               </TabContainer>
             )}
-            {value === 2 && (
+            {(value === 2) && (
               <TabContainer dir={theme.direction}>
                 <Questions />
               </TabContainer>
             )}
-            {value === 3 && (
+            {(value === 3) && (
               <TabContainer dir={theme.direction}>
                 <Questions />
               </TabContainer>

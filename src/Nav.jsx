@@ -7,6 +7,7 @@ import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
+import HomeIcon from "material-ui-icons/Home";
 import ChevronLeftIcon from "material-ui-icons/ChevronLeft";
 import ChevronRightIcon from "material-ui-icons/ChevronRight";
 import ListeCote from "./ListeCote";
@@ -25,13 +26,21 @@ import Hidden from "material-ui/Hidden";
 import DeafIcon from "react-icons/lib/fa/deaf";
 import Tooltip from "material-ui/Tooltip";
 import SSwitch from "material-ui/Switch";
+import Button from "material-ui/Button";
+import { SnackbarContent } from "material-ui/Snackbar";
+import HomeHeader from "./HomeHeader";
+import SanteHeader from "./SanteHeader";
+import AdministratifHeader from "./AdministratifHeader";
+import VenteHeader from "./VenteHeader";
+import MobiliteHeader from "./MobiliteHeader";
+import LoisirsHeader from "./LoisirsHeader";
 
 const drawerWidth = 220;
 
 const styles = theme => ({
   root: {
     display: "flex",
-    minHeight: `calc(100vh - 200px)`,
+    minHeight: `calc(100vh + 200px)`,
     height: `950px`,
     width: "100%",
     position: "relative",
@@ -52,14 +61,14 @@ const styles = theme => ({
   appFrame: {
     display: "flex",
     width: "100%",
-    minHeight: `calc(100vh - 200px)`,
+    minHeight: `calc(100vh + 200px)`,
     height: `950px`
   },
   appBar: {
     display: "flex",
     justifyContent: "center",
     position: "absolute",
-    height: "100px",
+    height: "110px",
     zIndex: theme.zIndex.drawer + 1,
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
@@ -77,11 +86,14 @@ const styles = theme => ({
     })
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 12
+    marginLeft: 0,
+    marginRight: 0
   },
   hide: {
     display: "none"
+  },
+  nohide: {
+    display: "unset"
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
@@ -90,7 +102,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: "relative",
-    minHeight: `calc(100vh - 200px)`,
+    minHeight: `calc(100vh + 200px)`,
     height: `950px`,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -100,7 +112,7 @@ const styles = theme => ({
   },
   drawerPaperClose: {
     width: 70,
-    minHeight: `calc(100vh - 200px)`,
+    minHeight: `calc(100vh + 200px)`,
     height: `950px`,
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
@@ -116,7 +128,7 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100px",
+    height: "110px",
     ...theme.mixins.toolbar
   },
   content: {
@@ -132,7 +144,7 @@ const styles = theme => ({
       mobile: false
     },
     [theme.breakpoints.up("md")]: {
-      padding: 100
+      padding: 70
     }
   },
 
@@ -144,18 +156,30 @@ const styles = theme => ({
   },
 
   MiniLogo: {
-    height: 90,
-    [theme.breakpoints.down("xs")]: {
       height: 70
-    }
   },
   colorier: {
     color: theme.palette.secondary.main
   },
-  border:{
-    border: '1px solid white',
-    borderRadius: '20px',
-    marginRight:"15px"
+  border: {
+    border: "1px solid white",
+    borderRadius: "20px",
+    marginRight: "10px",
+    padding: "5px"
+  },
+  snackbar: {
+    margin: theme.spacing.unit
+  },
+  close: {
+    width: theme.spacing.unit * 4,
+    height: theme.spacing.unit * 4
+  },
+  center: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  cote: {
+    marginLeft: "30px"
   }
 });
 
@@ -217,17 +241,34 @@ class MiniDrawer extends React.Component {
                   >
                     <MenuIcon />
                   </IconButton>
-                  <Hidden mdUp>
-                    <Link to="/" onClick={this.handleDrawerClose}>
-                      <img
-                        src={logo}
-                        className={classNames(
-                          classes.AppLogo,
-                          this.state.open && classes.hide
-                        )}
-                        alt="logo"
+                  <Link
+                    to="/"
+                    style={{ color: "inherit" }}
+                    onClick={this.handleDrawerClose}
+                  >
+                    <IconButton
+                      color="inherit"
+                      aria-label="open drawer"
+                      className={classNames(
+                        classes.menuButton,
+                        classes.navIconHide
+                      )}
+                    >
+                      <HomeIcon />
+                    </IconButton>
+                  </Link>
+                  <Hidden mdDown implementation="css" className={classes.cote}>
+                    <Switch>
+                      <Route exact path="/" component={HomeHeader} />
+                      <Route
+                        path="/Administratif"
+                        component={AdministratifHeader}
                       />
-                    </Link>
+                      <Route path="/Loisirs" component={LoisirsHeader} />
+                      <Route path="/Mobilité" component={MobiliteHeader} />
+                      <Route path="/Santé" component={SanteHeader} />
+                      <Route path="/Vente" component={VenteHeader} />
+                    </Switch>
                   </Hidden>
                   <div
                     className={classNames(
@@ -235,27 +276,29 @@ class MiniDrawer extends React.Component {
                       this.state.open && classes.growOpen
                     )}
                   />
-                  <AppSearch />
+                  <div className={classNames(this.state.open && classes.hide, !this.state.open && classes.nohide)}>
+                  <AppSearch/>
+                  </div>
                   <div className={classes.border}>
-                      <SSwitch
-                        checked={this.state.deaf}
-                        onChange={this.handleToggleDeaf}
-                        value="deaf"
-                      />
-                  <Tooltip
-                    id="deaf-theme"
-                    title="Mode Sourd / Entendant"
-                    enterDelay={300}
-                  >
-                    <IconButton
-                      color="inherit"
-                      onClick={this.handleToggleDeaf}
-                      aria-labelledby="deaf-theme"
-                      className={this.state.deaf && classes.colorier}
+                    <SSwitch
+                      checked={this.state.deaf}
+                      onChange={this.handleToggleDeaf}
+                      value="deaf"
+                    />
+                    <Tooltip
+                      id="deaf-theme"
+                      title="Mode Sourd / Entendant"
+                      enterDelay={300}
                     >
-                      <DeafIcon />
-                    </IconButton>
-                  </Tooltip>
+                      <IconButton
+                        color="inherit"
+                        onClick={this.handleToggleDeaf}
+                        aria-labelledby="deaf-theme"
+                        className={this.state.deaf && classes.colorier}
+                      >
+                        <DeafIcon />
+                      </IconButton>
+                    </Tooltip>
                   </div>
                 </Toolbar>
               </AppBar>
@@ -318,6 +361,26 @@ class MiniDrawer extends React.Component {
               </Hidden>
 
               <main className={classes.content}>
+                <div className={classes.center}>
+                  <SnackbarContent
+                    className={classNames(
+                      !this.state.deaf && classes.hide,
+                      classes.snackbar
+                    )}
+                    message=" Je suis une personne sourde et j'aimerais communiquer avec vous à l'aide de ce site.
+                      Cliquez sur une question et elle me sera traduite en Langue des Signes Française"
+                    action={
+                      <Button
+                        key="undo"
+                        color="secondary"
+                        size="small"
+                        onClick={this.handleToggleDeaf}
+                      >
+                        J'ai compris
+                      </Button>
+                    }
+                  />
+                </div>
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route path="/Administratif" component={Administratif} />

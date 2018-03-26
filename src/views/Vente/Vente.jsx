@@ -35,7 +35,7 @@ const styles = theme => ({
 
 class Vente extends React.Component {
   state = {
-    value: 0
+    value: this.props.location.param
   };
 
   handleChange = (event, value) => {
@@ -51,9 +51,6 @@ class Vente extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <Typography align="center" color="primary" variant="headline">
-          {"Contenu de la page Vente"}
-        </Typography>
         <br /> <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
@@ -63,7 +60,6 @@ class Vente extends React.Component {
               indicatorColor="primary"
               textColor="primary"
               scrollable
-              scrollButtons="off"
               fullWidth
               centered
             >

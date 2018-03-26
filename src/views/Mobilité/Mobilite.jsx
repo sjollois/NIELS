@@ -34,7 +34,7 @@ const styles = theme => ({
 
 class Mobilite extends React.Component {
   state = {
-    value: 0
+    value: this.props.location.param
   };
 
   handleChange = (event, value) => {

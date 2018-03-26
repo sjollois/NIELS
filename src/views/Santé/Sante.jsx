@@ -33,7 +33,7 @@ const styles = theme => ({
 
 class Sante extends React.Component {
   state = {
-    value: 0
+    value: this.props.location.param
   };
 
   handleChange = (event, value) => {
@@ -49,9 +49,6 @@ class Sante extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <Typography align="center" color="primary" variant="headline">
-          {"Contenu de la page Sante"}
-        </Typography>
         <br /> <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
@@ -60,10 +57,8 @@ class Sante extends React.Component {
               onChange={this.handleChange}
               indicatorColor="primary"
               textColor="primary"
-              scrollButtons="off"
-              scrollable
-              fullWidth
               centered
+              fullWidth
             >
               <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
               <Tab icon={<Medecin fontSize="25px" />} label="Médecin" />

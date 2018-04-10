@@ -14,6 +14,8 @@ import FirstPageIcon from "material-ui-icons/FirstPage";
 import KeyboardArrowLeft from "material-ui-icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "material-ui-icons/KeyboardArrowRight";
 import LastPageIcon from "material-ui-icons/LastPage";
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const actionsStyles = theme => ({
   root: {
@@ -167,6 +169,10 @@ class Questions extends React.Component {
     const { data, rowsPerPage, page } = this.state;
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    const video = { 
+       pathname: "/Santé", 
+       param: 0
+        };
 
     return (
       <Paper className={classes.root}>
@@ -188,9 +194,13 @@ class Questions extends React.Component {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   return (
-                    <TableRow key={n.id}>
-                      <TableCell>{n.name}</TableCell>
-                    </TableRow>
+                    
+                      <TableRow key={n.id}>
+                        <TableCell>
+                        {n.name}
+                        </TableCell>
+                      </TableRow>
+                    
                   );
                 })}
             </TableBody>

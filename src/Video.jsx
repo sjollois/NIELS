@@ -19,23 +19,11 @@ const styles = theme => ({
   }
 });
 
-// Initialize Firebase
-// TODO: Replace with your project's customized code snippet
-var config = {
-  apiKey: "AIzaSyBucdYWDVGM-mHGD5PI73BJt9eAujxES5E",
-  authDomain: "niels-9065d.firebaseapp.com",
-  databaseURL: "https://niels-9065d.firebaseio.com",
-  projectId: "niels-9065d",
-  storageBucket: "niels-9065d.appspot.com",
-  messagingSenderId: "118788307716"
-};
-
 class Video extends React.Component {
   constructor() {
     super();
 
     this.state = { loading: true };
-    firebase.initializeApp(config);
   }
   componentWillMount() {
     const ref = firebase.database().ref("videos");

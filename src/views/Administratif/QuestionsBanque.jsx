@@ -161,13 +161,13 @@ class QuestionsBanque extends React.Component {
   componentWillMount() {
     const ref = firebase.database().ref("videos");
 
-    ref.orderByChild("sous-contextes").equalTo("banque").on("value", snapshot => {
-      this.setState({
-        video: snapshot.val(),
-        loading: false
-      });
+    ref.orderByChild("sous-contextes").equalTo("banque").on("value", function(snapshot) {
+        console.log(snapshot.key);
+        this.setState({
+            video: snapshot.val(),
+            loading: false
+          });
     });
-    console.log(this.state.video[0])
   }
 
   render() {

@@ -9,7 +9,10 @@ import AttachMoney from "material-ui-icons/AttachMoney";
 import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
-import Questions from "./Questions";
+import QuestionsBanque from "./QuestionsBanque";
+import QuestionsPoste from "./QuestionsPoste";
+import QuestionsScolarite from "./QuestionsScolarite";
+import QuestionsMairie from "./QuestionsMairie";
 
 function TabContainer({ children, dir }) {
   return (
@@ -75,22 +78,22 @@ class Administratif extends React.Component {
           >
             {(value === 0) && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <QuestionsBanque />
               </TabContainer>
             )}
             {(value === 1) && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <QuestionsMairie />
               </TabContainer>
             )}
             {(value === 2) && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <QuestionsPoste />
               </TabContainer>
             )}
             {(value === 3) && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <QuestionsScolarite />
               </TabContainer>
             )}
           </SwipeableViews>

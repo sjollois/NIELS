@@ -9,7 +9,7 @@ import {
   BigPlayButton
 } from "video-react";
 import * as firebase from "firebase";
-//import * as Videos from "./video";
+import Loading from "react-loading-animation";
 
 const styles = theme => ({
   root: {
@@ -46,33 +46,43 @@ class Video extends React.Component {
         loading: false
       });
     });
-
   }
 
   render() {
-    if ((this.state.loading)) {
-      return <h1> Chargement</h1>
+    if (this.state.loading) {
+      return (
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <Loading />
+        </div>
+      );
     }
     const source = this.state.video[0].path;
-    console.log(source);
-    //var Videos = require("/Users/samueljollois/Documents/GitHub/NIELS/src/video");
-    const videoWatch = require(`./video/${source}.mp4`);
+    if (this.state.video[0].video === "true") {
+      const videoWatch = require(`./video/${source}.mp4`);
       return (
         <div>
           <br />
           <Typography color="primary" variant="headline" align="center">
-          Traduction LSF de la phrase : 
-        </Typography>
-        <Typography color="primary" variant="subheading" align="center">
-        "{source.replace(/_/g,' ')} ? "
-        </Typography>
+            Traduction LSF de la phrase :
+          </Typography>
+          <Typography color="primary" variant="subheading" align="center">
+            "{source.replace(/_/g, " ")} ? "
+          </Typography>
           <br />
           <Player aspectRatio="16:9" width="500" height="400">
             <playsInline true />
             <muted true />
             <fluid true />
             <preload auto />
-            <source src={videoWatch}/>
+            <source src={videoWatch} />
             <ControlBar>
               <VolumeMenuButton disabled />
             </ControlBar>
@@ -80,9 +90,25 @@ class Video extends React.Component {
           </Player>
         </div>
       );
+    } else {
+      return (
+        <div>
+          <br />
+          <Typography color="primary" variant="headline" align="center">
+            Traduction LSF de la phrase :
+          </Typography>
+          <Typography color="primary" variant="subheading" align="center">
+            "{source}"
+          </Typography>
+          <br />
+          <Typography color="primary" variant="headline" align="center">
+            Pas de video pour l'instant ^^'
+          </Typography>
+        </div>
+      );
     }
   }
-
+}
 
 Video.propTypes = {
   classes: PropTypes.object.isRequired,

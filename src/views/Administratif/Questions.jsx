@@ -127,27 +127,19 @@ class Questions extends React.Component {
 
     this.state = {
       data: [
-        createData("EPARGNER"),
-        createData("Avez-vous un projet d’épargne précis ?"),
-        createData("Voulez-vous simuler un plan épargne ?"),
-        createData("Souhaitez-vous ouvrir un compte épargne logement ? "),
-        createData("ASSURER"),
-        createData("Voulez-vous assurer votre véhicule ?"),
-        createData("Voulez-vous une assurance pour votre logement ?"),
-        createData("Voulez-vous une assurance santé ?"),
-        createData("Voulez-vous une assurance pour protéger vos proches ou vous même ? "),
-        createData("AUTRE"),
-        createData("Voulez-vous effectuer un changement d’adresse de domicile ?"),
-        createData("Avez-vous un problème d’accès à votre compte ? "),
-        createData("Souhaitez-vous un devis pour un service particulier ?"),
-        createData("Voulez-vous ouvrir un compte ?"),
-        createData("Souhaitez-vous commander un chéquier ?"),
-        createData("Avez-vous remarqué une anomalie sur vos relevés?"),
-        createData("Voulez-vous prendre un rendez vous avec votre conseiller ?"),
-        createData("Souhaitez-vous faire un dépôt ?"),
-        createData("Voulez-vous effectuer un virement vers un autre compte ?"),
-        createData("Voulez-vous que je vous explique comment fonctionne votre carte bleu à l’étranger ?"),
-        createData("Souhaitez-vous effectuer un emprunt ?")
+        createData("Questions1"),
+        createData("Questions2"),
+        createData("Questions3"),
+        createData("Questions4"),
+        createData("Questions5"),
+        createData("Questions6"),
+        createData("Questions7"),
+        createData("Questions8"),
+        createData("Questions9"),
+        createData("Questions10"),
+        createData("Questions11"),
+        createData("Questions12"),
+        createData("Questions13")
       ],
       page: 0,
       rowsPerPage: 10
@@ -175,7 +167,7 @@ class Questions extends React.Component {
             <TableBody>
               {emptyRows > 0 && (
                 data
-                .slice(data.length*2-page*rowsPerPage-emptyRows-2, data.length*2-page*rowsPerPage-2)
+                .slice(page * emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage))
                 .map(n => {
                   return (
                     <TableRow key={n.id}>

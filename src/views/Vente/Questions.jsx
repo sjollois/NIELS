@@ -167,7 +167,7 @@ class Questions extends React.Component {
             <TableBody>
               {emptyRows > 0 && (
                 data
-                .slice(data.length*2-page*rowsPerPage-emptyRows-2, data.length*2-page*rowsPerPage-2)
+                .slice(page * emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage))
                 .map(n => {
                   return (
                     <TableRow key={n.id}>

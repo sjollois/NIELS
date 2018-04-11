@@ -34,6 +34,7 @@ import AdministratifHeader from "./AdministratifHeader";
 import VenteHeader from "./VenteHeader";
 import MobiliteHeader from "./MobiliteHeader";
 import LoisirsHeader from "./LoisirsHeader";
+import Video from "./Video";
 
 const drawerWidth = 220;
 
@@ -388,6 +389,7 @@ class MiniDrawer extends React.Component {
                   <Route path="/Mobilité" component={Mobilite} />
                   <Route path="/Santé" component={Sante} />
                   <Route path="/Vente" component={Vente} />
+                  <Route path="/Video" component={Video} />
                 </Switch>
               </main>
             </div>

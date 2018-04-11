@@ -161,12 +161,12 @@ class QuestionsBanque extends React.Component {
   componentWillMount() {
     const ref = firebase.database().ref("videos");
 
-    ref.orderByChild("sous-contextes").equalTo("banque").on("value", function(snapshot) {
-        console.log(snapshot.key);
+    ref.orderByChild("sous-contextes").equalTo("Banque").on("value", snapshot => {
         this.setState({
-            video: snapshot.val(),
+            videos: snapshot.val(),
             loading: false
           });
+        console.log(this.state.videos);
     });
   }
 
@@ -189,7 +189,7 @@ class QuestionsBanque extends React.Component {
     const { classes } = this.props;
     const { data, rowsPerPage, page } = this.state;
     const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -197,22 +197,22 @@ class QuestionsBanque extends React.Component {
           <Table className={classes.table}>
             <TableBody>
               {emptyRows > 0 && (
-                data
-                .slice(page * emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage))
+                this.state.videos
+                .slice(page * emptyRows - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage))
                 .map(n => {
                   return (
-                    <TableRow key={n.id}>
-                      <TableCell>{n.name}</TableCell>
+                    <TableRow>
+                      <TableCell>{n.path}</TableCell>
                     </TableRow>
                   );
                 })
               )}
-              {data
+              {this.state.videos
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   return (
-                    <TableRow key={n.id}>
-                      <TableCell>{n.name}</TableCell>
+                    <TableRow>
+                      <TableCell>{n.path}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -221,7 +221,7 @@ class QuestionsBanque extends React.Component {
               <TableRow>
                 <TablePagination
                   colSpan={3}
-                  count={data.length}
+                  count={this.state.videos.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={this.handleChangePage}

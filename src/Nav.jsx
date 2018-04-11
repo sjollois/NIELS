@@ -384,12 +384,11 @@ class MiniDrawer extends React.Component {
                 </div>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/Administratif" component={Administratif} />
+                  <Route path="/Administratif" component={Video} />
                   <Route path="/Loisirs" component={Loisirs} />
                   <Route path="/Mobilité" component={Mobilite} />
                   <Route path="/Santé" component={Sante} />
                   <Route path="/Vente" component={Vente} />
-                  <Route path="/Video" component={Video} />
                 </Switch>
               </main>
             </div>

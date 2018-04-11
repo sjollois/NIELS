@@ -28,13 +28,12 @@ import Tooltip from "material-ui/Tooltip";
 import SSwitch from "material-ui/Switch";
 import Button from "material-ui/Button";
 import { SnackbarContent } from "material-ui/Snackbar";
-import HomeHeader from "./views/Home/HomeHeader";
-import SanteHeader from "./views/Santé/SanteHeader";
-import AdministratifHeader from "./views/Administratif/AdministratifHeader";
-import VenteHeader from "./views/Vente/VenteHeader";
-import MobiliteHeader from "./views/Mobilité/MobiliteHeader";
-import LoisirsHeader from "./views/Loisirs/LoisirsHeader";
-import Video from "./Video";
+import HomeHeader from "./HomeHeader";
+import SanteHeader from "./SanteHeader";
+import AdministratifHeader from "./AdministratifHeader";
+import VenteHeader from "./VenteHeader";
+import MobiliteHeader from "./MobiliteHeader";
+import LoisirsHeader from "./LoisirsHeader";
 
 const drawerWidth = 220;
 
@@ -384,7 +383,7 @@ class MiniDrawer extends React.Component {
                 </div>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/Administratif" component={Video} />
+                  <Route path="/Administratif" component={Administratif} />
                   <Route path="/Loisirs" component={Loisirs} />
                   <Route path="/Mobilité" component={Mobilite} />
                   <Route path="/Santé" component={Sante} />

@@ -4,10 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^4.12.1",
-    "firebase-admin": "^5.12.0",
     "history": "^4.7.2",
-    "import-from": "^2.1.0",
-    "import-modules": "^1.1.0",
     "lodash": "^4.17.5",
     "material-design-icons": "^3.0.1",
     "material-ui": "^1.0.0-beta.33",

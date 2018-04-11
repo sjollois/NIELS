@@ -169,6 +169,10 @@ class Questions extends React.Component {
     const { data, rowsPerPage, page } = this.state;
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    const video = { 
+       pathname: "/Santé", 
+       param: 0
+        };
 
     return (
       <Paper className={classes.root}>

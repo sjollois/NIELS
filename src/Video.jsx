@@ -9,7 +9,6 @@ import {
   BigPlayButton
 } from "video-react";
 import * as firebase from "firebase";
-//import * as Videos from "./video";
 
 const styles = theme => ({
   root: {
@@ -50,29 +49,21 @@ class Video extends React.Component {
   }
 
   render() {
+    const { classes, theme } = this.props;
     if ((this.state.loading)) {
       return <h1> Chargement</h1>
     }
-    const source = this.state.video[0].path;
-    console.log(source);
-    //var Videos = require("/Users/samueljollois/Documents/GitHub/NIELS/src/video");
-    const videoWatch = require(`./video/${source}.mp4`);
+    const source = this.state.video[0].path
+    const path = require(`${source}`)  
+    const path1 = require("/Users/samueljollois/Documents/GitHub/NIELS/src/video/horaire4.mp4")
       return (
         <div>
-          <br />
-          <Typography color="primary" variant="headline" align="center">
-          Traduction LSF de la phrase : 
-        </Typography>
-        <Typography color="primary" variant="subheading" align="center">
-        "{source.replace(/_/g,' ')} ? "
-        </Typography>
-          <br />
-          <Player aspectRatio="16:9" width="500" height="400">
-            <playsInline true />
+          <br /> <br />
+          <Player playsInline aspectRatio="16:9" width="500" height="400">
             <muted true />
             <fluid true />
             <preload auto />
-            <source src={videoWatch}/>
+            <source src={path1}/>
             <ControlBar>
               <VolumeMenuButton disabled />
             </ControlBar>

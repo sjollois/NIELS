@@ -190,7 +190,8 @@ class MiniDrawer extends React.Component {
     this.state = {
       open: false,
       mobile: true,
-      deaf: false
+      deaf: false,
+      listInfo:["","",""]
     };
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
   }
@@ -384,12 +385,12 @@ class MiniDrawer extends React.Component {
                 </div>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/Administratif" component={Administratif} />
+                  <Route path="/Administratif" component={Administratif}/>
                   <Route path="/Loisirs" component={Loisirs} />
                   <Route path="/Mobilité" component={Mobilite} />
                   <Route path="/Santé" component={Sante} />
                   <Route path="/Vente" component={Vente} />
-                  <Route path="/Video" component={Video} />
+                  <Route path={`/Video/:contexte/:sousContexte/:path`} component={Video} />
                 </Switch>
               </main>
             </div>
@@ -405,7 +406,8 @@ MiniDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   handleDrawerClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(MiniDrawer);

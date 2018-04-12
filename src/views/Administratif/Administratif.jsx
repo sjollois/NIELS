@@ -36,9 +36,12 @@ const styles = theme => ({
 });
 
 class Administratif extends React.Component {
-  state = {
-    value: this.props.location.param
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+        value: this.props.location.param
+    };    
+};
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -78,22 +81,22 @@ class Administratif extends React.Component {
           >
             {(value === 0) && (
               <TabContainer dir={theme.direction}>
-                <QuestionsBanque />
+                <QuestionsBanque/>
               </TabContainer>
             )}
             {(value === 1) && (
               <TabContainer dir={theme.direction}>
-                <QuestionsMairie />
+                <QuestionsMairie/>
               </TabContainer>
             )}
             {(value === 2) && (
               <TabContainer dir={theme.direction}>
-                <QuestionsPoste />
+                <QuestionsPoste/>
               </TabContainer>
             )}
             {(value === 3) && (
               <TabContainer dir={theme.direction}>
-                <QuestionsScolarite />
+                <QuestionsScolarite/>
               </TabContainer>
             )}
           </SwipeableViews>

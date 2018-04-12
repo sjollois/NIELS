@@ -20,13 +20,22 @@ const styles = theme => ({
 });
 
 class Video extends React.Component {
-  constructor() {
-    super();
-
-    this.state = { loading: true };
+  constructor(props) {
+    super(props);
+    this.state = { loading: true,
+    value: this.props.match.params.path,
+    contexte: this.props.match.params.contexte,
+    sousContexte: this.props.match.params.sousContexte
+    }
   }
   componentWillMount() {
-    const ref = firebase.database().ref("Administratif/Banque");
+    const ref = firebase.database().ref(`${this.state.contexte}/${this.state.sousContexte}`);
+
+    ref.orderByChild('path').equalTo(`${this.state.value}?`).on("value", snapshot => {
+        this.setState({
+          videoDone: snapshot.val()[Object.keys(snapshot.val())[0]].video
+        });
+    });
 
     ref.on("value", snapshot => {
       this.setState({
@@ -52,9 +61,9 @@ class Video extends React.Component {
         </div>
       );
     }
-    const source = this.state.video[0].path;
-    if (this.state.video[0].video === "true") {
-      const videoWatch = require(`./video/${source}.mp4`);
+    if (this.state.videoDone === "true") {
+      const videoPath=this.state.value;
+      const videoWatch = require(`./video/${videoPath.replace(/ /g, '_').slice(0,-1)}.mp4`);
       return (
         <div>
           <br />
@@ -62,7 +71,7 @@ class Video extends React.Component {
             Traduction LSF de la phrase :
           </Typography>
           <Typography color="primary" variant="subheading" align="center">
-            "{source.replace(/_/g, " ")} ? "
+            "{this.state.value} ?"
           </Typography>
           <br />
           <Player aspectRatio="16:9" width="500" height="400">
@@ -79,6 +88,7 @@ class Video extends React.Component {
         </div>
       );
     } else {
+      console.log(this.state.value);
       return (
         <div>
           <br />
@@ -86,7 +96,7 @@ class Video extends React.Component {
             Traduction LSF de la phrase :
           </Typography>
           <Typography color="primary" variant="subheading" align="center">
-            "{source}"
+            "{this.state.value} ?"
           </Typography>
           <br />
           <Typography color="primary" variant="headline" align="center">

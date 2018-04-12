@@ -104,12 +104,6 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, {
   withTheme: true
 })(TablePaginationActions);
 
-let counter = 0;
-function createData(name) {
-  counter += 1;
-  return { id: counter, name };
-}
-
 const styles = theme => ({
   root: {
     width: "100%",
@@ -129,23 +123,7 @@ class QuestionsBanque extends React.Component {
     super(props, context);
 
     this.state = {
-      data: [
-        createData("Questions1"),
-        createData("Questions2"),
-        createData("Questions3"),
-        createData("Questions4"),
-        createData("Questions5"),
-        createData("Questions6"),
-        createData("Questions7"),
-        createData("Questions8"),
-        createData("Questions9"),
-        createData("Questions10"),
-        createData("Questions11"),
-        createData("Questions12"),
-        createData("Questions13")
-      ],
       page: 0,
-      rowsPerPage: 10,
       loading: true 
     };
   }
@@ -159,14 +137,13 @@ class QuestionsBanque extends React.Component {
   };
 
   componentWillMount() {
-    const ref = firebase.database().ref("videos");
+    const ref = firebase.database().ref("Administratif/Banque");
 
-    ref.orderByChild("sous-contextes").equalTo("Banque").on("value", snapshot => {
+    ref.on("value", snapshot => {
         this.setState({
             videos: snapshot.val(),
             loading: false
           });
-        console.log(this.state.videos);
     });
   }
 
@@ -187,9 +164,10 @@ class QuestionsBanque extends React.Component {
       );
     }
     const { classes } = this.props;
-    const { data, rowsPerPage, page } = this.state;
+    const { videos, page } = this.state;
+    const rowsPerPage= Math.min(10,videos.length);
     const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, videos.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -197,8 +175,8 @@ class QuestionsBanque extends React.Component {
           <Table className={classes.table}>
             <TableBody>
               {emptyRows > 0 && (
-                this.state.videos
-                .slice(page * emptyRows - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, this.state.videos.length - page * rowsPerPage))
+                videos
+                .slice((page * rowsPerPage)-emptyRows, (page * rowsPerPage))
                 .map(n => {
                   return (
                     <TableRow>
@@ -207,7 +185,7 @@ class QuestionsBanque extends React.Component {
                   );
                 })
               )}
-              {this.state.videos
+              {videos
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   return (
@@ -221,7 +199,7 @@ class QuestionsBanque extends React.Component {
               <TableRow>
                 <TablePagination
                   colSpan={3}
-                  count={this.state.videos.length}
+                  count={videos.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={this.handleChangePage}

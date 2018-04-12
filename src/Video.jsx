@@ -26,7 +26,7 @@ class Video extends React.Component {
     this.state = { loading: true };
   }
   componentWillMount() {
-    const ref = firebase.database().ref("videos");
+    const ref = firebase.database().ref("Administratif/Banque");
 
     ref.on("value", snapshot => {
       this.setState({

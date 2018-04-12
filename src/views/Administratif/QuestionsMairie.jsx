@@ -14,8 +14,8 @@ import FirstPageIcon from "material-ui-icons/FirstPage";
 import KeyboardArrowLeft from "material-ui-icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "material-ui-icons/KeyboardArrowRight";
 import LastPageIcon from "material-ui-icons/LastPage";
-import * as firebase from "firebase";
 import Loading from "react-loading-animation";
+import * as firebase from "firebase";
 
 const actionsStyles = theme => ({
   root: {
@@ -104,12 +104,6 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, {
   withTheme: true
 })(TablePaginationActions);
 
-let counter = 0;
-function createData(name) {
-  counter += 1;
-  return { id: counter, name };
-}
-
 const styles = theme => ({
   root: {
     width: "100%",
@@ -127,25 +121,9 @@ class QuestionsMairie extends React.Component {
   constructor(props, context) {
 
     super(props, context);
-    
+
     this.state = {
-      data: [
-        createData("Questions1"),
-        createData("Questions2"),
-        createData("Questions3"),
-        createData("Questions4"),
-        createData("Questions5"),
-        createData("Questions6"),
-        createData("Questions7"),
-        createData("Questions8"),
-        createData("Questions9"),
-        createData("Questions10"),
-        createData("Questions11"),
-        createData("Questions12"),
-        createData("Questions13")
-      ],
       page: 0,
-      rowsPerPage: 10,
       loading: true 
     };
   }
@@ -159,13 +137,13 @@ class QuestionsMairie extends React.Component {
   };
 
   componentWillMount() {
-    const ref = firebase.database().ref("videos");
+    const ref = firebase.database().ref("Administratif/Mairie");
 
     ref.on("value", snapshot => {
-      this.setState({
-        video: snapshot.val(),
-        loading: false
-      });
+        this.setState({
+            videos: snapshot.val(),
+            loading: false
+          });
     });
   }
 
@@ -186,9 +164,10 @@ class QuestionsMairie extends React.Component {
       );
     }
     const { classes } = this.props;
-    const { data, rowsPerPage, page } = this.state;
+    const { videos, page } = this.state;
+    const rowsPerPage= Math.min(10,videos.length);
     const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, videos.length - page * rowsPerPage);
 
     return (
       <Paper className={classes.root}>
@@ -196,22 +175,22 @@ class QuestionsMairie extends React.Component {
           <Table className={classes.table}>
             <TableBody>
               {emptyRows > 0 && (
-                data
-                .slice(page * emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage), page * emptyRows + emptyRows - Math.min(rowsPerPage, data.length - page * rowsPerPage))
+                videos
+                .slice((page * rowsPerPage)-emptyRows, (page * rowsPerPage))
                 .map(n => {
                   return (
-                    <TableRow key={n.id}>
-                      <TableCell>{n.name}</TableCell>
+                    <TableRow>
+                      <TableCell>{n.path}</TableCell>
                     </TableRow>
                   );
                 })
               )}
-              {data
+              {videos
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   return (
-                    <TableRow key={n.id}>
-                      <TableCell>{n.name}</TableCell>
+                    <TableRow>
+                      <TableCell>{n.path}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -220,7 +199,7 @@ class QuestionsMairie extends React.Component {
               <TableRow>
                 <TablePagination
                   colSpan={3}
-                  count={data.length}
+                  count={videos.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={this.handleChangePage}

@@ -61,7 +61,7 @@ class Video extends React.Component {
         </div>
       );
     }
-    if (this.state.videoDone === "true") {
+    if (this.state.videoDone) {
       const videoPath=this.state.value;
       const videoWatch = require(`./video/${videoPath.replace(/ /g, '_').slice(0,-1)}.mp4`);
       return (

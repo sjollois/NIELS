@@ -149,7 +149,7 @@ class QuestionsBanque extends React.Component {
             loading: false
           });
     });
-  };
+  }
 
   render() {
     if (this.state.loading) {
@@ -233,5 +233,6 @@ QuestionsBanque.propTypes = {
 };
 
 export default compose(withStyles(styles),withRouter)(QuestionsBanque);
+
 
 

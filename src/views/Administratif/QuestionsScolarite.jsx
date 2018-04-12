@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+import { withRouter } from 'react-router'
+import compose from 'recompose/compose';
 import Table, {
   TableBody,
   TableCell,
@@ -16,6 +18,8 @@ import KeyboardArrowRight from "material-ui-icons/KeyboardArrowRight";
 import LastPageIcon from "material-ui-icons/LastPage";
 import Loading from "react-loading-animation";
 import * as firebase from "firebase";
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const actionsStyles = theme => ({
   root: {
@@ -180,7 +184,11 @@ class QuestionsScolarite extends React.Component {
                 .map(n => {
                   return (
                     <TableRow>
-                      <TableCell>{n.path}</TableCell>
+                      <TableCell>
+                      <Link to={`/Video/Administratif/Scolarite/${n.path}`} style={{ textDecoration: 'none' }}>
+                      {n.path}
+                      </Link>
+                      </TableCell>
                     </TableRow>
                   );
                 })
@@ -190,7 +198,11 @@ class QuestionsScolarite extends React.Component {
                 .map(n => {
                   return (
                     <TableRow>
-                      <TableCell>{n.path}</TableCell>
+                      <TableCell>
+                      <Link to={`/Video/Administratif/Scolarite/${n.path}`} style={{ textDecoration: 'none' }}>
+                      {n.path}
+                      </Link>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -216,7 +228,11 @@ class QuestionsScolarite extends React.Component {
 }
 
 QuestionsScolarite.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(QuestionsScolarite);
+export default compose(withStyles(styles),withRouter)(QuestionsScolarite);
+
+
+

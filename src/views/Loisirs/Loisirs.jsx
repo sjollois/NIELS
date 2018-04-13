@@ -10,7 +10,7 @@ import LocalMovies from "material-ui-icons/LocalMovies";
 import AccountBalance from "material-ui-icons/AccountBalance";
 import Icon from "react-icons-kit";
 import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
-import Questions from "./Questions";
+import Questions from "../../Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -34,9 +34,12 @@ const styles = theme => ({
 });
 
 class Loisirs extends React.Component {
-  state = {
-    value: this.props.location.param
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.location.param
+        };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -48,10 +51,20 @@ class Loisirs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { value } = this.state;
+    const { value} = this.state;
     return (
       <div>
         <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases Générales :
+        </Typography>
+        <br />
+        <Questions contexte="Loisirs" sousContexte="Generale" nbr={3} />
+        <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases spécifiques aux sous-contextes :
+        </Typography>
+        <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -63,10 +76,10 @@ class Loisirs extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque"/>
-              <Tab icon={<LocalMovies />} label="Cinéma"/>
-              <Tab icon={<AccountBalance />} label="Musée"/>
-              <Tab icon={<Icon size={25} icon={iosFootball} />} label="Sport"/>
+              <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque" />
+              <Tab icon={<LocalMovies />} label="Cinéma" />
+              <Tab icon={<AccountBalance />} label="Musée" />
+              <Tab icon={<Icon size={25} icon={iosFootball} />} label="Sport" />
             </Tabs>
           </AppBar>
           <SwipeableViews
@@ -76,22 +89,26 @@ class Loisirs extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions
+                  contexte="Loisirs"
+                  sousContexte="Bibliotheque"
+                  nbr={6}
+                />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Loisirs" sousContexte="Cinema" nbr={6} />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Loisirs" sousContexte="Musee" nbr={6} />
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Loisirs" sousContexte="Sport" nbr={6} />
               </TabContainer>
             )}
           </SwipeableViews>

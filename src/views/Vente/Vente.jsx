@@ -10,7 +10,7 @@ import Hotel from "material-ui-icons/Hotel";
 import LocalLibrary from "material-ui-icons/LocalLibrary";
 import ShoppingBasket from "material-ui-icons/ShoppingBasket";
 import Restaurant from "material-ui-icons/Restaurant";
-import Questions from "./Questions";
+import Questions from "../../Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -28,15 +28,18 @@ TabContainer.propTypes = {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    width: "100%"
   }
 });
 
 class Vente extends React.Component {
-  state = {
-    value: this.props.location.param
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.location.param
+        };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -52,6 +55,16 @@ class Vente extends React.Component {
     return (
       <div>
         <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases Générales :
+        </Typography>
+        <br />
+        <Questions contexte="Vente" sousContexte="Generale" nbr={3} />
+        <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases spécifiques aux sous-contextes :
+        </Typography>
+        <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -59,8 +72,8 @@ class Vente extends React.Component {
               onChange={this.handleChange}
               indicatorColor="primary"
               textColor="primary"
-              scrollable
               fullWidth
+              scrollable
               centered
             >
               <Tab icon={<Store />} label="Épicerie" />
@@ -77,27 +90,31 @@ class Vente extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Vente" sousContexte="Epicerie" nbr={6} />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Vente" sousContexte="Hotel" nbr={6} />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Librairie"
+                  nbr={6}
+                />
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Vente" sousContexte="PretAPorter" nbr={6} />
               </TabContainer>
             )}
             {value === 4 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Vente" sousContexte="Restauration" nbr={6} />
               </TabContainer>
             )}
           </SwipeableViews>

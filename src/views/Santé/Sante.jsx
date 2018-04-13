@@ -8,7 +8,7 @@ import SwipeableViews from "react-swipeable-views";
 import HospitalIcons from "react-icons/lib/fa/hospital-o";
 import LocalPharmacy from "material-ui-icons/LocalPharmacy";
 import Medecin from "react-icons/lib/fa/stethoscope";
-import Questions from "./Questions";
+import Questions from "../../Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -26,15 +26,18 @@ TabContainer.propTypes = {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    width: "100%"
   }
 });
 
 class Sante extends React.Component {
-  state = {
-    value: this.props.location.param
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.location.param
+    };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -47,9 +50,20 @@ class Sante extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { value } = this.state;
+
     return (
       <div>
         <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases Générales :
+        </Typography>
+        <br />
+        <Questions contexte="Sante" sousContexte="Generale" nbr={3} />
+        <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases spécifiques aux sous-contextes :
+        </Typography>
+        <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -57,8 +71,8 @@ class Sante extends React.Component {
               onChange={this.handleChange}
               indicatorColor="primary"
               textColor="primary"
-              centered
               fullWidth
+              centered
             >
               <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
               <Tab icon={<Medecin fontSize="25px" />} label="Médecin" />
@@ -72,17 +86,21 @@ class Sante extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Sante" sousContexte="Hopital" nbr={6} />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions contexte="Sante" sousContexte="Medecin" nbr={6} />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions />
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Pharmacie"
+                  nbr={6}
+                />
               </TabContainer>
             )}
           </SwipeableViews>

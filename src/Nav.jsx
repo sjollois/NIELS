@@ -28,12 +28,12 @@ import Tooltip from "material-ui/Tooltip";
 import SSwitch from "material-ui/Switch";
 import Button from "material-ui/Button";
 import { SnackbarContent } from "material-ui/Snackbar";
-import HomeHeader from "./HomeHeader";
-import SanteHeader from "./SanteHeader";
-import AdministratifHeader from "./AdministratifHeader";
-import VenteHeader from "./VenteHeader";
-import MobiliteHeader from "./MobiliteHeader";
-import LoisirsHeader from "./LoisirsHeader";
+import HomeHeader from "./views/Home/HomeHeader";
+import SanteHeader from "./views/Santé/SanteHeader";
+import AdministratifHeader from "./views/Administratif/AdministratifHeader";
+import VenteHeader from "./views/Vente/VenteHeader";
+import MobiliteHeader from "./views/Mobilité/MobiliteHeader";
+import LoisirsHeader from "./views/Loisirs/LoisirsHeader";
 import Video from "./Video";
 
 const drawerWidth = 220;
@@ -41,7 +41,7 @@ const drawerWidth = 220;
 const styles = theme => ({
   root: {
     display: "flex",
-    minHeight: `calc(100vh + 200px)`,
+    minHeight: `calc(100vh + 250px)`,
     height: `950px`,
     width: "100%",
     position: "relative",
@@ -62,7 +62,7 @@ const styles = theme => ({
   appFrame: {
     display: "flex",
     width: "100%",
-    minHeight: `calc(100vh + 200px)`,
+    minHeight: `calc(100vh + 250px)`,
     height: `950px`
   },
   appBar: {
@@ -103,7 +103,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: "relative",
-    minHeight: `calc(100vh + 200px)`,
+    minHeight: `calc(100vh + 250px)`,
     height: `950px`,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -113,7 +113,7 @@ const styles = theme => ({
   },
   drawerPaperClose: {
     width: 70,
-    minHeight: `calc(100vh + 200px)`,
+    minHeight: `calc(100vh + 250px)`,
     height: `950px`,
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
@@ -136,7 +136,7 @@ const styles = theme => ({
     width: "calc(100% - 80px)",
     backgroundColor: theme.palette.background.default,
     padding: 5,
-    minHeight: `calc(100vh - 50px)`,
+    minHeight: `calc(100vh + 100px)`,
     height: "850px",
     marginTop: 100,
     [theme.breakpoints.up("sm")]: {
@@ -157,7 +157,7 @@ const styles = theme => ({
   },
 
   MiniLogo: {
-      height: 70
+    height: 70
   },
   colorier: {
     color: theme.palette.secondary.main
@@ -191,7 +191,7 @@ class MiniDrawer extends React.Component {
       open: false,
       mobile: true,
       deaf: false,
-      listInfo:["","",""]
+      listInfo: ["", "", ""]
     };
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
   }
@@ -278,8 +278,13 @@ class MiniDrawer extends React.Component {
                       this.state.open && classes.growOpen
                     )}
                   />
-                  <div className={classNames(this.state.open && classes.hide, !this.state.open && classes.nohide)}>
-                  <AppSearch/>
+                  <div
+                    className={classNames(
+                      this.state.open && classes.hide,
+                      !this.state.open && classes.nohide
+                    )}
+                  >
+                    <AppSearch />
                   </div>
                   <div className={classes.border}>
                     <SSwitch
@@ -385,12 +390,15 @@ class MiniDrawer extends React.Component {
                 </div>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/Administratif" component={Administratif}/>
+                  <Route path="/Administratif" component={Administratif} />
                   <Route path="/Loisirs" component={Loisirs} />
                   <Route path="/Mobilité" component={Mobilite} />
                   <Route path="/Santé" component={Sante} />
                   <Route path="/Vente" component={Vente} />
-                  <Route path={`/Video/:contexte/:sousContexte/:path`} component={Video} />
+                  <Route
+                    path={`/Video/:contexte/:sousContexte/:path`}
+                    component={Video}
+                  />
                 </Switch>
               </main>
             </div>

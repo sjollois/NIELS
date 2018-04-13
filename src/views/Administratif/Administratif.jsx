@@ -9,10 +9,7 @@ import AttachMoney from "material-ui-icons/AttachMoney";
 import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
-import QuestionsBanque from "./QuestionsBanque";
-import QuestionsPoste from "./QuestionsPoste";
-import QuestionsScolarite from "./QuestionsScolarite";
-import QuestionsMairie from "./QuestionsMairie";
+import Questions from "../../Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -39,9 +36,9 @@ class Administratif extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        value: this.props.location.param
-    };    
-};
+      value: this.props.location.param,
+    };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -57,6 +54,16 @@ class Administratif extends React.Component {
     return (
       <div>
         <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases Générales :
+        </Typography>
+        <br />
+        <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
+        <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases spécifiques aux sous-contextes :
+        </Typography>
+        <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -79,24 +86,40 @@ class Administratif extends React.Component {
             index={this.state.value}
             onChangeIndex={this.handleChangeIndex}
           >
-            {(value === 0) && (
+            {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <QuestionsBanque/>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Banque"
+                  nbr={6}
+                />
               </TabContainer>
             )}
-            {(value === 1) && (
+            {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <QuestionsMairie/>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Mairie"
+                  nbr={6}
+                />
               </TabContainer>
             )}
-            {(value === 2) && (
+            {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <QuestionsPoste/>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Poste"
+                  nbr={6}
+                />
               </TabContainer>
             )}
-            {(value === 3) && (
+            {value === 3 && (
               <TabContainer dir={theme.direction}>
-                <QuestionsScolarite/>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Scolarite"
+                  nbr={6}
+                />
               </TabContainer>
             )}
           </SwipeableViews>

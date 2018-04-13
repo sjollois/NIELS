@@ -9,7 +9,7 @@ import Flight from "material-ui-icons/Flight";
 import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
-import Questions from "./Questions";
+import Questions from "../../Questions";
 
 function TabContainer({ children, dir }) {
   return (
@@ -33,9 +33,12 @@ const styles = theme => ({
 });
 
 class Mobilite extends React.Component {
-  state = {
-    value: this.props.location.param
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.location.param
+    };
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -50,10 +53,17 @@ class Mobilite extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <Typography align="center" color="primary" variant="headline">
-          {"Contenu de la page Loisirs"}
-        </Typography>
         <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases Générales :
+        </Typography>
+        <br />
+        <Questions contexte="Mobilite" sousContexte="Generale" nbr={3} />
+        <br /> <br />
+        <Typography color="primary" variant="subheading">
+          Phrases spécifiques aux sous-contextes :
+        </Typography>
+        <br />
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -65,10 +75,10 @@ class Mobilite extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<Flight />} label="Avion"/>
-              <Tab icon={<Bus />} label="Bus"/>
-              <Tab icon={<People />} label="Espaces Publics"/>
-              <Tab icon={<Tram/>} label="Train"/>
+              <Tab icon={<Flight />} label="Avion" />
+              <Tab icon={<Bus />} label="Bus" />
+              <Tab icon={<People />} label="Espaces Publics" />
+              <Tab icon={<Tram />} label="Train" />
             </Tabs>
           </AppBar>
           <SwipeableViews
@@ -78,22 +88,26 @@ class Mobilite extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Mobilite" sousContexte="Avion" nbr={6} />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Mobilite" sousContexte="Bus" nbr={6} />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions
+                  contexte="Mobilite"
+                  sousContexte="EspacesPublics"
+                  nbr={6}
+                />
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                <Questions/>
+                <Questions contexte="Mobilite" sousContexte="Train" nbr={6} />
               </TabContainer>
             )}
           </SwipeableViews>
@@ -109,4 +123,3 @@ Mobilite.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(Mobilite);
-

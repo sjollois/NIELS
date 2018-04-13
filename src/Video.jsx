@@ -63,7 +63,8 @@ class Video extends React.Component {
     }
     if (this.state.videoDone) {
       const videoPath=this.state.value;
-      const videoWatch = require(`./video/${videoPath.replace(/ /g, '_').slice(0,-1)}.mp4`);
+      // eslint-disable-next-line
+      const videoWatch = require(`./video/${videoPath.replace(/ /g, '_').replace(/'/g,'').slice(0,-1)}.mp4`);
       return (
         <div>
           <br />

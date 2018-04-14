@@ -8,9 +8,9 @@ import {
   VolumeMenuButton,
   BigPlayButton
 } from "video-react";
-import video from "/Users/samueljollois/Documents/GitHub/NIELS/src/video/videoPresentation.m4v";
-import imageVideo from "/Users/samueljollois/Documents/GitHub/NIELS/src/video/imageVideo.png";
-import logo from "/Users/samueljollois/Documents/GitHub/NIELS/src/logo.png";
+import video from "../video/videoPresentation.m4v";
+import imageVideo from "../video/imageVideo.png";
+import logo from "../logo.png";
 
 const styles = theme => ({
   AppLogo: {

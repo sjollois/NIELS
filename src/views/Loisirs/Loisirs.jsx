@@ -10,7 +10,7 @@ import LocalMovies from "material-ui-icons/LocalMovies";
 import AccountBalance from "material-ui-icons/AccountBalance";
 import Icon from "react-icons-kit";
 import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
-import Questions from "../../Questions";
+import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (

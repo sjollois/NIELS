@@ -9,7 +9,7 @@ import Flight from "material-ui-icons/Flight";
 import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
-import Questions from "../../Questions";
+import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (

@@ -2,6 +2,7 @@
   "name": "base",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://NIELS.com",
   "dependencies": {
     "firebase": "^4.12.1",
     "history": "^4.7.2",

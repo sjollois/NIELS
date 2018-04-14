@@ -10,7 +10,7 @@ import Hotel from "material-ui-icons/Hotel";
 import LocalLibrary from "material-ui-icons/LocalLibrary";
 import ShoppingBasket from "material-ui-icons/ShoppingBasket";
 import Restaurant from "material-ui-icons/Restaurant";
-import Questions from "../../Questions";
+import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (

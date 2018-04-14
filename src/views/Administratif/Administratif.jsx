@@ -9,7 +9,7 @@ import AttachMoney from "material-ui-icons/AttachMoney";
 import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
-import Questions from "../../Questions";
+import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (

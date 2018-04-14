@@ -8,9 +8,9 @@ import {
   VolumeMenuButton,
   BigPlayButton
 } from "video-react";
-import video from "../video/videoPresentation.m4v";
-import imageVideo from "../video/imageVideo.png";
-import logo from "../logo.png";
+import video from "../../assets/video/videoPresentation.m4v";
+import imageVideo from "../../assets/image/imageVideo.png";
+import logo from "../../assets/image/logo.png";
 
 const styles = theme => ({
   AppLogo: {
@@ -42,12 +42,12 @@ class Home extends React.Component {
           poster={imageVideo}
           playsInline
           aspectRatio="16:9"
-          width="500"
-          height="400"
+          width={500}
+          height={400}
+          muted
+          fluid
+          preload="auto"
         >
-          <muted true />
-          <fluid true />
-          <preload auto />
           <source src={video} />
           <ControlBar>
             <VolumeMenuButton disabled />

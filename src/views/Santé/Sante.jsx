@@ -8,7 +8,7 @@ import SwipeableViews from "react-swipeable-views";
 import HospitalIcons from "react-icons/lib/fa/hospital-o";
 import LocalPharmacy from "material-ui-icons/LocalPharmacy";
 import Medecin from "react-icons/lib/fa/stethoscope";
-import Questions from "../../Questions";
+import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (

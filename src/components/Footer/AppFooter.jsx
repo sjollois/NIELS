@@ -14,7 +14,8 @@ const styleSheet = theme => ({
     }
   },
   layout: {
-    padding: theme.spacing.unit * 6
+    padding: theme.spacing.unit * 6,
+    paddingBottom: theme.spacing.unit*3
   },
   list: {
     margin: 0,
@@ -24,7 +25,10 @@ const styleSheet = theme => ({
   listItem: {
     paddingTop: theme.spacing.unit / 2,
     paddingBottom: theme.spacing.unit / 2
-  }
+  },
+  version: {
+    marginBottom: theme.spacing.unit,
+  },
 });
 
 function AppFooter(props) {
@@ -72,6 +76,9 @@ function AppFooter(props) {
           </Grid>
         </Typography>
       </div>
+      <Typography className={classes.version}>
+          © 2017-2018 All Rights Reserved - Projet Transpromo et Projet Informatique Individuel NIELS      
+      </Typography>
     </footer>
   );
 }

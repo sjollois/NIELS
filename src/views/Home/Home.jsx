@@ -11,6 +11,7 @@ import {
 import video from "../../assets/video/videoPresentation.m4v";
 import imageVideo from "../../assets/image/imageVideo.png";
 import logo from "../../assets/image/logo.png";
+import Hidden from "material-ui/Hidden";
 
 const styles = theme => ({
   AppLogo: {
@@ -33,11 +34,27 @@ class Home extends React.Component {
         <div className={classes.center}>
           <img src={logo} className={classes.AppLogo} alt="logo" />
         </div>
+        <Hidden smDown implementation="css">
         <Typography color="primary" variant="headline" align="center">
-          Bienvenue sur la Nouvelle Interface pour les Entendants de traduction
+          Bienvenue sur la Nouvelle Interface pour les Entendants permettant la traduction
           de phrases françaises vers la Langue des Signes française
         </Typography>
         <br />
+        <br />
+        <Typography color="primary" variant="display1" align="center">
+          Vidéo de présentation de notre site en LSF sous-titrée français
+        </Typography>
+        </Hidden>
+        <Hidden smUp>
+        <Typography color="primary" variant="subheading" align="center">
+          Bienvenue sur la Nouvelle Interface pour les Entendants permettant la traduction
+          de phrases françaises vers la Langue des Signes française
+        </Typography>
+        <br />
+        <Typography color="primary" variant="title" align="center">
+          Vidéo de présentation de notre site en LSF sous-titrée
+        </Typography>
+        </Hidden>
         <br />
         <Player
           poster={imageVideo}

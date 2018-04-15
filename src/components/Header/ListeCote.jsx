@@ -220,6 +220,7 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
+          <br/>
           <ListItem button onClick={this.handleClick2} disabled={location.pathname === "/Vente"}>
             <ListItemIcon>
               <ShoppingCart className={classes.colorier}/>
@@ -271,6 +272,7 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
+          <br/>
           <ListItem button onClick={this.handleClick3} disabled={location.pathname === "/Santé"}>
             <ListItemIcon>
               <Hospital className={classes.colorier}/>
@@ -306,6 +308,7 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
+          <br/>
           <ListItem button onClick={this.handleClick4} disabled={location.pathname === "/Loisirs"}>
             <ListItemIcon>
               <LocalActivity className={classes.colorier}/>
@@ -349,6 +352,7 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
+          <br/>
           <ListItem button onClick={this.handleClick5} disabled={location.pathname === "/Mobilité"}>
             <ListItemIcon>
               <Tram className={classes.colorier}/>
@@ -392,20 +396,24 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-        </List>
+        </List>          
+        <br/>
         <Divider />
+        <br/>
         <ListItem button>
           <ListItemIcon>
             <Favorite />
           </ListItemIcon>
           <ListItemText primary="Mes phrases" />
         </ListItem>
+        <br/>
         <ListItem button>
           <ListItemIcon>
             <History />
           </ListItemIcon>
           <ListItemText primary="Mon historique" />
         </ListItem>
+        <br/>
         <ListItem button>
           <ListItemIcon>
             <Help />

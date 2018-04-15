@@ -36,6 +36,7 @@ import MobiliteHeader from "../../views/Mobilité/MobiliteHeader";
 import LoisirsHeader from "../../views/Loisirs/LoisirsHeader";
 import Video from "../../views/Video/Video";
 import VideoHeader from "../../views/Video/VideoHeader";
+import { Divider } from "material-ui";
 
 const drawerWidth = 220;
 
@@ -241,6 +242,11 @@ class Nav extends React.Component {
                   >
                     <MenuIcon />
                   </IconButton>
+                  <Tooltip
+                      id="home"
+                      title="Retour à la page d'accueil"
+                      enterDelay={300}
+                    >
                   <Link
                     to="/"
                     style={{ color: "inherit" }}
@@ -257,6 +263,7 @@ class Nav extends React.Component {
                       <HomeIcon />
                     </IconButton>
                   </Link>
+                  </Tooltip>
                   <Hidden mdDown implementation="css" className={classes.cote}>
                     <Switch>
                       <Route exact path="/" component={HomeHeader} />
@@ -285,17 +292,17 @@ class Nav extends React.Component {
                   >
                     <AppSearch />
                   </div>
+                  <Tooltip
+                      id="deaf-theme"
+                      title="Mode Sourd / Entendant"
+                      enterDelay={300}
+                    >
                   <div className={classes.border}>
                     <SSwitch
                       checked={this.state.deaf}
                       onChange={this.handleToggleDeaf}
                       value="deaf"
-                    />
-                    <Tooltip
-                      id="deaf-theme"
-                      title="Mode Sourd / Entendant"
-                      enterDelay={300}
-                    >
+                    />                    
                       <IconButton
                         color="inherit"
                         onClick={this.handleToggleDeaf}
@@ -305,9 +312,9 @@ class Nav extends React.Component {
                         )}
                       >
                         <DeafIcon />
-                      </IconButton>
-                    </Tooltip>
+                      </IconButton>                    
                   </div>
+                  </Tooltip>
                 </Toolbar>
               </AppBar>
               <Hidden mdUp>
@@ -326,6 +333,11 @@ class Nav extends React.Component {
                 >
                   <div className={classes.drawerInner}>
                     <div className={classes.drawerHeader}>
+                    <Tooltip
+                      id="home"
+                      title="Retour à la page d'accueil"
+                      enterDelay={300}
+                    >
                       <Link to="/" onClick={this.handleDrawerClose}>
                         <img
                           src={logoFond}
@@ -333,6 +345,7 @@ class Nav extends React.Component {
                           alt="logo"
                         />
                       </Link>
+                      </Tooltip>
                       <IconButton onClick={this.handleDrawerClose}>
                         {theme.direction === "rtl" ? (
                           <ChevronRightIcon />
@@ -355,6 +368,11 @@ class Nav extends React.Component {
                 >
                   <div className={classes.drawerInner}>
                     <div className={classes.drawerHeader}>
+                    <Tooltip
+                      id="home"
+                      title="Retour à la page d'accueil"
+                      enterDelay={300}
+                    >
                       <Link to="/" onClick={this.handleDrawerClose}>
                         <img
                           src={logoFond}
@@ -362,6 +380,7 @@ class Nav extends React.Component {
                           alt="logo"
                         />
                       </Link>
+                      </Tooltip>
                     </div>
                     <ListeCote action={this.handleDrawerClose} />
                   </div>
@@ -376,7 +395,7 @@ class Nav extends React.Component {
                       classes.snackbar
                     )}
                     message=" Je suis une personne sourde et j'aimerais communiquer avec vous à l'aide de ce site.
-                      Cliquez sur une question et elle me sera traduite en Langue des Signes Française"
+                      Naviguez parmi les différents contextes situés à droite, cliquez sur une des phrases qui vous sera présentée et elle me sera traduite en Langue des Signes Française"
                     action={
                       <Button
                         key="undo"
@@ -404,6 +423,7 @@ class Nav extends React.Component {
               </main>
             </div>
           </div>
+          <Divider/>
           <Footer />
         </div>
       </Router>

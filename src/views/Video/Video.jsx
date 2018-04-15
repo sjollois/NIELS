@@ -10,6 +10,7 @@ import {
 } from "video-react";
 import * as firebase from "firebase";
 import Loading from "react-loading-animation";
+import Hidden from "material-ui/Hidden";
 
 const styles = theme => ({
   root: {
@@ -76,21 +77,34 @@ class Video extends React.Component {
       return (
         <div>
           <br />
-          <Typography color="primary" variant="headline" align="center">
-            Traduction en Langue des Signes Française de la phrase :
-          </Typography>
-          <Typography color="primary" variant="display1" align="center">
-            "{phrase.replace("$", "'")}"
-          </Typography>
+          <Hidden smDown implementation="css">
+            <Typography color="primary" variant="headline" align="center">
+              Traduction en Langue des Signes Française de la phrase :
+            </Typography>
+            <br />
+            <br />
+            <Typography color="primary" variant="display1" align="center">
+              "{phrase.replace("$", "'")}"
+            </Typography>
+          </Hidden>
+          <Hidden smUp>
+            <Typography color="primary" variant="subheading" align="center">
+              Traduction en Langue des Signes Française de la phrase :
+            </Typography>
+            <br />
+            <Typography color="primary" variant="headline" align="center">
+              "{phrase.replace("$", "'")}"
+            </Typography>
+          </Hidden>
           <br />
           <Player
             aspectRatio="16:9"
             width={500}
             height={400}
-            muted
+            muted="true"
             fluid
             preload="auto"
-            playsInline
+            ref="player"
           >
             <source src={videoWatch} />
             <ControlBar>
@@ -108,12 +122,25 @@ class Video extends React.Component {
       return (
         <div>
           <br />
-          <Typography color="primary" variant="headline" align="center">
-            Traduction en Langue des Signes Française de la phrase :
-          </Typography>
-          <Typography color="primary" variant="display1" align="center">
-            "{phrase.replace("$", "'")}"
-          </Typography>
+          <Hidden smDown implementation="css">
+            <Typography color="primary" variant="headline" align="center">
+              Traduction en Langue des Signes Française de la phrase :
+            </Typography>
+            <br />
+            <br />
+            <Typography color="primary" variant="display1" align="center">
+              "{phrase.replace("$", "'")}"
+            </Typography>
+          </Hidden>
+          <Hidden smUp>
+            <Typography color="primary" variant="subheading" align="center">
+              Traduction en Langue des Signes Française de la phrase :
+            </Typography>
+            <br />
+            <Typography color="primary" variant="headline" align="center">
+              "{phrase.replace("$", "'")}"
+            </Typography>
+          </Hidden>
           <br />
           <Typography color="primary" variant="headline" align="center">
             Pas de video pour l'instant ^^'

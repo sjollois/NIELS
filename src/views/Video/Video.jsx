@@ -8,9 +8,8 @@ import {
   VolumeMenuButton,
   BigPlayButton
 } from "video-react";
-import * as firebase from "firebase";
-import Loading from "react-loading-animation";
 import Hidden from "material-ui/Hidden";
+import Questions from "../../components/Questions";
 
 const styles = theme => ({
   root: {
@@ -24,43 +23,24 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       value: this.props.match.params.path,
       contexte: this.props.match.params.contexte,
       sousContexte: this.props.match.params.sousContexte,
       videoDone: this.props.match.params.video
     };
   }
-  componentWillMount() {
-    const ref = firebase
-      .database()
-      .ref(`${this.state.contexte}/${this.state.sousContexte}`);
 
-    ref.on("value", snapshot => {
+ componentWillReceiveProps(nextProps) {
       this.setState({
-        video: snapshot.val(),
-        loading: false
+        value: nextProps.match.params.path,
+        contexte: nextProps.match.params.contexte,
+        sousContexte: nextProps.match.params.sousContexte,
+        videoDone: nextProps.match.params.video
       });
-    });
+      window.location.reload();
   }
 
   render() {
-    if (this.state.loading) {
-      return (
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <Loading />
-        </div>
-      );
-    }
-    console.log(this.state.videoDone);
     if (this.state.videoDone === "true") {
       const videoPath = this.state.value;
       var correctPath = videoPath;
@@ -68,7 +48,6 @@ class Video extends React.Component {
         correctPath = videoPath.slice(0, -1);
       }
       correctPath = correctPath.replace(/ /g, "_");
-      // eslint-disable-next-line
       const videoWatch = require(`../../assets/video/${correctPath}.mp4`);
       var phrase = videoPath;
       if (videoPath.substr(-1) !== ".") {
@@ -76,18 +55,18 @@ class Video extends React.Component {
       }
       return (
         <div>
-          <br />
           <Hidden smDown implementation="css">
             <Typography color="primary" variant="headline" align="center">
               Traduction en Langue des Signes Française de la phrase :
             </Typography>
             <br />
-            <br />
             <Typography color="primary" variant="display1" align="center">
               "{phrase.replace("$", "'")}"
             </Typography>
+            <br />
           </Hidden>
           <Hidden smUp>
+            <br />
             <Typography color="primary" variant="subheading" align="center">
               Traduction en Langue des Signes Française de la phrase :
             </Typography>
@@ -112,6 +91,24 @@ class Video extends React.Component {
             </ControlBar>
             <BigPlayButton position="center" />
           </Player>
+          <br />
+          <br />
+          <Hidden smUp>
+            <Typography color="primary" variant="subheading">
+              Phrases du même contexte :
+            </Typography>
+          </Hidden>
+          <Hidden smDown implementation="css">
+            <Typography color="primary" variant="headline">
+              Phrases du même contexte :
+            </Typography>
+          </Hidden>
+          <br />
+          <Questions
+            contexte={this.state.contexte}
+            sousContexte={this.state.sousContexte}
+            nbr={3}
+          />
         </div>
       );
     } else {
@@ -121,7 +118,6 @@ class Video extends React.Component {
       }
       return (
         <div>
-          <br />
           <Hidden smDown implementation="css">
             <Typography color="primary" variant="headline" align="center">
               Traduction en Langue des Signes Française de la phrase :
@@ -131,8 +127,21 @@ class Video extends React.Component {
             <Typography color="primary" variant="display1" align="center">
               "{phrase.replace("$", "'")}"
             </Typography>
+            <br />
+            <br />
+            <br />
+            <Typography color="primary" variant="headline" align="center">
+              Pas de video pour l'instant ^^'
+            </Typography>
+            <br />
+            <br />
+            <br />
+            <Typography color="primary" variant="headline">
+              Phrases du même contexte :
+            </Typography>
           </Hidden>
           <Hidden smUp>
+            <br />
             <Typography color="primary" variant="subheading" align="center">
               Traduction en Langue des Signes Française de la phrase :
             </Typography>
@@ -140,11 +149,24 @@ class Video extends React.Component {
             <Typography color="primary" variant="headline" align="center">
               "{phrase.replace("$", "'")}"
             </Typography>
+            <br />
+            <br />
+            <Typography color="primary" variant="headline" align="center">
+              Pas de video pour l'instant ^^'
+            </Typography>
+            <br />
+            <br />
+            <Typography color="primary" variant="subheading">
+              Phrases du même contexte :
+            </Typography>
           </Hidden>
           <br />
-          <Typography color="primary" variant="headline" align="center">
-            Pas de video pour l'instant ^^'
-          </Typography>
+          <br />
+          <Questions
+            contexte={this.state.contexte}
+            sousContexte={this.state.sousContexte}
+            nbr={9}
+          />
         </div>
       );
     }

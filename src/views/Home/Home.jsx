@@ -42,7 +42,7 @@ class Home extends React.Component {
         <br />
         <br />
         <Typography color="primary" variant="display1" align="center">
-          Vidéo de présentation de notre site en LSF sous-titrée français
+          Vidéo de présentation de notre site en LSF sous-titrée
         </Typography>
         </Hidden>
         <Hidden smUp>

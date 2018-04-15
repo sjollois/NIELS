@@ -14,7 +14,11 @@ import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography
+      component="div"
+      dir={dir}
+      style={{ padding: 5, paddingTop: 12 }}
+    >
       {children}
     </Typography>
   );
@@ -38,7 +42,7 @@ class Loisirs extends React.Component {
     super(props);
     this.state = {
       value: this.props.location.param
-        };
+    };
   }
 
   handleChange = (event, value) => {
@@ -51,7 +55,7 @@ class Loisirs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { value} = this.state;
+    const { value } = this.state;
     return (
       <div>
         <br /> <br />
@@ -62,7 +66,7 @@ class Loisirs extends React.Component {
         <Questions contexte="Loisirs" sousContexte="Generale" nbr={3} />
         <br /> <br />
         <Typography color="primary" variant="subheading">
-          Phrases spécifiques aux sous-contextes :
+          Phrases spécifiques aux contextes :
         </Typography>
         <br />
         <div className={classes.root}>

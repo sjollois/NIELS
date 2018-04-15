@@ -34,7 +34,8 @@ import AdministratifHeader from "../../views/Administratif/AdministratifHeader";
 import VenteHeader from "../../views/Vente/VenteHeader";
 import MobiliteHeader from "../../views/Mobilité/MobiliteHeader";
 import LoisirsHeader from "../../views/Loisirs/LoisirsHeader";
-import Video from "../../views/Video";
+import Video from "../../views/Video/Video";
+import VideoHeader from "../../views/Video/VideoHeader";
 
 const drawerWidth = 220;
 
@@ -133,9 +134,9 @@ const styles = theme => ({
     ...theme.mixins.toolbar
   },
   content: {
-    width: "calc(100% - 80px)",
+    width: "calc(100% - 90px)",
     backgroundColor: theme.palette.background.default,
-    padding: 5,
+    padding: 10,
     minHeight: `calc(100vh + 100px)`,
     height: "850px",
     marginTop: 100,
@@ -150,7 +151,7 @@ const styles = theme => ({
   },
 
   AppLogo: {
-      height: 60
+    height: 60
   },
 
   MiniLogo: {
@@ -267,6 +268,7 @@ class Nav extends React.Component {
                       <Route path="/Mobilité" component={MobiliteHeader} />
                       <Route path="/Santé" component={SanteHeader} />
                       <Route path="/Vente" component={VenteHeader} />
+                      <Route path="/Video" component={VideoHeader} />
                     </Switch>
                   </Hidden>
                   <div
@@ -298,7 +300,9 @@ class Nav extends React.Component {
                         color="inherit"
                         onClick={this.handleToggleDeaf}
                         aria-labelledby="deaf-theme"
-                        className={classNames(this.state.deaf && classes.colorier)}
+                        className={classNames(
+                          this.state.deaf && classes.colorier
+                        )}
                       >
                         <DeafIcon />
                       </IconButton>
@@ -393,7 +397,7 @@ class Nav extends React.Component {
                   <Route path="/Santé" component={Sante} />
                   <Route path="/Vente" component={Vente} />
                   <Route
-                    path={`/Video/:contexte/:sousContexte/:path`}
+                    path={`/Video/:contexte/:sousContexte/:video/:path`}
                     component={Video}
                   />
                 </Switch>

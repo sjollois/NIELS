@@ -14,7 +14,11 @@ import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography
+      component="div"
+      dir={dir}
+      style={{ padding: 5, paddingTop: 12 }}
+    >
       {children}
     </Typography>
   );
@@ -38,7 +42,7 @@ class Vente extends React.Component {
     super(props);
     this.state = {
       value: this.props.location.param
-        };
+    };
   }
 
   handleChange = (event, value) => {
@@ -62,7 +66,7 @@ class Vente extends React.Component {
         <Questions contexte="Vente" sousContexte="Generale" nbr={3} />
         <br /> <br />
         <Typography color="primary" variant="subheading">
-          Phrases spécifiques aux sous-contextes :
+          Phrases spécifiques aux contextes :
         </Typography>
         <br />
         <div className={classes.root}>
@@ -100,21 +104,25 @@ class Vente extends React.Component {
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Vente"
-                  sousContexte="Librairie"
-                  nbr={6}
-                />
+                <Questions contexte="Vente" sousContexte="Librairie" nbr={6} />
               </TabContainer>
             )}
             {value === 3 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Vente" sousContexte="PretAPorter" nbr={6} />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="PretAPorter"
+                  nbr={6}
+                />
               </TabContainer>
             )}
             {value === 4 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Vente" sousContexte="Restauration" nbr={6} />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Restauration"
+                  nbr={6}
+                />
               </TabContainer>
             )}
           </SwipeableViews>

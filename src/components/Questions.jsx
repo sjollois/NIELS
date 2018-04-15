@@ -20,9 +20,9 @@ import Loading from "react-loading-animation";
 import * as firebase from "firebase";
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import pink from 'material-ui/colors/pink';
-import Icon from 'react-icons-kit';
-import { videoCamera } from 'react-icons-kit/icomoon/videoCamera';       
+import pink from "material-ui/colors/pink";
+import Icon from "react-icons-kit";
+import { videoCamera } from "react-icons-kit/icomoon/videoCamera";
 
 const actionsStyles = theme => ({
   root: {
@@ -114,7 +114,7 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, {
 const styles = theme => ({
   root: {
     width: "100%",
-    marginTop: "0px"
+    margin: "0px"
   },
   table: {
     minWidth: 50
@@ -122,9 +122,9 @@ const styles = theme => ({
   tableWrapper: {
     overflowX: "auto"
   },
-  Video:{
-     textDecoration: 'none',
-     color: pink[900]
+  Video: {
+    textDecoration: "none",
+    color: pink[900]
   }
 });
 
@@ -188,65 +188,73 @@ class Questions extends React.Component {
                 videos
                   .slice(page * rowsPerPage - emptyRows, page * rowsPerPage)
                   .map(n => {
-                    if(n.video)
-                    {
-                    return (
-                      <TableRow>
-                        <TableCell>
-                          <Link
-                            to={`/Video/${contexte}/${sousContexte}/${n.path}`}
-                            className={classes.Video}                            
-                          >
-                            {n.path.replace("$","'")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon icon={videoCamera} />
-                          </Link>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  }
-                  else
-                  {
-                    return (
-                      <TableRow>
-                        <TableCell>
-                          <Link
-                            to={`/Video/${contexte}/${sousContexte}/${n.path}`}
-                            className={classes.Video}                            
-                          >
-                            {n.path.replace("$","'")}
-                          </Link>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  }
+                    if (n.video) {
+                      return (
+                        <TableRow>
+                          <TableCell>
+                            <Link
+                              to={`/Video/${contexte}/${sousContexte}/${
+                                n.video
+                              }/${n.path}`}
+                              className={classes.Video}
+                            >
+                              {n.path.replace("$", "'")}{" "}
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon
+                                icon={videoCamera}
+                              />
+                            </Link>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    } else {
+                      return (
+                        <TableRow>
+                          <TableCell>
+                            <Link
+                              to={`/Video/${contexte}/${sousContexte}/${
+                                n.video
+                              }/${n.path}`}
+                              className={classes.Video}
+                            >
+                              {n.path.replace("$", "'")}
+                            </Link>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    }
                   })}
               {videos
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
-                  if(n.video)
-                    {
+                  if (n.video) {
                     return (
                       <TableRow>
                         <TableCell>
                           <Link
-                            to={`/Video/${contexte}/${sousContexte}/${n.path}`}
-                            className={classes.Video}                          
+                            to={`/Video/${contexte}/${sousContexte}/${
+                              n.video
+                            }/${n.path}`}
+                            className={classes.Video}
                           >
-                            {n.path.replace("$","'")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon icon={videoCamera} />
+                            {n.path.replace("$", "'")}{" "}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon
+                              icon={videoCamera}
+                            />
                           </Link>
                         </TableCell>
                       </TableRow>
                     );
-                  }
-                  else
-                  {
+                  } else {
                     return (
                       <TableRow>
                         <TableCell>
                           <Link
-                            to={`/Video/${contexte}/${sousContexte}/${n.path}`}
-                            className={classes.Video}                            
+                            to={`/Video/${contexte}/${sousContexte}/${
+                              n.video
+                            }/${n.path}`}
+                            className={classes.Video}
                           >
-                            {n.path.replace("$","'")}
+                            {n.path.replace("$", "'")}
                           </Link>
                         </TableCell>
                       </TableRow>

@@ -13,7 +13,11 @@ import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography
+      component="div"
+      dir={dir}
+      style={{ padding: 5, paddingTop: 12 }}
+    >
       {children}
     </Typography>
   );
@@ -29,6 +33,11 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     width: "100%"
+  },
+  paper: {
+    [theme.breakpoints.down("xs")]: {
+      width: "calc(100% - 100px)"
+    }
   }
 });
 
@@ -36,7 +45,7 @@ class Administratif extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.location.param,
+      value: this.props.location.param
     };
   }
 
@@ -61,7 +70,7 @@ class Administratif extends React.Component {
         <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
         <br /> <br />
         <Typography color="primary" variant="subheading">
-          Phrases spécifiques aux sous-contextes :
+          Phrases spécifiques aux contextes :
         </Typography>
         <br />
         <div className={classes.root}>

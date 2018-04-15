@@ -26,33 +26,14 @@ class Video extends React.Component {
       loading: true,
       value: this.props.match.params.path,
       contexte: this.props.match.params.contexte,
-      sousContexte: this.props.match.params.sousContexte
+      sousContexte: this.props.match.params.sousContexte,
+      videoDone: this.props.match.params.video
     };
   }
   componentWillMount() {
     const ref = firebase
       .database()
       .ref(`${this.state.contexte}/${this.state.sousContexte}`);
-
-    if (this.state.value.substr(-1) === ".") {
-      ref
-        .orderByChild("path")
-        .equalTo(`${this.state.value}`)
-        .on("value", snapshot => {
-          this.setState({
-            videoDone: snapshot.val()[Object.keys(snapshot.val())[0]].video
-          });
-        });
-    } else {
-      ref
-        .orderByChild("path")
-        .equalTo(`${this.state.value}?`)
-        .on("value", snapshot => {
-          this.setState({
-            videoDone: snapshot.val()[Object.keys(snapshot.val())[0]].video
-          });
-        });
-    }
 
     ref.on("value", snapshot => {
       this.setState({
@@ -78,11 +59,16 @@ class Video extends React.Component {
         </div>
       );
     }
-    if (this.state.videoDone) {
-      var videoPath = this.state.value;
-      var correctPath = videoPath.replace(/ /g, "_").slice(0, -1);
+    console.log(this.state.videoDone);
+    if (this.state.videoDone === "true") {
+      const videoPath = this.state.value;
+      var correctPath = videoPath;
+      if (videoPath.substr(-1) === " " || videoPath.substr(-1) === ".") {
+        correctPath = videoPath.slice(0, -1);
+      }
+      correctPath = correctPath.replace(/ /g, "_");
       // eslint-disable-next-line
-      const videoWatch = require(`../assets/video/${correctPath}.mp4`);
+      const videoWatch = require(`../../assets/video/${correctPath}.mp4`);
       var phrase = videoPath;
       if (videoPath.substr(-1) !== ".") {
         phrase = `${this.state.value} ?`;
@@ -91,9 +77,9 @@ class Video extends React.Component {
         <div>
           <br />
           <Typography color="primary" variant="headline" align="center">
-            Traduction LSF de la phrase :
+            Traduction en Langue des Signes Française de la phrase :
           </Typography>
-          <Typography color="primary" variant="subheading" align="center">
+          <Typography color="primary" variant="display1" align="center">
             "{phrase.replace("$", "'")}"
           </Typography>
           <br />
@@ -123,9 +109,9 @@ class Video extends React.Component {
         <div>
           <br />
           <Typography color="primary" variant="headline" align="center">
-            Traduction LSF de la phrase :
+            Traduction en Langue des Signes Française de la phrase :
           </Typography>
-          <Typography color="primary" variant="subheading" align="center">
+          <Typography color="primary" variant="display1" align="center">
             "{phrase.replace("$", "'")}"
           </Typography>
           <br />

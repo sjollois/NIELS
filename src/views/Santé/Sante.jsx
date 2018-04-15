@@ -12,7 +12,11 @@ import Questions from "../../components/Questions";
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography
+      component="div"
+      dir={dir}
+      style={{ padding: 5, paddingTop: 12 }}
+    >
       {children}
     </Typography>
   );
@@ -61,7 +65,7 @@ class Sante extends React.Component {
         <Questions contexte="Sante" sousContexte="Generale" nbr={3} />
         <br /> <br />
         <Typography color="primary" variant="subheading">
-          Phrases spécifiques aux sous-contextes :
+          Phrases spécifiques aux contextes :
         </Typography>
         <br />
         <div className={classes.root}>
@@ -96,11 +100,7 @@ class Sante extends React.Component {
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Sante"
-                  sousContexte="Pharmacie"
-                  nbr={6}
-                />
+                <Questions contexte="Sante" sousContexte="Pharmacie" nbr={6} />
               </TabContainer>
             )}
           </SwipeableViews>

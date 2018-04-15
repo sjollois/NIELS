@@ -5,7 +5,7 @@ class LoisirsHeader extends React.Component {
   render() {
     return (
       <div>
-        <Typography color="inherit" variant="headline">
+        <Typography color="inherit" variant="display1">
             Loisirs
         </Typography>
       </div>

@@ -1,6 +1,9 @@
 {
-  "name": "base",
-  "version": "0.1.0",
+  "name": "NIELS",
+  "version": "1.0.0",
+  "description": "Interface de traduction de phrases françaises vers la LSF",
+  "author": "Samuel JOLLOIS",
+  "license": "ENSC",
   "private": true,
   "homepage": "https://sjollois.github.io",
   "dependencies": {

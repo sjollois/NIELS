@@ -56,22 +56,22 @@ function AppFooter(props) {
                   </Link>
                 </li>
                 <li className={classes.listItem}>
-                  <Link href="https://ensc.bordeaux-inp.fr/fr" target="_blank">
-                    ENSC
+                  <Link href="https://reactjs.org" target="_blank">
+                    React
                   </Link>
                 </li>
               </ul>
             </Grid>
             <Grid item xs={6} sm={6}>
               <ul className={classes.list}>
-                <li className={classes.listItem}>
-                  <Link href="/discover-more/roadmap" target="_blank">
-                    Roadmap
+              <li className={classes.listItem}>
+                  <Link href="https://ensc.bordeaux-inp.fr/fr" target="_blank">
+                    ENSC
                   </Link>
                 </li>
                 <li className={classes.listItem}>
-                  <Link href="/discover-more/team" target="_blank">
-                    Team
+                  <Link href="https://material-ui-next.com" target="_blank">
+                  Material-UI
                   </Link>
                 </li>
               </ul>

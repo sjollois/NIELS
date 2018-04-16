@@ -73,7 +73,7 @@ const styles = theme => ({
     borderRadius: 9,
     background: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      background: fade(theme.palette.common.white, 0.25),
+      //background: fade(theme.palette.common.white, 0.25),
     },
     '& $input': {
       transition: theme.transitions.create('width'),
@@ -135,7 +135,7 @@ function AppSearch(props) {
       <div className={classes.search}>
         <SearchIcon />
       </div>
-      <input id="docsearch-input" className={classes.input} />
+      <input id="docsearch-input" className={classes.input} disabled={true}/>
     </div>
   );
 }

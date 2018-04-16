@@ -11,6 +11,7 @@ import LocalLibrary from "material-ui-icons/LocalLibrary";
 import ShoppingBasket from "material-ui-icons/ShoppingBasket";
 import Restaurant from "material-ui-icons/Restaurant";
 import Questions from "../../components/Questions";
+import Hidden from "material-ui/Hidden";
 
 function TabContainer({ children, dir }) {
   return (
@@ -34,6 +35,11 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     width: "100%"
+  },
+  paper: {
+    [theme.breakpoints.down("xs")]: {
+      width: "calc(100% - 100px)"
+    }
   }
 });
 
@@ -58,17 +64,25 @@ class Vente extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <br /> <br />
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases Générales :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
+        <Questions contexte="Vente" sousContexte="Generale" nbr={4} />
+        <br /> 
+        </Hidden>
+        <Hidden mdUp>
         <Questions contexte="Vente" sousContexte="Generale" nbr={3} />
-        <br /> <br />
+        </Hidden>
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases spécifiques aux contextes :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
+        </Hidden>
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -87,6 +101,7 @@ class Vente extends React.Component {
               <Tab icon={<Restaurant />} label="Restauration" />
             </Tabs>
           </AppBar>
+          <Hidden smDown implementation="css">
           <SwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={this.state.value}
@@ -94,25 +109,37 @@ class Vente extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Vente" sousContexte="Epicerie" nbr={6} />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Epicerie"
+                  nbr={9}
+                />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Vente" sousContexte="Hotel" nbr={6} />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Hotel"
+                  nbr={9}
+                />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Vente" sousContexte="Librairie" nbr={6} />
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Librairie"
+                  nbr={9}
+                />
               </TabContainer>
             )}
-            {value === 3 && (
+                        {value === 3 && (
               <TabContainer dir={theme.direction}>
                 <Questions
                   contexte="Vente"
                   sousContexte="PretAPorter"
-                  nbr={6}
+                  nbr={7}
                 />
               </TabContainer>
             )}
@@ -121,11 +148,65 @@ class Vente extends React.Component {
                 <Questions
                   contexte="Vente"
                   sousContexte="Restauration"
-                  nbr={6}
+                  nbr={7}
                 />
               </TabContainer>
             )}
           </SwipeableViews>
+        </Hidden>
+        <Hidden mdUp>
+        <SwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={this.state.value}
+            onChangeIndex={this.handleChangeIndex}
+          >
+            {value === 0 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Epicerie"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 1 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Hotel"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 2 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Librairie"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 3 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Vente"
+                  sousContexte="PretAPorter"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 4 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Vente"
+                  sousContexte="Restauration"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+          </SwipeableViews>
+        </Hidden>
         </div>
       </div>
     );
@@ -138,3 +219,5 @@ Vente.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(Vente);
+
+

@@ -10,6 +10,7 @@ import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
 import Questions from "../../components/Questions";
+import Hidden from "material-ui/Hidden";
 
 function TabContainer({ children, dir }) {
   return (
@@ -62,17 +63,25 @@ class Administratif extends React.Component {
     const { value } = this.state;
     return (
       <div>
-        <br /> <br />
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases Générales :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
         <Questions contexte="Administratif" sousContexte="Generale" nbr={4} />
-        <br /> <br />
+        <br /> 
+        </Hidden>
+        <Hidden mdUp>
+        <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
+        </Hidden>
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases spécifiques aux contextes :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
+        </Hidden>
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -90,6 +99,7 @@ class Administratif extends React.Component {
               <Tab icon={<School />} label="Scolarité" />
             </Tabs>
           </AppBar>
+          <Hidden smDown implementation="css">
           <SwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={this.state.value}
@@ -132,6 +142,51 @@ class Administratif extends React.Component {
               </TabContainer>
             )}
           </SwipeableViews>
+        </Hidden>
+        <Hidden mdUp>
+        <SwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={this.state.value}
+            onChangeIndex={this.handleChangeIndex}
+          >
+            {value === 0 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Banque"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 1 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Mairie"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 2 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Poste"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 3 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Administratif"
+                  sousContexte="Scolarite"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+          </SwipeableViews>
+        </Hidden>
         </div>
       </div>
     );

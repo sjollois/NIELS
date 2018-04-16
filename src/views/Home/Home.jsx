@@ -17,7 +17,7 @@ const styles = theme => ({
   AppLogo: {
     height: 200,
     [theme.breakpoints.down("xs")]: {
-      height: 100
+      height: 140
     }
   },
   center: {
@@ -40,15 +40,23 @@ class Home extends React.Component {
           de phrases françaises vers la Langue des Signes française
         </Typography>
         <br />
+        <Typography color="primary" variant="headline" align="center">
+        &#8598; Naviguez sur NIELS à l'aide des différents contextes qui sont situés sur la barre latérale gauche 
+        </Typography>
         <br />
         <Typography color="primary" variant="display1" align="center">
           Vidéo de présentation de notre site en LSF sous-titrée
         </Typography>
         </Hidden>
-        <Hidden smUp>
+        <Hidden mdUp>
+        <br />
         <Typography color="primary" variant="subheading" align="center">
           Bienvenue sur la Nouvelle Interface pour les Entendants permettant la traduction
           de phrases françaises vers la Langue des Signes française
+        </Typography>
+        <br />
+        <Typography color="primary" variant="subheading" align="center">
+        &#8598; Naviguez sur NIELS à l'aide des différents contextes qui sont situés sur la barre latérale gauche 
         </Typography>
         <br />
         <Typography color="primary" variant="title" align="center">

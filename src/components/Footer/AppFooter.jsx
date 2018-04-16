@@ -4,18 +4,20 @@ import { withStyles } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 import Link from "../Link";
+import classNames from "classnames";
 
 const styleSheet = theme => ({
   root: {
     overflow: "auto",
-    marginLeft: "calc(50% - 100px)",
-    [theme.breakpoints.up("md")]: {
-      marginLeft: "calc(50% - 300px)"
-    }
+ 
   },
   layout: {
     padding: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit*3
+    paddingBottom: theme.spacing.unit*3,
+    marginLeft: "calc(50% - 120px)",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "calc(50% - 300px)"
+    }
   },
   list: {
     margin: 0,
@@ -29,6 +31,10 @@ const styleSheet = theme => ({
   version: {
     marginBottom: theme.spacing.unit,
   },
+  bas:{
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3   
+  }
 });
 
 function AppFooter(props) {
@@ -39,7 +45,7 @@ function AppFooter(props) {
       <div className={classes.layout}>
         <Typography variant="subheading" component="div">
           <Grid container spacing={0}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={6}>
               <ul className={classes.list}>
                 <li className={classes.listItem}>
                   <Link
@@ -56,7 +62,7 @@ function AppFooter(props) {
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={6}>
               <ul className={classes.list}>
                 <li className={classes.listItem}>
                   <Link href="/discover-more/roadmap" target="_blank">
@@ -73,8 +79,8 @@ function AppFooter(props) {
           </Grid>
         </Typography>
       </div>
-      <Typography className={classes.version}>
-          © 2017-2018 All Rights Reserved - Projet Transpromo et Projet Informatique Individuel NIELS      
+      <Typography className={classNames(classes.version,classes.bas)} align="center">
+          © 2017-2018 All Rights Reserved <br/>Projets Transpromo et Informatique Individuel ENSC      
       </Typography>
     </footer>
   );

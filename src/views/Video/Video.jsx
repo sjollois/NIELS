@@ -10,6 +10,10 @@ import {
 } from "video-react";
 import Hidden from "material-ui/Hidden";
 import Questions from "../../components/Questions";
+import sematos from "../../assets/image/Sematos.png";
+import sematospetit from "../../assets/image/SematosPetit.png";
+import elix from "../../assets/image/ELIX-logo.png";
+import Link from "../../components/Link";
 
 const styles = theme => ({
   root: {
@@ -31,15 +35,14 @@ class Video extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!(nextProps.match.params.path === this.state.value))
-    {
+    if (!(nextProps.match.params.path === this.state.value)) {
       this.setState({
         value: nextProps.match.params.path,
         contexte: nextProps.match.params.contexte,
         sousContexte: nextProps.match.params.sousContexte,
         videoDone: nextProps.match.params.video
       });
-    window.location.reload();
+      window.location.reload();
     }
   }
 
@@ -68,7 +71,7 @@ class Video extends React.Component {
             </Typography>
             <br />
           </Hidden>
-          <Hidden smUp>
+          <Hidden mdUp>
             <br />
             <Typography color="primary" variant="subheading" align="center">
               Traduction en Langue des Signes Française de la phrase :
@@ -95,22 +98,28 @@ class Video extends React.Component {
           </Player>
           <br />
           <br />
-          <Hidden smUp>
+          <Hidden mdUp>
             <Typography color="primary" variant="subheading">
               Phrases du même contexte :
             </Typography>
+            <br />
+          <Questions
+            contexte={this.state.contexte}
+            sousContexte={this.state.sousContexte}
+            nbr={6}
+          />
           </Hidden>
           <Hidden smDown implementation="css">
             <Typography color="primary" variant="headline">
               Phrases du même contexte :
             </Typography>
-          </Hidden>
-          <br />
+            <br />
           <Questions
             contexte={this.state.contexte}
             sousContexte={this.state.sousContexte}
-            nbr={3}
+            nbr={4}
           />
+          </Hidden>
         </div>
       );
     } else {
@@ -133,42 +142,76 @@ class Video extends React.Component {
             <br />
             <br />
             <Typography color="primary" variant="headline" align="center">
-              Pas de video pour l'instant ^^'
+              La vidéo n'est pas encore disponible mais arrivera très
+              prochainement sur NIELS !
+            </Typography>
+            <br />
+            <Typography color="primary" variant="headline" align="center">
+              En attendant vous pouvez retrouver les mots que vous recherchez
+              traduits en LSF sur les sites suivants :
             </Typography>
             <br />
             <br />
+            <br />
+            <div align="center">
+              <Link href="https://www.elix-lsf.fr" target="_blank">
+                <img src={elix} alt="logoElix" height={130} />
+              </Link>
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <Link href="http://www.sematos.eu/lsf.html" target="_blank">
+                <img src={sematos} alt="logoSematos" />
+              </Link>
+            </div>
             <br />
             <Typography color="primary" variant="headline">
               Phrases du même contexte :
             </Typography>
+            <br/>
+            <Questions
+            contexte={this.state.contexte}
+            sousContexte={this.state.sousContexte}
+            nbr={8}
+          />
           </Hidden>
-          <Hidden smUp>
+          <Hidden mdUp>
             <br />
             <Typography color="primary" variant="subheading" align="center">
               Traduction en Langue des Signes Française de la phrase :
             </Typography>
-            <br />
             <Typography color="primary" variant="headline" align="center">
               "{phrase.replace("$", "'")}"
             </Typography>
             <br />
-            <br />
-            <Typography color="primary" variant="headline" align="center">
-              Pas de video pour l'instant ^^'
+            <Typography color="inherit" variant="subheading" align="center">
+              La vidéo n'est pas encore disponible mais arrivera très
+              prochainement sur NIELS !
+            </Typography>
+            <Typography color="inherit" variant="subheading" align="center">
+              En attendant vous pouvez retrouver les mots que vous recherchez
+              traduits en LSF sur les sites suivants :
             </Typography>
             <br />
-            <br />
+            <div align="center">
+              <Link href="https://www.elix-lsf.fr" target="_blank">
+                <img src={elix} alt="logoElix" height={90} />
+              </Link>
+              <br/>
+              <br/>
+              <Link href="http://www.sematos.eu/lsf.html" target="_blank">
+                <img src={sematospetit} alt="logoSematos" />
+              </Link>
+            </div>
+            <br/>
             <Typography color="primary" variant="subheading">
               Phrases du même contexte :
             </Typography>
-          </Hidden>
-          <br />
-          <br />
-          <Questions
+            <Questions
             contexte={this.state.contexte}
             sousContexte={this.state.sousContexte}
-            nbr={9}
+            nbr={4}
           />
+          </Hidden>
         </div>
       );
     }

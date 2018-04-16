@@ -43,8 +43,17 @@ const drawerWidth = 220;
 const styles = theme => ({
   root: {
     display: "flex",
-    minHeight: `calc(100vh + 450px)`,
-    height: `950px`,
+    minHeight: `calc(100vh + 500px)`,
+    [theme.breakpoints.up("sm")]: {
+      minHeight: `calc(100vh + 750px)`
+    },
+    [theme.breakpoints.up("md")]: {
+      minHeight: `calc(100vh + 700px)`
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: `calc(100vh + 500px)`
+    },
+    height: `650px`,
     width: "100%",
     position: "relative",
     flexGrow: 1,
@@ -64,8 +73,17 @@ const styles = theme => ({
   appFrame: {
     display: "flex",
     width: "100%",
-    minHeight: `calc(100vh + 450px)`,
-    height: `950px`
+    minHeight: `calc(100vh + 500px)`,
+    [theme.breakpoints.up("sm")]: {
+      minHeight: `calc(100vh + 750px)`
+    },
+    [theme.breakpoints.up("md")]: {
+      minHeight: `calc(100vh + 700px)`
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: `calc(100vh + 500px)`
+    },
+    height: `650px`
   },
   appBar: {
     display: "flex",
@@ -105,8 +123,17 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: "relative",
-    minHeight: `calc(100vh + 450px)`,
-    height: `950px`,
+    minHeight: `calc(100vh + 500px)`,
+    [theme.breakpoints.up("sm")]: {
+      minHeight: `calc(100vh + 750px)`
+    },
+    [theme.breakpoints.up("md")]: {
+      minHeight: `calc(100vh + 700px)`
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: `calc(100vh + 500px)`
+    },
+    height: `650px`,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -115,8 +142,17 @@ const styles = theme => ({
   },
   drawerPaperClose: {
     width: 70,
-    minHeight: `calc(100vh + 450px)`,
-    height: `950px`,
+    minHeight: `calc(100vh + 500px)`,
+    [theme.breakpoints.up("sm")]: {
+      minHeight: `calc(100vh + 750px)`
+    },
+    [theme.breakpoints.up("md")]: {
+      minHeight: `calc(100vh + 700px)`
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: `calc(100vh + 500px)`
+    },
+    height: `650px`,
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -138,16 +174,18 @@ const styles = theme => ({
     width: "calc(100% - 90px)",
     backgroundColor: theme.palette.background.default,
     padding: 10,
-    minHeight: `calc(100vh + 250px)`,
-    height: "850px",
+    minHeight: `calc(100vh + 450px)`,
+    height: "550px",
     marginTop: 100,
     [theme.breakpoints.up("sm")]: {
       marginTop: 64,
       padding: 60,
-      mobile: false
+      mobile: false,
+      minHeight: `calc(100vh + 750px)`
     },
     [theme.breakpoints.up("md")]: {
-      padding: 70
+      padding: 70,
+      minHeight: `calc(100vh + 500px)`
     }
   },
 
@@ -190,7 +228,8 @@ class Nav extends React.Component {
       open: false,
       mobile: true,
       deaf: false,
-      listInfo: ["", "", ""]
+      openf: false,
+      transition: null
     };
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
   }
@@ -243,26 +282,26 @@ class Nav extends React.Component {
                     <MenuIcon />
                   </IconButton>
                   <Tooltip
-                      id="home"
-                      title="Retour à la page d'accueil"
-                      enterDelay={300}
-                    >
-                  <Link
-                    to="/"
-                    style={{ color: "inherit" }}
-                    onClick={this.handleDrawerClose}
+                    id="home"
+                    title="Retour à la page d'accueil"
+                    enterDelay={300}
                   >
-                    <IconButton
-                      color="inherit"
-                      aria-label="open drawer"
-                      className={classNames(
-                        classes.menuButton,
-                        classes.navIconHide
-                      )}
+                    <Link
+                      to="/"
+                      style={{ color: "inherit" }}
+                      onClick={this.handleDrawerClose}
                     >
-                      <HomeIcon />
-                    </IconButton>
-                  </Link>
+                      <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        className={classNames(
+                          classes.menuButton,
+                          classes.navIconHide
+                        )}
+                      >
+                        <HomeIcon />
+                      </IconButton>
+                    </Link>
                   </Tooltip>
                   <Hidden mdDown implementation="css" className={classes.cote}>
                     <Switch>
@@ -290,19 +329,19 @@ class Nav extends React.Component {
                       !this.state.open && classes.nohide
                     )}
                   >
-                    <AppSearch />
+                    <AppSearch/>
                   </div>
                   <Tooltip
-                      id="deaf-theme"
-                      title="Mode Sourd / Entendant"
-                      enterDelay={300}
-                    >
-                  <div className={classes.border}>
-                    <SSwitch
-                      checked={this.state.deaf}
-                      onChange={this.handleToggleDeaf}
-                      value="deaf"
-                    />                    
+                    id="deaf-theme"
+                    title="Mode Sourd / Entendant"
+                    enterDelay={300}
+                  >
+                    <div className={classes.border}>
+                      <SSwitch
+                        checked={this.state.deaf}
+                        onChange={this.handleToggleDeaf}
+                        value="deaf"
+                      />
                       <IconButton
                         color="inherit"
                         onClick={this.handleToggleDeaf}
@@ -312,8 +351,8 @@ class Nav extends React.Component {
                         )}
                       >
                         <DeafIcon />
-                      </IconButton>                    
-                  </div>
+                      </IconButton>
+                    </div>
                   </Tooltip>
                 </Toolbar>
               </AppBar>
@@ -333,18 +372,18 @@ class Nav extends React.Component {
                 >
                   <div className={classes.drawerInner}>
                     <div className={classes.drawerHeader}>
-                    <Tooltip
-                      id="home"
-                      title="Retour à la page d'accueil"
-                      enterDelay={300}
-                    >
-                      <Link to="/" onClick={this.handleDrawerClose}>
-                        <img
-                          src={logoFond}
-                          className={classNames(classes.AppLogo)}
-                          alt="logo"
-                        />
-                      </Link>
+                      <Tooltip
+                        id="home"
+                        title="Retour à la page d'accueil"
+                        enterDelay={300}
+                      >
+                        <Link to="/" onClick={this.handleDrawerClose}>
+                          <img
+                            src={logoFond}
+                            className={classNames(classes.AppLogo)}
+                            alt="logo"
+                          />
+                        </Link>
                       </Tooltip>
                       <IconButton onClick={this.handleDrawerClose}>
                         {theme.direction === "rtl" ? (
@@ -368,18 +407,18 @@ class Nav extends React.Component {
                 >
                   <div className={classes.drawerInner}>
                     <div className={classes.drawerHeader}>
-                    <Tooltip
-                      id="home"
-                      title="Retour à la page d'accueil"
-                      enterDelay={300}
-                    >
-                      <Link to="/" onClick={this.handleDrawerClose}>
-                        <img
-                          src={logoFond}
-                          className={classNames(classes.MiniLogo)}
-                          alt="logo"
-                        />
-                      </Link>
+                      <Tooltip
+                        id="home"
+                        title="Retour à la page d'accueil"
+                        enterDelay={300}
+                      >
+                        <Link to="/" onClick={this.handleDrawerClose}>
+                          <img
+                            src={logoFond}
+                            className={classNames(classes.MiniLogo)}
+                            alt="logo"
+                          />
+                        </Link>
                       </Tooltip>
                     </div>
                     <ListeCote action={this.handleDrawerClose} />
@@ -395,7 +434,7 @@ class Nav extends React.Component {
                       classes.snackbar
                     )}
                     message=" Je suis une personne sourde et j'aimerais communiquer avec vous à l'aide de ce site.
-                      Naviguez parmi les différents contextes situés à droite, cliquez sur une des phrases qui vous sera présentée et elle me sera traduite en Langue des Signes Française"
+                      Naviguez parmi les différents contextes situés à gauche, cliquez sur une des phrases qui vous sera présentée et elle me sera traduite en Langue des Signes Française"
                     action={
                       <Button
                         key="undo"
@@ -423,7 +462,7 @@ class Nav extends React.Component {
               </main>
             </div>
           </div>
-          <Divider/>
+          <Divider />
           <Footer />
         </div>
       </Router>

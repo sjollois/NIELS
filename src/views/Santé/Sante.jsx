@@ -9,6 +9,7 @@ import HospitalIcons from "react-icons/lib/fa/hospital-o";
 import LocalPharmacy from "material-ui-icons/LocalPharmacy";
 import Medecin from "react-icons/lib/fa/stethoscope";
 import Questions from "../../components/Questions";
+import Hidden from "material-ui/Hidden";
 
 function TabContainer({ children, dir }) {
   return (
@@ -32,6 +33,11 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     width: "100%"
+  },
+  paper: {
+    [theme.breakpoints.down("xs")]: {
+      width: "calc(100% - 100px)"
+    }
   }
 });
 
@@ -54,20 +60,27 @@ class Sante extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { value } = this.state;
-
     return (
       <div>
-        <br /> <br />
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases Générales :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
+        <Questions contexte="Sante" sousContexte="Generale" nbr={4} />
+        <br /> 
+        </Hidden>
+        <Hidden mdUp>
         <Questions contexte="Sante" sousContexte="Generale" nbr={3} />
-        <br /> <br />
+        </Hidden>
+        <br />
         <Typography color="primary" variant="subheading">
           Phrases spécifiques aux contextes :
         </Typography>
+        <Hidden smDown implementation="css">
         <br />
+        </Hidden>
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -76,6 +89,7 @@ class Sante extends React.Component {
               indicatorColor="primary"
               textColor="primary"
               fullWidth
+              scrollable
               centered
             >
               <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
@@ -83,6 +97,7 @@ class Sante extends React.Component {
               <Tab icon={<LocalPharmacy />} label="Pharmacie" />
             </Tabs>
           </AppBar>
+          <Hidden smDown implementation="css">
           <SwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={this.state.value}
@@ -90,20 +105,68 @@ class Sante extends React.Component {
           >
             {value === 0 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Sante" sousContexte="Hopital" nbr={6} />
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Hopital"
+                  nbr={9}
+                />
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Sante" sousContexte="Medecin" nbr={6} />
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Medecin"
+                  nbr={9}
+                />
               </TabContainer>
             )}
             {value === 2 && (
               <TabContainer dir={theme.direction}>
-                <Questions contexte="Sante" sousContexte="Pharmacie" nbr={6} />
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Pharmacie"
+                  nbr={9}
+                />
               </TabContainer>
             )}
           </SwipeableViews>
+        </Hidden>
+        <Hidden mdUp>
+        <SwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={this.state.value}
+            onChangeIndex={this.handleChangeIndex}
+          >
+            {value === 0 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Hopital"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 1 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Medecin"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+            {value === 2 && (
+              <TabContainer dir={theme.direction}>
+                <Questions
+                  contexte="Sante"
+                  sousContexte="Pharmacie"
+                  nbr={7}
+                />
+              </TabContainer>
+            )}
+          </SwipeableViews>
+        </Hidden>
         </div>
       </div>
     );
@@ -116,3 +179,4 @@ Sante.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(Sante);
+

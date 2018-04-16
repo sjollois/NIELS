@@ -400,25 +400,25 @@ class ListeCote extends React.Component {
         <br/>
         <Divider />
         <br/>
-        <ListItem button>
+        <ListItem button disabled={true}>
           <ListItemIcon>
             <Favorite />
           </ListItemIcon>
-          <ListItemText primary="Mes phrases" />
+          <ListItemText primary="Mes phrases"/>
         </ListItem>
         <br/>
-        <ListItem button>
+        <ListItem button disabled={true}>
           <ListItemIcon>
             <History />
           </ListItemIcon>
-          <ListItemText primary="Mon historique" />
+          <ListItemText primary="Mon historique"/>
         </ListItem>
         <br/>
-        <ListItem button>
+        <ListItem button disabled={true}>
           <ListItemIcon>
             <Help />
           </ListItemIcon>
-          <ListItemText primary="Aide" />
+          <ListItemText primary="Aide"/>
         </ListItem>
       </div>
     );

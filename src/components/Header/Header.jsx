@@ -30,7 +30,6 @@ import VideoHeader from "../../views/Video/VideoHeader";
 const drawerWidth = 220;
 
 const styles = theme => ({
-  
   grow: {
     flex: "1 1 auto"
   },
@@ -46,7 +45,7 @@ const styles = theme => ({
     },
     [theme.breakpoints.up("md")]: {
       minHeight: `calc(100vh + 700px)`,
-      width: drawerWidth,
+      width: drawerWidth
     },
     [theme.breakpoints.up("lg")]: {
       minHeight: `calc(100vh + 530px)`

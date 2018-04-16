@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router'
+import { withRouter } from "react-router";
 import { withStyles } from "material-ui/styles";
-import compose from 'recompose/compose';
+import compose from "recompose/compose";
 import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import Folder from "material-ui-icons/Folder";
 import ShoppingCart from "material-ui-icons/ShoppingCart";
@@ -37,9 +37,10 @@ import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
 import Divider from "material-ui/Divider";
+import Tooltip from "material-ui/Tooltip";
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import pink from 'material-ui/colors/pink';
+import pink from "material-ui/colors/pink";
 
 const styles = theme => ({
   nested: {
@@ -60,141 +61,188 @@ class ListeCote extends React.Component {
   };
 
   handleClick1 = () => {
-    this.setState({ open1: !this.state.open1,open2: false,open3: false,open4: false,open5: false });
+    this.setState({
+      open1: !this.state.open1,
+      open2: false,
+      open3: false,
+      open4: false,
+      open5: false
+    });
   };
 
   handleClick2 = () => {
-    this.setState({ open2: !this.state.open2,open1: false,open3: false,open4: false,open5: false });
+    this.setState({
+      open2: !this.state.open2,
+      open1: false,
+      open3: false,
+      open4: false,
+      open5: false
+    });
   };
 
   handleClick3 = () => {
-    this.setState({ open3: !this.state.open3,open2: false,open1: false,open4: false,open5: false });
+    this.setState({
+      open3: !this.state.open3,
+      open2: false,
+      open1: false,
+      open4: false,
+      open5: false
+    });
   };
 
   handleClick4 = () => {
-    this.setState({ open4: !this.state.open4,open2: false,open3: false,open1: false,open5: false });
+    this.setState({
+      open4: !this.state.open4,
+      open2: false,
+      open3: false,
+      open1: false,
+      open5: false
+    });
   };
 
   handleClick5 = () => {
-    this.setState({ open5: !this.state.open5,open2: false,open3: false,open4: false,open1: false });
+    this.setState({
+      open5: !this.state.open5,
+      open2: false,
+      open3: false,
+      open4: false,
+      open1: false
+    });
   };
 
   handleClose = () => {
-    this.setState({ open5: false,open2: false,open3: false,open4: false,open1: false });
+    this.setState({
+      open5: false,
+      open2: false,
+      open3: false,
+      open4: false,
+      open1: false
+    });
     this.props.action();
   };
 
   render() {
     const { classes, location } = this.props;
 
-    const Ad0 = { 
-      pathname: "/Administratif", 
+    const Ad0 = {
+      pathname: "/Administratif",
       param: 0
     };
-    const Ad1 = { 
-      pathname: "/Administratif", 
+    const Ad1 = {
+      pathname: "/Administratif",
       param: 1
     };
-    const Ad2 = { 
-      pathname: "/Administratif", 
+    const Ad2 = {
+      pathname: "/Administratif",
       param: 2
     };
-    const Ad3 = { 
-      pathname: "/Administratif", 
+    const Ad3 = {
+      pathname: "/Administratif",
       param: 3
     };
 
-    const Lo0 = { 
-      pathname: "/Loisirs", 
+    const Lo0 = {
+      pathname: "/Loisirs",
       param: 0
     };
-    const Lo1 = { 
-      pathname: "/Loisirs", 
+    const Lo1 = {
+      pathname: "/Loisirs",
       param: 1
     };
-    const Lo2 = { 
-      pathname: "/Loisirs", 
+    const Lo2 = {
+      pathname: "/Loisirs",
       param: 2
     };
-    const Lo3 = { 
-      pathname: "/Loisirs", 
-      param: 3
-    };
-    
-    const Mo0 = { 
-      pathname: "/Mobilité", 
-      param: 0
-    };
-    const Mo1 = { 
-      pathname: "/Mobilité", 
-      param: 1
-    };
-    const Mo2 = { 
-      pathname: "/Mobilité", 
-      param: 2
-    };
-    const Mo3 = { 
-      pathname: "/Mobilité", 
+    const Lo3 = {
+      pathname: "/Loisirs",
       param: 3
     };
 
-    const Ve0 = { 
-      pathname: "/Vente", 
+    const Mo0 = {
+      pathname: "/Mobilité",
       param: 0
     };
-    const Ve1 = { 
-      pathname: "/Vente", 
+    const Mo1 = {
+      pathname: "/Mobilité",
       param: 1
     };
-    const Ve2 = { 
-      pathname: "/Vente", 
+    const Mo2 = {
+      pathname: "/Mobilité",
       param: 2
     };
-    const Ve3 = { 
-      pathname: "/Vente", 
+    const Mo3 = {
+      pathname: "/Mobilité",
       param: 3
     };
-    const Ve4 = { 
-      pathname: "/Vente", 
+
+    const Ve0 = {
+      pathname: "/Vente",
+      param: 0
+    };
+    const Ve1 = {
+      pathname: "/Vente",
+      param: 1
+    };
+    const Ve2 = {
+      pathname: "/Vente",
+      param: 2
+    };
+    const Ve3 = {
+      pathname: "/Vente",
+      param: 3
+    };
+    const Ve4 = {
+      pathname: "/Vente",
       param: 4
     };
 
-    const Sa0 = { 
-      pathname: "/Santé", 
+    const Sa0 = {
+      pathname: "/Santé",
       param: 0
     };
-    const Sa1 = { 
-      pathname: "/Santé", 
+    const Sa1 = {
+      pathname: "/Santé",
       param: 1
     };
-    const Sa2 = { 
-      pathname: "/Santé", 
+    const Sa2 = {
+      pathname: "/Santé",
       param: 2
     };
-    
 
     return (
       <div>
         <Divider />
         <List component="nav">
-          <ListItem button onClick={this.handleClick1} disabled={location.pathname === "/Administratif"}>
+          <ListItem
+            button
+            onClick={this.handleClick1}
+            disabled={location.pathname === "/Administratif"}
+          >
             <ListItemIcon>
-              <Folder className={classes.colorier}/>
+              <Folder className={classes.colorier} />
             </ListItemIcon>
-            <ListItemText inset primary="Administratif"  color='primary' />
+            <ListItemText inset primary="Administratif" color="primary" />
             {this.state.open1 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link to={Ad0} style={{ textDecoration: 'none' }}  onClick={this.handleClose}>
+              <Link
+                to={Ad0}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <AttachMoney/>
+                    <AttachMoney />
                   </ListItemIcon>
-                  <ListItemText inset primary="Banque"/>
+                  <ListItemText inset primary="Banque" />
                 </ListItem>
               </Link>
-              <Link to={Ad1} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ad1}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <LocationCity />
@@ -202,7 +250,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Mairie" />
                 </ListItem>
               </Link>
-              <Link to={Ad2}style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ad2}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <LocalPostOffice />
@@ -210,7 +262,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Poste" />
                 </ListItem>
               </Link>
-              <Link to={Ad3} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ad3}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <School />
@@ -220,17 +276,25 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-          <br/>
-          <ListItem button onClick={this.handleClick2} disabled={location.pathname === "/Vente"}>
+          <br />
+          <ListItem
+            button
+            onClick={this.handleClick2}
+            disabled={location.pathname === "/Vente"}
+          >
             <ListItemIcon>
-              <ShoppingCart className={classes.colorier}/>
+              <ShoppingCart className={classes.colorier} />
             </ListItemIcon>
             <ListItemText inset primary="Vente" />
             {this.state.open2 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link to={Ve0} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ve0}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Store />
@@ -238,7 +302,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Épicerie" />
                 </ListItem>
               </Link>
-              <Link to={Ve1} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ve1}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Hotel />
@@ -246,7 +314,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Hôtel" />
                 </ListItem>
               </Link>
-              <Link to={Ve2} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ve2}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <LocalLibrary />
@@ -254,7 +326,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Librairie" />
                 </ListItem>
               </Link>
-              <Link to={Ve3} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ve3}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <ShoppingBasket />
@@ -262,7 +338,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Prêt-à-porter" />
                 </ListItem>
               </Link>
-              <Link to={Ve4} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Ve4}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Restaurant />
@@ -272,17 +352,25 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-          <br/>
-          <ListItem button onClick={this.handleClick3} disabled={location.pathname === "/Santé"}>
+          <br />
+          <ListItem
+            button
+            onClick={this.handleClick3}
+            disabled={location.pathname === "/Santé"}
+          >
             <ListItemIcon>
-              <Hospital className={classes.colorier}/>
+              <Hospital className={classes.colorier} />
             </ListItemIcon>
             <ListItemText inset primary="Santé" />
             {this.state.open3 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open3} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link to={Sa0} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Sa0}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <HospitalIcons />
@@ -290,7 +378,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Hôpital" />
                 </ListItem>
               </Link>
-              <Link to={Sa1} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Sa1}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Medecin />
@@ -298,7 +390,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Médecin" />
                 </ListItem>
               </Link>
-              <Link to={Sa2} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Sa2}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <LocalPharmacy />
@@ -308,17 +404,25 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-          <br/>
-          <ListItem button onClick={this.handleClick4} disabled={location.pathname === "/Loisirs"}>
+          <br />
+          <ListItem
+            button
+            onClick={this.handleClick4}
+            disabled={location.pathname === "/Loisirs"}
+          >
             <ListItemIcon>
-              <LocalActivity className={classes.colorier}/>
+              <LocalActivity className={classes.colorier} />
             </ListItemIcon>
             <ListItemText primary="Loisirs" />
             {this.state.open4 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open4} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link to={Lo0} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Lo0}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Livre />
@@ -326,7 +430,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Bibilothèque" />
                 </ListItem>
               </Link>
-              <Link to={Lo1} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Lo1}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <LocalMovies />
@@ -334,7 +442,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Cinéma" />
                 </ListItem>
               </Link>
-              <Link to={Lo2} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Lo2}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <AccountBalance />
@@ -342,7 +454,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Musée" />
                 </ListItem>
               </Link>
-              <Link to={Lo3} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Lo3}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Icon size={25} icon={iosFootball} />
@@ -352,17 +468,25 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-          <br/>
-          <ListItem button onClick={this.handleClick5} disabled={location.pathname === "/Mobilité"}>
+          <br />
+          <ListItem
+            button
+            onClick={this.handleClick5}
+            disabled={location.pathname === "/Mobilité"}
+          >
             <ListItemIcon>
-              <Tram className={classes.colorier}/>
+              <Tram className={classes.colorier} />
             </ListItemIcon>
             <ListItemText primary="Mobilité" />
             {this.state.open5 ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={this.state.open5} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <Link to={Mo0} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Mo0}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Flight />
@@ -370,7 +494,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Avion" />
                 </ListItem>
               </Link>
-              <Link to={Mo1} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Mo1}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Bus />
@@ -378,7 +506,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Bus" />
                 </ListItem>
               </Link>
-              <Link to={Mo2} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Mo2}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <People />
@@ -386,7 +518,11 @@ class ListeCote extends React.Component {
                   <ListItemText inset primary="Espaces publics" />
                 </ListItem>
               </Link>
-              <Link to={Mo3} style={{ textDecoration: 'none' }} onClick={this.handleClose}>
+              <Link
+                to={Mo3}
+                style={{ textDecoration: "none" }}
+                onClick={this.handleClose}
+              >
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
                     <Train />
@@ -396,30 +532,48 @@ class ListeCote extends React.Component {
               </Link>
             </List>
           </Collapse>
-        </List>          
-        <br/>
+        </List>
+        <br />
         <Divider />
-        <br/>
-        <ListItem button disabled={true}>
-          <ListItemIcon>
-            <Favorite />
-          </ListItemIcon>
-          <ListItemText primary="Mes phrases"/>
-        </ListItem>
-        <br/>
-        <ListItem button disabled={true}>
-          <ListItemIcon>
-            <History />
-          </ListItemIcon>
-          <ListItemText primary="Mon historique"/>
-        </ListItem>
-        <br/>
-        <ListItem button disabled={true}>
-          <ListItemIcon>
-            <Help />
-          </ListItemIcon>
-          <ListItemText primary="Aide"/>
-        </ListItem>
+        <br />
+        <Tooltip
+          id="nonFonctionnel"
+          title="Cette fonctionnalité n'est pas encore déployée, elle le sera très bientôt !"
+          enterDelay={300}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Favorite />
+            </ListItemIcon>
+            <ListItemText primary="Mes phrases" />
+          </ListItem>
+        </Tooltip>
+        <br />
+        <Tooltip
+          id="nonFonctionnel"
+          title="Celle-ci est également en production, un peu de patience !"
+          enterDelay={300}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <History />
+            </ListItemIcon>
+            <ListItemText primary="Mon historique" />
+          </ListItem>
+        </Tooltip>
+        <br />
+        <Tooltip
+          id="nonFonctionnel"
+          title="Bientôt, Bientôt!"
+          enterDelay={300}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Help />
+            </ListItemIcon>
+            <ListItemText primary="Aide" />
+          </ListItem>
+        </Tooltip>
       </div>
     );
   }
@@ -427,11 +581,17 @@ class ListeCote extends React.Component {
 
 ListeCote.propTypes = {
   classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
-
+  theme: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
-export default compose(withStyles(styles, { withTheme: true }, {
-  name: 'ListeCote',
-}),withRouter)(ListeCote);
+export default compose(
+  withStyles(
+    styles,
+    { withTheme: true },
+    {
+      name: "ListeCote"
+    }
+  ),
+  withRouter
+)(ListeCote);

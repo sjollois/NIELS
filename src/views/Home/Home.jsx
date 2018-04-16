@@ -66,7 +66,6 @@ class Home extends React.Component {
         <br />
         <Player
           poster={imageVideo}
-          playsInline
           aspectRatio="16:9"
           width={500}
           height={400}

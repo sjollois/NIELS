@@ -67,7 +67,7 @@ class Administratif extends React.Component {
           Phrases Générales :
         </Typography>
         <br />
-        <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
+        <Questions contexte="Administratif" sousContexte="Generale" nbr={4} />
         <br /> <br />
         <Typography color="primary" variant="subheading">
           Phrases spécifiques aux contextes :
@@ -100,7 +100,7 @@ class Administratif extends React.Component {
                 <Questions
                   contexte="Administratif"
                   sousContexte="Banque"
-                  nbr={6}
+                  nbr={9}
                 />
               </TabContainer>
             )}
@@ -109,7 +109,7 @@ class Administratif extends React.Component {
                 <Questions
                   contexte="Administratif"
                   sousContexte="Mairie"
-                  nbr={6}
+                  nbr={9}
                 />
               </TabContainer>
             )}
@@ -118,7 +118,7 @@ class Administratif extends React.Component {
                 <Questions
                   contexte="Administratif"
                   sousContexte="Poste"
-                  nbr={6}
+                  nbr={9}
                 />
               </TabContainer>
             )}
@@ -127,7 +127,7 @@ class Administratif extends React.Component {
                 <Questions
                   contexte="Administratif"
                   sousContexte="Scolarite"
-                  nbr={6}
+                  nbr={9}
                 />
               </TabContainer>
             )}

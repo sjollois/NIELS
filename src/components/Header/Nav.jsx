@@ -43,7 +43,7 @@ const drawerWidth = 220;
 const styles = theme => ({
   root: {
     display: "flex",
-    minHeight: `calc(100vh + 250px)`,
+    minHeight: `calc(100vh + 450px)`,
     height: `950px`,
     width: "100%",
     position: "relative",
@@ -64,7 +64,7 @@ const styles = theme => ({
   appFrame: {
     display: "flex",
     width: "100%",
-    minHeight: `calc(100vh + 250px)`,
+    minHeight: `calc(100vh + 450px)`,
     height: `950px`
   },
   appBar: {
@@ -105,7 +105,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: "relative",
-    minHeight: `calc(100vh + 250px)`,
+    minHeight: `calc(100vh + 450px)`,
     height: `950px`,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -115,7 +115,7 @@ const styles = theme => ({
   },
   drawerPaperClose: {
     width: 70,
-    minHeight: `calc(100vh + 250px)`,
+    minHeight: `calc(100vh + 450px)`,
     height: `950px`,
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
@@ -138,7 +138,7 @@ const styles = theme => ({
     width: "calc(100% - 90px)",
     backgroundColor: theme.palette.background.default,
     padding: 10,
-    minHeight: `calc(100vh + 100px)`,
+    minHeight: `calc(100vh + 250px)`,
     height: "850px",
     marginTop: 100,
     [theme.breakpoints.up("sm")]: {

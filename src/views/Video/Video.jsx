@@ -30,14 +30,17 @@ class Video extends React.Component {
     };
   }
 
- componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
+    if (!(nextProps.match.params.path === this.state.value))
+    {
       this.setState({
         value: nextProps.match.params.path,
         contexte: nextProps.match.params.contexte,
         sousContexte: nextProps.match.params.sousContexte,
         videoDone: nextProps.match.params.video
       });
-      window.location.reload();
+    window.location.reload();
+    }
   }
 
   render() {
@@ -75,7 +78,6 @@ class Video extends React.Component {
               "{phrase.replace("$", "'")}"
             </Typography>
           </Hidden>
-          <br />
           <Player
             aspectRatio="16:9"
             width={500}

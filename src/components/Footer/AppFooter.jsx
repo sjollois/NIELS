@@ -14,7 +14,7 @@ const styleSheet = theme => ({
     }
   },
   layout: {
-    padding: theme.spacing.unit * 6,
+    padding: theme.spacing.unit * 3,
     paddingBottom: theme.spacing.unit*3
   },
   list: {
@@ -37,9 +37,6 @@ function AppFooter(props) {
   return (
     <footer className={classes.root}>
       <div className={classes.layout}>
-        <Typography variant="title" gutterBottom>
-          Quick Links
-        </Typography>
         <Typography variant="subheading" component="div">
           <Grid container spacing={0}>
             <Grid item xs={12} sm={6}>

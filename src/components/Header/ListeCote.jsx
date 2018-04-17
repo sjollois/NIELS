@@ -427,7 +427,7 @@ class ListeCote extends React.Component {
                   <ListItemIcon>
                     <Livre />
                   </ListItemIcon>
-                  <ListItemText inset primary="Bibilothèque" />
+                  <ListItemText inset primary="Bibliothèque" />
                 </ListItem>
               </Link>
               <Link

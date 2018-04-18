@@ -11,6 +11,7 @@ import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
 import Questions from "../../components/Questions";
 import Hidden from "material-ui/Hidden";
+import logo from "../../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -39,6 +40,16 @@ const styles = theme => ({
     [theme.breakpoints.down("xs")]: {
       width: "calc(100% - 100px)"
     }
+  },
+  AppLogo: {
+    height: 200,
+    [theme.breakpoints.down("sm")]: {
+      height: 100
+    }
+  },
+  center: {
+    display: "flex",
+    justifyContent: "center"
   }
 });
 
@@ -68,19 +79,19 @@ class Mobilite extends React.Component {
           Phrases Générales :
         </Typography>
         <Hidden smDown implementation="css">
-        <br />
-        <Questions contexte="Mobilite" sousContexte="Generale" nbr={4} />
-        <br /> 
+          <br />
+          <Questions contexte="Mobilite" sousContexte="Generale" nbr={4} />
+          <br />
         </Hidden>
         <Hidden mdUp>
-        <Questions contexte="Mobilite" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Mobilite" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
           Phrases spécifiques aux contextes :
         </Typography>
         <Hidden smDown implementation="css">
-        <br />
+          <br />
         </Hidden>
         <div className={classes.root}>
           <AppBar position="static" color="default">
@@ -100,93 +111,80 @@ class Mobilite extends React.Component {
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
-          <SwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={this.state.value}
-            onChangeIndex={this.handleChangeIndex}
-          >
-            {value === 0 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Avion"
-                  nbr={9}
-                />
-              </TabContainer>
-            )}
-            {value === 1 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Bus"
-                  nbr={9}
-                />
-              </TabContainer>
-            )}
-            {value === 2 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="EspacesPublics"
-                  nbr={9}
-                />
-              </TabContainer>
-            )}
-            {value === 3 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Train"
-                  nbr={9}
-                />
-              </TabContainer>
-            )}
-          </SwipeableViews>
+            <SwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={this.state.value}
+              onChangeIndex={this.handleChangeIndex}
+            >
+              {value === 0 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={9} />
+                </TabContainer>
+              )}
+              {value === 1 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={9} />
+                </TabContainer>
+              )}
+              {value === 2 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Mobilite"
+                    sousContexte="EspacesPublics"
+                    nbr={9}
+                  />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Train" nbr={9} />
+                </TabContainer>
+              )}
+            </SwipeableViews>
+          </Hidden>
+          <Hidden mdUp>
+            <SwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={this.state.value}
+              onChangeIndex={this.handleChangeIndex}
+            >
+              {value === 0 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={7} />
+                </TabContainer>
+              )}
+              {value === 1 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={7} />
+                </TabContainer>
+              )}
+              {value === 2 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Mobilite"
+                    sousContexte="EspacesPublics"
+                    nbr={7}
+                  />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions contexte="Mobilite" sousContexte="Train" nbr={7} />
+                </TabContainer>
+              )}
+            </SwipeableViews>
+          </Hidden>
+        </div>
+        <Hidden lgUp>
+          <br />
+          <br />
+          <br />
         </Hidden>
-        <Hidden mdUp>
-        <SwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={this.state.value}
-            onChangeIndex={this.handleChangeIndex}
-          >
-            {value === 0 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Avion"
-                  nbr={7}
-                />
-              </TabContainer>
-            )}
-            {value === 1 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Bus"
-                  nbr={7}
-                />
-              </TabContainer>
-            )}
-            {value === 2 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="EspacesPublics"
-                  nbr={7}
-                />
-              </TabContainer>
-            )}
-            {value === 3 && (
-              <TabContainer dir={theme.direction}>
-                <Questions
-                  contexte="Mobilite"
-                  sousContexte="Train"
-                  nbr={7}
-                />
-              </TabContainer>
-            )}
-          </SwipeableViews>
+        <Hidden only={["xs", "sm", "md", "xl"]}>
+          <br />
         </Hidden>
+        <div className={classes.center}>
+          <img src={logo} className={classes.AppLogo} alt="logo" />
         </div>
       </div>
     );
@@ -199,4 +197,3 @@ Mobilite.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(Mobilite);
-

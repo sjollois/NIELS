@@ -9,7 +9,7 @@ import Loisirs from "../../views/Loisirs/Loisirs";
 import Sante from "../../views/Santé/Sante";
 import Vente from "../../views/Vente/Vente";
 import Home from "../../views/Home/Home";
-import Footer from "../../components/Footer/AppFooter";
+import Footer from "../../components/Footer/Footer";
 import Video from "../../views/Video/Video";
 import { Divider } from "material-ui";
 import { SnackbarContent } from "material-ui/Snackbar";
@@ -77,7 +77,7 @@ const styles = theme => ({
   center: {
     display: "flex",
     justifyContent: "center"
-  }
+  },
 });
 
 class App extends Component {

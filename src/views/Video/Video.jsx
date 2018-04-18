@@ -14,12 +14,18 @@ import sematos from "../../assets/image/Sematos.png";
 import sematospetit from "../../assets/image/SematosPetit.png";
 import elix from "../../assets/image/ELIX-logo.png";
 import Link from "../../components/Link";
+import logo from "../../assets/image/logo.png";
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    width: "100%"
+  AppLogo: {
+    height: 200,
+    [theme.breakpoints.down("sm")]: {
+      height: 100
+    }
+  },
+  center: {
+    display: "flex",
+    justifyContent: "center"
   }
 });
 
@@ -47,6 +53,7 @@ class Video extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     if (this.state.videoDone === "true") {
       const videoPath = this.state.value;
       var correctPath = videoPath;
@@ -103,23 +110,32 @@ class Video extends React.Component {
               Phrases du même contexte :
             </Typography>
             <br />
-          <Questions
-            contexte={this.state.contexte}
-            sousContexte={this.state.sousContexte}
-            nbr={6}
-          />
+            <Questions
+              contexte={this.state.contexte}
+              sousContexte={this.state.sousContexte}
+              nbr={6}
+            />
           </Hidden>
           <Hidden smDown implementation="css">
             <Typography color="primary" variant="headline">
               Phrases du même contexte :
             </Typography>
             <br />
-          <Questions
-            contexte={this.state.contexte}
-            sousContexte={this.state.sousContexte}
-            nbr={4}
-          />
+            <Questions
+              contexte={this.state.contexte}
+              sousContexte={this.state.sousContexte}
+              nbr={4}
+            />
           </Hidden>
+          <Hidden lgUp>
+            <br />
+            <br />
+            <br />
+            <br />
+          </Hidden>
+          <div className={classes.center}>
+            <img src={logo} className={classes.AppLogo} alt="logo" />
+          </div>
         </div>
       );
     } else {
@@ -167,12 +183,12 @@ class Video extends React.Component {
             <Typography color="primary" variant="headline">
               Phrases du même contexte :
             </Typography>
-            <br/>
+            <br />
             <Questions
-            contexte={this.state.contexte}
-            sousContexte={this.state.sousContexte}
-            nbr={8}
-          />
+              contexte={this.state.contexte}
+              sousContexte={this.state.sousContexte}
+              nbr={8}
+            />
           </Hidden>
           <Hidden mdUp>
             <br />
@@ -196,22 +212,33 @@ class Video extends React.Component {
               <Link href="https://www.elix-lsf.fr" target="_blank">
                 <img src={elix} alt="logoElix" height={90} />
               </Link>
-              <br/>
-              <br/>
+              <br />
+              <br />
               <Link href="http://www.sematos.eu/lsf.html" target="_blank">
                 <img src={sematospetit} alt="logoSematos" />
               </Link>
             </div>
-            <br/>
+            <br />
             <Typography color="primary" variant="subheading">
               Phrases du même contexte :
             </Typography>
             <Questions
-            contexte={this.state.contexte}
-            sousContexte={this.state.sousContexte}
-            nbr={4}
-          />
+              contexte={this.state.contexte}
+              sousContexte={this.state.sousContexte}
+              nbr={4}
+            />
           </Hidden>
+          <Hidden mdUp>
+            <br />
+            <br />
+            <br />
+          </Hidden>
+          <Hidden only={["xs", "sm", "md", "xl"]}>
+            <br />
+          </Hidden>
+          <div className={classes.center}>
+            <img src={logo} className={classes.AppLogo} alt="logo" />
+          </div>
         </div>
       );
     }

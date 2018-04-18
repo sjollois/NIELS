@@ -37,7 +37,7 @@ const styleSheet = theme => ({
   }
 });
 
-function AppFooter(props) {
+function Footer(props) {
   const { classes } = props;
 
   return (
@@ -86,8 +86,8 @@ function AppFooter(props) {
   );
 }
 
-AppFooter.propTypes = {
+Footer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styleSheet)(AppFooter);
+export default withStyles(styleSheet)(Footer);

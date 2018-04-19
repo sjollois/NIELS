@@ -1,0 +1,35 @@
+[debug] [2018-04-19T16:50:14.617Z] ----------------------------------------------------------------------
+[debug] [2018-04-19T16:50:14.620Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-04-19T16:50:14.620Z] CLI Version:   3.18.4
+[debug] [2018-04-19T16:50:14.620Z] Platform:      darwin
+[debug] [2018-04-19T16:50:14.620Z] Node Version:  v8.11.1
+[debug] [2018-04-19T16:50:14.620Z] Time:          Thu Apr 19 2018 18:50:14 GMT+0200 (CEST)
+[debug] [2018-04-19T16:50:14.620Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-19T16:50:14.632Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-19T16:50:14.632Z] > authorizing via signed-in user
+[debug] [2018-04-19T16:50:14.634Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-19T16:50:14.634Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/YARn-yCD0MbQUsEMEr0-NAOERAqva590wEtNZQAB6nM',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Apr 19 2018 18:50:14 GMT+0200 (CEST)
+[debug] [2018-04-19T16:50:14.801Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T16:50:14.822Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/niels-9065d  
+  
+ Thu Apr 19 2018 18:50:14 GMT+0200 (CEST)
+[debug] [2018-04-19T16:50:15.507Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T16:50:15.508Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/niels-9065d/tokens  
+  
+ Thu Apr 19 2018 18:50:15 GMT+0200 (CEST)
+[debug] [2018-04-19T16:50:16.214Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'niels-9065d'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing build directory for upload...
+[debug] [2018-04-19T16:50:29.580Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/niels-9065d/uploads/-LATo41hjMaqDVgtmR3h?fileCount=63&message=  
+  
+ Thu Apr 19 2018 18:50:29 GMT+0200 (CEST)

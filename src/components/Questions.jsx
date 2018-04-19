@@ -215,7 +215,7 @@ class Questions extends React.Component {
                                        }/${n.path}`}
                                        className={classes.Video}
                                      >
-                                       {n.path.replace("$", "'")}{" "}
+                                       {n.path.replace("$", "'").replace("$", "'").replace("$", "'")}{" "}
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon
                                          icon={videoCamera}
                                        />
@@ -233,7 +233,7 @@ class Questions extends React.Component {
                                        }/${n.path}`}
                                        className={classes.Video}
                                      >
-                                       {n.path.replace("$", "'")}
+                                       {n.path.replace("$", "'").replace("$", "'").replace("$", "'")}
                                      </Link>
                                    </TableCell>
                                  </TableRow>
@@ -257,7 +257,7 @@ class Questions extends React.Component {
                                      }/${n.path}`}
                                      className={classes.Video}
                                    >
-                                     {n.path.replace("$", "'")}{" "}
+                                     {n.path.replace("$", "'").replace("$", "'").replace("$", "'")}{" "}
                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon
                                        icon={videoCamera}
                                      />
@@ -275,7 +275,7 @@ class Questions extends React.Component {
                                      }/${n.path}`}
                                      className={classes.Video}
                                    >
-                                     {n.path.replace("$", "'")}
+                                     {n.path.replace("$", "'").replace("$", "'").replace("$", "'")}
                                    </Link>
                                  </TableCell>
                                </TableRow>

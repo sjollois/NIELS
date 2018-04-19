@@ -148,111 +148,101 @@ class Video extends React.Component {
     else
      {
        //On nettoie la phrase
-      const videoPath = this.state.value;
-      if (videoPath.substr(-1) !== ".") {
-        phrase = `${this.state.value} ?`;
-      }
-      //et on affiche toujours avec un souci de responsivité
-      return (
-        <div>
-          <Hidden smDown implementation="css">
-            <Typography color="primary" variant="headline" align="center">
-              Traduction en Langue des Signes Française de la phrase :
-            </Typography>
-            <br />
-            <br />
-            <Typography color="primary" variant="display1" align="center">
-              "{phrase.replace("$", "'")}"
-            </Typography>
-            <br />
-            <br />
-            <br />
-            <Typography color="primary" variant="headline" align="center">
-              La vidéo n'est pas encore disponible mais arrivera très
-              prochainement sur NIELS !
-            </Typography>
-            <br />
-            <Typography color="primary" variant="headline" align="center">
-              En attendant vous pouvez retrouver les mots que vous recherchez
-              traduits en LSF sur les sites suivants :
-            </Typography>
-            <br />
-            <br />
-            <br />
-            {/*Redirection vers les site de traduction de mot en LSF*/}
-            <div align="center">
-              <Link href="https://www.elix-lsf.fr" target="_blank">
-                <img src={elix} alt="logoElix" height={130} />
-              </Link>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <Link href="http://www.sematos.eu/lsf.html" target="_blank">
-                <img src={sematos} alt="logoSematos" />
-              </Link>
-            </div>
-            <br />
-            <Typography color="primary" variant="headline">
-              Phrases du même contexte :
-            </Typography>
-            <br />
-            <Questions
-              contexte={this.state.contexte}
-              sousContexte={this.state.sousContexte}
-              nbr={8}
-            />
-          </Hidden>
-          <Hidden mdUp>
-            <br />
-            <Typography color="primary" variant="subheading" align="center">
-              Traduction en Langue des Signes Française de la phrase :
-            </Typography>
-            <Typography color="primary" variant="headline" align="center">
-              "{phrase.replace("$", "'")}"
-            </Typography>
-            <br />
-            <Typography color="inherit" variant="subheading" align="center">
-              La vidéo n'est pas encore disponible mais arrivera très
-              prochainement sur NIELS !
-            </Typography>
-            <Typography color="inherit" variant="subheading" align="center">
-              En attendant vous pouvez retrouver les mots que vous recherchez
-              traduits en LSF sur les sites suivants :
-            </Typography>
-            <br />
-            <div align="center">
-              <Link href="https://www.elix-lsf.fr" target="_blank">
-                <img src={elix} alt="logoElix" height={90} />
-              </Link>
-              <br />
-              <br />
-              <Link href="http://www.sematos.eu/lsf.html" target="_blank">
-                <img src={sematospetit} alt="logoSematos" />
-              </Link>
-            </div>
-            <br />
-            <Typography color="primary" variant="subheading">
-              Phrases du même contexte :
-            </Typography>
-            <Questions
-              contexte={this.state.contexte}
-              sousContexte={this.state.sousContexte}
-              nbr={4}
-            />
-          </Hidden>
-          <Hidden mdUp>
-            <br />
-            <br />
-            <br />
-          </Hidden>
-          <Hidden only={["xs", "sm", "md", "xl"]}>
-            <br />
-          </Hidden>
-          <div className={classes.center}>
-            <img src={logo} className={classes.AppLogo} alt="logo" />
-          </div>
-        </div>
-      );
-    }
+       const videoPath = this.state.value;
+       // eslint-disable-next-line
+       var phrase = videoPath;
+       if (videoPath.substr(-1) !== ".") {
+         phrase = `${this.state.value} ?`;
+       }
+       //et on affiche toujours avec un souci de responsivité
+       return <div>
+           <Hidden smDown implementation="css">
+             <Typography color="primary" variant="headline" align="center">
+               Traduction en Langue des Signes Française de la phrase :
+             </Typography>
+             <br />
+             <br />
+             <Typography color="primary" variant="display1" align="center">
+               "{phrase
+                 .replace("$", "'")
+                 .replace("$", "'")
+                 .replace("$", "'")}"
+             </Typography>
+             <br />
+             <br />
+             <br />
+             <Typography color="primary" variant="headline" align="center">
+               La vidéo n'est pas encore disponible mais arrivera très prochainement sur NIELS !
+             </Typography>
+             <br />
+             <Typography color="primary" variant="headline" align="center">
+               En attendant vous pouvez retrouver les mots que vous recherchez traduits en LSF sur les sites suivants :
+             </Typography>
+             <br />
+             <br />
+             <br />
+             {/*Redirection vers les site de traduction de mot en LSF*/}
+             <div align="center">
+               <Link href="https://www.elix-lsf.fr" target="_blank">
+                 <img src={elix} alt="logoElix" height={130} />
+               </Link>
+               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+               <Link href="http://www.sematos.eu/lsf.html" target="_blank">
+                 <img src={sematos} alt="logoSematos" />
+               </Link>
+             </div>
+             <br />
+             <Typography color="primary" variant="headline">
+               Phrases du même contexte :
+             </Typography>
+             <br />
+             <Questions contexte={this.state.contexte} sousContexte={this.state.sousContexte} nbr={8} />
+           </Hidden>
+           <Hidden mdUp>
+             <br />
+             <Typography color="primary" variant="subheading" align="center">
+               Traduction en Langue des Signes Française de la phrase :
+             </Typography>
+             <Typography color="primary" variant="headline" align="center">
+               "{phrase.replace("$", "'")}"
+             </Typography>
+             <br />
+             <Typography color="inherit" variant="subheading" align="center">
+               La vidéo n'est pas encore disponible mais arrivera très prochainement sur NIELS !
+             </Typography>
+             <Typography color="inherit" variant="subheading" align="center">
+               En attendant vous pouvez retrouver les mots que vous recherchez traduits en LSF sur les sites suivants :
+             </Typography>
+             <br />
+             <div align="center">
+               <Link href="https://www.elix-lsf.fr" target="_blank">
+                 <img src={elix} alt="logoElix" height={90} />
+               </Link>
+               <br />
+               <br />
+               <Link href="http://www.sematos.eu/lsf.html" target="_blank">
+                 <img src={sematospetit} alt="logoSematos" />
+               </Link>
+             </div>
+             <br />
+             <Typography color="primary" variant="subheading">
+               Phrases du même contexte :
+             </Typography>
+             <Questions contexte={this.state.contexte} sousContexte={this.state.sousContexte} nbr={4} />
+           </Hidden>
+           <Hidden mdUp>
+             <br />
+             <br />
+             <br />
+           </Hidden>
+           <Hidden only={["xs", "sm", "md", "xl"]}>
+             <br />
+           </Hidden>
+           <div className={classes.center}>
+             <img src={logo} className={classes.AppLogo} alt="logo" />
+           </div>
+         </div>;
+     }
   }
 }
 

@@ -1,9 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+//Rend la page avec la redirection vers les contextes et sous-contextes qui nous intéresse
 import { withRouter } from "react-router";
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { withStyles } from "material-ui/styles";
+//Permet d'exporter le composant avec le Style et le Router
 import compose from "recompose/compose";
 import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import Divider from "material-ui/Divider";
+import Tooltip from "material-ui/Tooltip";
+//Importe la couleur violette 
+import pink from "material-ui/colors/pink";
+//Importe une série d'icônes nécessaires à l'affichage
 import Folder from "material-ui-icons/Folder";
 import ShoppingCart from "material-ui-icons/ShoppingCart";
 import LocalActivity from "material-ui-icons/LocalActivity";
@@ -36,11 +45,6 @@ import Flight from "material-ui-icons/Flight";
 import Bus from "material-ui-icons/DirectionsBus";
 import People from "material-ui-icons/People";
 import Tram from "material-ui-icons/Tram";
-import Divider from "material-ui/Divider";
-import Tooltip from "material-ui/Tooltip";
-// eslint-disable-next-line
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import pink from "material-ui/colors/pink";
 
 const styles = theme => ({
   nested: {
@@ -52,6 +56,8 @@ const styles = theme => ({
 });
 
 class ListeCote extends React.Component {
+  //Implémente une série d'états et de fonctions qui permettent de jouer avec le déroulement et l'enroulement
+  //des sous-contextes de chaque contexte
   state = {
     open1: false,
     open2: false,
@@ -123,7 +129,7 @@ class ListeCote extends React.Component {
 
   render() {
     const { classes, location } = this.props;
-
+    //Crée une série de couple qui renvoie le contexte où il doit aller et la valeur du sous-contextes
     const Ad0 = {
       pathname: "/Administratif",
       param: 0
@@ -213,6 +219,8 @@ class ListeCote extends React.Component {
       <div>
         <Divider />
         <List component="nav">
+        {/*Affiche le contexte avec son icone et les sous contextes avec leur icones respectifs 
+        accompagnés des liens de rediection*/}
           <ListItem
             button
             onClick={this.handleClick1}
@@ -536,6 +544,7 @@ class ListeCote extends React.Component {
         <br />
         <Divider />
         <br />
+        {/*Voici une liste boutons qui amène à des pages que je n'ai pas encore eu le temps d'implémenter*/}
         <Tooltip
           id="nonFonctionnel"
           title="Cette fonctionnalité n'est pas encore déployée, elle le sera très bientôt !"
@@ -562,11 +571,7 @@ class ListeCote extends React.Component {
           </ListItem>
         </Tooltip>
         <br />
-        <Tooltip
-          id="nonFonctionnel"
-          title="Bientôt, Bientôt!"
-          enterDelay={300}
-        >
+        <Tooltip id="nonFonctionnel" title="Bientôt, Bientôt!" enterDelay={300}>
           <ListItem button>
             <ListItemIcon>
               <Help />

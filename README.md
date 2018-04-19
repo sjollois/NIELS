@@ -16,8 +16,10 @@ Vous trouverez dans le dossier NIELS :
 - un dossier build qui représente l'ensemble du code source compilé et prêt pour la production et/ou le déploiement en ligne
 
 Pour faire tourner NIELS à l'aide d'un serveur locale :
+
 - Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier NIELS : `serve -s build` (Mais certaines vidéos ne se lancent pas encore une fois pour une raison inconnue) ;
-- Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier NIELS : `npm start` ;
+
+- Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier NIELS : `npm i` pour installer tous les modules NPM et `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
 
 Auteur : Samuel JOLLOIS, ENSC 2ème année groupe de TD 2
 

@@ -1,26 +1,35 @@
 import React, { Component } from "react";
+//importe le composant Header et Footer
 import Header from "../../components/Header/Header";
-import PropTypes from "prop-types";
+import Footer from "../../components/Footer/Footer";
+//Rend la page avec le style implémenté dans ce fichier
 import { withStyles } from "material-ui/styles";
+//Permet de créer des liens avec les autres pages
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//Importe l'ensembles des autres pages qui existent
 import Administratif from "../../views/Administratif";
 import Mobilite from "../../views/Mobilite";
 import Loisirs from "../../views/Loisirs";
 import Sante from "../../views/Sante";
 import Vente from "../../views/Vente";
 import Home from "../../views/Home";
-import Footer from "../../components/Footer/Footer";
 import Video from "../../views/Video";
+//Importe un composant du package material-ui permettant de tracer une barre et effectuer des divisions sur la page
 import { Divider } from "material-ui";
+//Importe un composant du package material-ui permettant d'afficher des petites fenêtres modale et permettant de
+//de l'information en plus à l'utilsiateur lorsqu'on clique sur un bouton
 import { SnackbarContent } from "material-ui/Snackbar";
+//importe tout les composants de firebase afin de connecter l'application à la base de donnée
 import * as firebase from "firebase";
+//importe un composant permettant d'appeler plusieurs classes de style dans le HTML
 import classNames from "classnames";
+//importe le composant de material-UI spécifique aux boutons
 import Button from "material-ui/Button";
 
+//indique la taille du menu déroulant
 const drawerWidth = 90;
 
 // Initialize Firebase
-// TODO: Replace with your project's customized code snippet
 var config = {
   apiKey: "AIzaSyBucdYWDVGM-mHGD5PI73BJt9eAujxES5E",
   authDomain: "niels-9065d.firebaseapp.com",
@@ -34,6 +43,7 @@ const styles = theme => ({
   root: {
     display: "flex",
     minHeight: `calc(100vh + 500px)`,
+    //dans le but de garder une responsivité de l'application
     [theme.breakpoints.up("sm")]: {
       minHeight: `calc(100vh + 750px)`
     },
@@ -77,7 +87,7 @@ const styles = theme => ({
   center: {
     display: "flex",
     justifyContent: "center"
-  },
+  }
 });
 
 class App extends Component {
@@ -89,7 +99,7 @@ class App extends Component {
     };
     this.handleToggleDeaf = this.handleToggleDeaf.bind(this);
   }
-
+  //fonction qui permet de changer l'état du bouton sourd
   handleToggleDeaf = () => {
     this.setState({ deaf: !this.state.deaf });
   };
@@ -97,12 +107,16 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
+      //Permet d'utiliser Switch et Route
       <Router>
         <div>
           <div className={classes.root}>
+            {/*passage en paramètre dans le composant Header de la fonction qui permet de changer l'état du bouton sourd 
+        ainsi que de la variable concernant l'état en lui-même*/}
             <Header action={this.handleToggleDeaf} deaf={this.state.deaf} />
             <main className={classes.content}>
               <div className={classes.center}>
+                {/*Message affiché lorsque le bouton sourd est activé*/}
                 <SnackbarContent
                   className={classNames(
                     !this.state.deaf && classes.hide,
@@ -111,6 +125,7 @@ class App extends Component {
                   message=" Je suis une personne sourde et j'aimerais communiquer avec vous à l'aide de ce site.
                       Naviguez parmi les différents contextes situés à gauche, cliquez sur une des phrases qui vous sera présentée et elle me sera traduite en Langue des Signes Française"
                   action={
+                    /* Bouton pour fermer le message */
                     <Button
                       key="undo"
                       color="secondary"
@@ -122,6 +137,10 @@ class App extends Component {
                   }
                 />
               </div>
+              {/*Le composant Switch va nous permettre de changer le contenu de la page en fonction de l'adresse URL 
+            et nous permet de rediriger vers un composant ; 
+            Seul le composant Administratif sera commenté car il sont sensiblement les mêmes à quelques icones et mots près
+            Cela sera donc à Factoriser à l'avenir*/}
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/Administratif" component={Administratif} />
@@ -144,9 +163,5 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
-
+//Exporte le composant App avec son style et son thème
 export default withStyles(styles, { withTheme: true })(App);

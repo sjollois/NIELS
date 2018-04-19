@@ -1,19 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+//Importe un composant du package material-ui permettant de d'afficher des phrases avec quelques paramètres
+//comme le type de calligraphie (taille) ou si elle peut faire office de div par exemple
 import Typography from "material-ui/Typography";
+//Composant de Material-UI qui permet de réaliser des grilles
 import Grid from "material-ui/Grid";
+//Composant permettant la redirection vers des pages autres que ceux de l'application
 import Link from "../Link";
 import classNames from "classnames";
 
 const styleSheet = theme => ({
   root: {
-    overflow: "auto",
- 
+    overflow: "auto"
   },
   layout: {
     padding: theme.spacing.unit * 3,
-    paddingBottom: theme.spacing.unit*3,
+    paddingBottom: theme.spacing.unit * 3,
     marginLeft: "calc(50% - 120px)",
     [theme.breakpoints.up("md")]: {
       marginLeft: "calc(50% - 300px)"
@@ -29,11 +31,11 @@ const styleSheet = theme => ({
     paddingBottom: theme.spacing.unit / 2
   },
   version: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
   },
-  bas:{
+  bas: {
     marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3   
+    marginRight: theme.spacing.unit * 3
   }
 });
 
@@ -50,6 +52,7 @@ function Footer(props) {
                 <li className={classes.listItem}>
                   <Link
                     href="https://github.com/sjollois/NIELS"
+                    //redirige vers un onglet crée
                     target="_blank"
                   >
                     GitHub
@@ -64,14 +67,14 @@ function Footer(props) {
             </Grid>
             <Grid item xs={6} sm={6}>
               <ul className={classes.list}>
-              <li className={classes.listItem}>
+                <li className={classes.listItem}>
                   <Link href="https://ensc.bordeaux-inp.fr/fr" target="_blank">
                     ENSC
                   </Link>
                 </li>
                 <li className={classes.listItem}>
                   <Link href="https://material-ui-next.com" target="_blank">
-                  Material-UI
+                    Material-UI
                   </Link>
                 </li>
               </ul>
@@ -79,15 +82,15 @@ function Footer(props) {
           </Grid>
         </Typography>
       </div>
-      <Typography className={classNames(classes.version,classes.bas)} align="center">
-          © 2017-2018 All Rights Reserved <br/>Projets Transpromo et Informatique Individuel ENSC      
+      <Typography
+        className={classNames(classes.version, classes.bas)}
+        align="center"
+      >
+        © 2017-2018 All Rights Reserved <br />Projets Transpromo et Informatique
+        Individuel ENSC
       </Typography>
     </footer>
   );
 }
-
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styleSheet)(Footer);

@@ -1,18 +1,24 @@
 import React from "react";
 import Typography from "material-ui/Typography";
-import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+//importe le style pour le lecteur video
+import "video-react/dist/video-react.css";
+//Importe l'ensemble des composant utilisés pour paramétrer et personnalisé le lecteur vidéo
 import {
   Player,
   ControlBar,
   VolumeMenuButton,
   BigPlayButton
 } from "video-react";
+//importe la vidéo de présentation en LSF
 import video from "../assets/video/videoPresentation.m4v";
+//importe les images utilisés dans ce composant
 import imageVideo from "../assets/image/imageVideo.png";
 import logo from "../assets/image/logo.png";
-import Hidden from "material-ui/Hidden";
 import NIELS from "../assets/image/NIELS.png";
+//Permet de rendre notre application responsive en cachant une partie adapté à un écran large
+//et affichant une autre partie adapté à un écran mobile et inversement
+import Hidden from "material-ui/Hidden";
 
 const styles = theme => ({
   AppLogo: {
@@ -70,6 +76,7 @@ class Home extends React.Component {
           </Typography>
         </Hidden>
         <br />
+        {/*L'ensemble des composants utilisés pour le lecteur vidéo sont expliqué dans le rapport */}
         <Player
           poster={imageVideo}
           aspectRatio="16:9"
@@ -105,10 +112,5 @@ class Home extends React.Component {
     );
   }
 }
-
-Home.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
 
 export default withStyles(styles, { withTheme: true })(Home);

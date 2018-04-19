@@ -1,18 +1,24 @@
 import React from "react";
 import Typography from "material-ui/Typography";
+//Composant qui permet de s'échanger des paramètres
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+//Composants permettant de créer la barre d'onglets
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
+//Composant permettant de glisser entre les différents onglets, rendu possible suelement sur mobile
 import SwipeableViews from "react-swipeable-views";
+//Importation des icones correspondant à chaque sous-contexe
 import AttachMoney from "material-ui-icons/AttachMoney";
 import LocationCity from "material-ui-icons/LocationCity";
 import LocalPostOffice from "material-ui-icons/LocalPostOffice";
 import School from "material-ui-icons/School";
+//Composant qui affiche la liste des proposées avec en paramètres : le contexte, sous-contexte et le nombre de phrases à afficher
 import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
 import logo from "../assets/image/logo.png";
 
+//Fonction permettant de créer le contenu de chaque onglet
 function TabContainer({ children, dir }) {
   return (
     <Typography
@@ -56,11 +62,13 @@ const styles = theme => ({
 class Administratif extends React.Component {
   constructor(props) {
     super(props);
+    //Value correspond à la valeur de l'onglet choisi entre 0,1,2 ou 3 avec 4 sous-contextes sans le sous-contexte générale
     this.state = {
       value: this.props.location.param
     };
   }
 
+  //Fonctions permettant de changer la valeur de value
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -78,6 +86,8 @@ class Administratif extends React.Component {
         <Typography color="primary" variant="subheading">
           Phrases Générales :
         </Typography>
+        {/*Deux affichages différents pours les phrases générales ont en affiche moins sur mobile qu'ordinateur
+      à cause de la taille des écrans*/}
         <Hidden smDown implementation="css">
           <br />
           <Questions contexte="Administratif" sousContexte="Generale" nbr={4} />
@@ -94,6 +104,7 @@ class Administratif extends React.Component {
           <br />
         </Hidden>
         <div className={classes.root}>
+          {/*On implémente la barre des onglets*/}
           <AppBar position="static" color="default">
             <Tabs
               value={this.state.value}
@@ -110,6 +121,7 @@ class Administratif extends React.Component {
               <Tab icon={<School />} label="Scolarité" />
             </Tabs>
           </AppBar>
+          {/*Et les contenus de chaque onglets avec toujours le souci d'affichage entre ordinateur et mobile*/}
           <Hidden smDown implementation="css">
             <SwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -214,10 +226,4 @@ class Administratif extends React.Component {
     );
   }
 }
-
-Administratif.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
-
 export default withStyles(styles, { withTheme: true })(Administratif);

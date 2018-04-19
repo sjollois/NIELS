@@ -1,24 +1,32 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import classNames from "classnames";
+//Importe des composants nécessaires pour le menu déroulant et la barre horizontale de header
 import Drawer from "material-ui/Drawer";
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
+//Importe des icones pour les afficher dans le header, toujours depuis Material-UI
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
 import HomeIcon from "material-ui-icons/Home";
 import ChevronLeftIcon from "material-ui-icons/ChevronLeft";
 import ChevronRightIcon from "material-ui-icons/ChevronRight";
+//Importe le composant permettant d'afficher les différents élèments dans le menu latérale gauche
 import ListeCote from "./ListeCote";
+//Importe le composant de la barre de recherche pour l'afficher graphiquement mais elle n'est pas encore fonctionnel
 import AppSearch from "./AppSearch";
+//importe image de logo
 import logoFond from "../../assets/image/logoFond.png";
-import "video-react/dist/video-react.css";
-import { BrowserRouter as Route, Link, Switch } from "react-router-dom";
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+//importe le composant qui permet de cacher en fontion de la taille de l'écran participedonc à la responsivité
 import Hidden from "material-ui/Hidden";
+//importe les composants nécessaires au bouton sourd : une icone et un bouton switch
 import DeafIcon from "react-icons/lib/fa/deaf";
-import Tooltip from "material-ui/Tooltip";
 import SSwitch from "material-ui/Switch";
+//composant de material-UI qui apporte de l'information lorsque le curseur survole un endroit entouré de Tooltip dans le code
+import Tooltip from "material-ui/Tooltip";
+//Importe le nom des pages qui s'affichera dans le header (passibilité de factoriser à l'avenir)
 import HomeHeader from "./HomeHeader";
 import SanteHeader from "./SanteHeader";
 import AdministratifHeader from "./AdministratifHeader";
@@ -178,7 +186,7 @@ class Header extends React.Component {
     };
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
   }
-
+  //fonction qui permet de changer l'état de open, la variable indiquant si le menu déroulant est ouvert ou fermé
   handleDrawerClose() {
     this.setState({ open: false });
   }
@@ -187,14 +195,11 @@ class Header extends React.Component {
     this.setState({ open: true });
   };
 
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
-
   handleDrawerToggle = () => {
     this.setState({ open: !this.state.open });
   };
 
+  //Fonction qui récupère et exécute la fonction qui a été passé en paramètre dans App
   handleToggleDeaf = () => {
     this.props.action();
   };
@@ -223,16 +228,19 @@ class Header extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+            {/*Message affiché lorsque le curseur passe au dessus de l'icone d'accueil*/}
             <Tooltip
               id="home"
               title="Retour à la page d'accueil"
               enterDelay={300}
             >
+              {/*Redirige vers l'accueil*/}
               <Link
                 to="/"
                 style={{ color: "inherit" }}
                 onClick={this.handleDrawerClose}
               >
+                {/*Affiche le bouton pour aller vers l'accueil, seulement sur mobile*/}
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
@@ -245,6 +253,7 @@ class Header extends React.Component {
                 </IconButton>
               </Link>
             </Tooltip>
+            {/*Le composant Hidden permet de cacher ici le Switch lorsque l'écran et plus petit que md*/}
             <Hidden mdDown implementation="css" className={classes.cote}>
               <Switch>
                 <Route exact path="/" component={HomeHeader} />
@@ -270,6 +279,7 @@ class Header extends React.Component {
             >
               <AppSearch />
             </div>
+            {/*Implémente le bouton Sourd avec le petit message qui va avec*/}
             <Tooltip
               id="deaf-theme"
               title="Mode Sourd / Entendant"
@@ -303,9 +313,9 @@ class Header extends React.Component {
               )
             }}
             open={this.state.open}
-            ModalProps={{
-              keepMounted: true // Better open performance on mobile.
-            }}
+            ModalProps={
+              { keepMounted: true } // Better open performance on mobile.
+            }
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
@@ -330,16 +340,16 @@ class Header extends React.Component {
                   )}
                 </IconButton>
               </div>
+              {/*Affiche la liste des différents contextes sur la côté et passe en paramètre la fonction qui permet de refermer la barre*/}
               <ListeCote action={this.handleDrawerClose} />
             </div>
           </Drawer>
         </Hidden>
+        {/*Permet de laisser la barre latérale ouverte lorsque l'écran est suffissament large*/}
         <Hidden smDown implementation="css">
           <Drawer
             variant="permanent"
-            classes={{
-              paper: classNames(classes.drawerPaper)
-            }}
+            classes={{ paper: classNames(classes.drawerPaper) }}
             open
           >
             <div className={classes.drawerInner}>
@@ -349,7 +359,7 @@ class Header extends React.Component {
                   title="Retour à la page d'accueil"
                   enterDelay={300}
                 >
-                  <Link to="/" onClick={this.handleDrawerClose}>
+                  <Link to="/">
                     <img
                       src={logoFond}
                       className={classNames(classes.MiniLogo)}
@@ -366,10 +376,5 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-};
 
 export default withStyles(styles, { withTheme: true })(Header);

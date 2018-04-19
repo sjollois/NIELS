@@ -40,17 +40,17 @@ const styles = theme => ({
   paper: {
     [theme.breakpoints.down("xs")]: {
       width: "calc(100% - 100px)"
-    },
-    AppLogo: {
-      height: 200,
-      [theme.breakpoints.down("sm")]: {
-        height: 100
-      }
-    },
-    center: {
-      display: "flex",
-      justifyContent: "center"
     }
+  },
+  AppLogo: {
+    height: 200,
+    [theme.breakpoints.down("sm")]: {
+      height: 100
+    }
+  },
+  center: {
+    display: "flex",
+    justifyContent: "center"
   }
 });
 

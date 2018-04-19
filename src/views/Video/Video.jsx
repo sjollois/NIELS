@@ -88,15 +88,7 @@ class Video extends React.Component {
               "{phrase.replace("$", "'")}"
             </Typography>
           </Hidden>
-          <Player
-            aspectRatio="16:9"
-            width={500}
-            height={400}
-            muted="true"
-            fluid
-            preload="auto"
-            ref="player"
-          >
+          <Player aspectRatio="16:9" muted="true" fluid preload="auto">
             <source src={videoWatch} />
             <ControlBar>
               <VolumeMenuButton disabled />

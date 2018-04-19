@@ -73,8 +73,6 @@ class Home extends React.Component {
         <Player
           poster={imageVideo}
           aspectRatio="16:9"
-          width={500}
-          height={400}
           muted
           fluid
           preload="auto"
@@ -87,24 +85,8 @@ class Home extends React.Component {
         </Player>
         <Hidden only={["sm", "md", "lg", "xl"]}>
           <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </Hidden>
-        <Hidden only={["xs", "md", "lg", "xl"]}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </Hidden>
-        <Hidden only={["xs", "sm", "lg", "xl"]}>
+        <Hidden lgUp>
           <br />
           <br />
           <br />

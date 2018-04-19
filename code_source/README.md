@@ -3,7 +3,7 @@ Ce projet informatique individuel 2018 a été développé avec [Create React Ap
 Vous trouverez ci-dessous quelques informations sur comment utiliser React.<br>
 Vous pouvez trouver la version la plus récente de ce guide [ici](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-Vous trouverez dans le dossier NIELS : 
+Vous trouverez dans le dossier NIELS/code_source : 
 
 - Un lien vers l'application web mis en ligne [NIELS](https://niels.ovh) ;
 - firebase.json qui constitue l'ensemble des informations nécessaire fin de déployer l'application web sur l'hébergeur firebase ;
@@ -15,11 +15,11 @@ Vous trouverez dans le dossier NIELS :
 - un fichier yarn.lock qui permet de d’avoir des installations cohérentes sur différents ordinateurs. En effet yarn a besoin de plus d’informations que les dépendances configurées dans notre package.json. Yarn a besoin de stocker précisément quelle version de chaque dépendance est installée ;
 - un dossier build qui représente l'ensemble du code source compilé et prêt pour la production et/ou le déploiement en ligne
 
-Pour faire tourner NIELS à l'aide d'un serveur locale :
+Pour faire tourner l'application web NIELS à l'aide d'un serveur locale :
 
-- Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier NIELS : `serve -s build` ;
+- Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier code_source : `serve -s build` ;
 
-- Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier NIELS : `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
+- Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier code_source : `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
 
 Auteur : Samuel JOLLOIS, ENSC 2ème année groupe de TD 2
 

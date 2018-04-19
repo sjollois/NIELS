@@ -5,13 +5,14 @@ import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
-import AttachMoney from "material-ui-icons/AttachMoney";
-import LocationCity from "material-ui-icons/LocationCity";
-import LocalPostOffice from "material-ui-icons/LocalPostOffice";
-import School from "material-ui-icons/School";
-import Questions from "../../components/Questions";
+import Livre from "react-icons/lib/fa/book";
+import LocalMovies from "material-ui-icons/LocalMovies";
+import AccountBalance from "material-ui-icons/AccountBalance";
+import Icon from "react-icons-kit";
+import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
+import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
-import logo from "../../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -53,7 +54,7 @@ const styles = theme => ({
   }
 });
 
-class Administratif extends React.Component {
+class Loisirs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,11 +81,11 @@ class Administratif extends React.Component {
         </Typography>
         <Hidden smDown implementation="css">
           <br />
-          <Questions contexte="Administratif" sousContexte="Generale" nbr={4} />
+          <Questions contexte="Loisirs" sousContexte="Generale" nbr={4} />
           <br />
         </Hidden>
         <Hidden mdUp>
-          <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Loisirs" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
@@ -104,10 +105,10 @@ class Administratif extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<AttachMoney />} label="Banque" />
-              <Tab icon={<LocationCity />} label="Mairie" />
-              <Tab icon={<LocalPostOffice />} label="Poste" />
-              <Tab icon={<School />} label="Scolarité" />
+              <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque" />
+              <Tab icon={<LocalMovies />} label="Cinéma" />
+              <Tab icon={<AccountBalance />} label="Musée" />
+              <Tab icon={<Icon size={25} icon={iosFootball} />} label="Sport" />
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
@@ -119,37 +120,25 @@ class Administratif extends React.Component {
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Administratif"
-                    sousContexte="Banque"
+                    contexte="Loisirs"
+                    sousContexte="Bibliotheque"
                     nbr={9}
                   />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Mairie"
-                    nbr={9}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Cinema" nbr={9} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Poste"
-                    nbr={9}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Musee" nbr={9} />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Scolarite"
-                    nbr={9}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Sport" nbr={9} />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -163,37 +152,25 @@ class Administratif extends React.Component {
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Administratif"
-                    sousContexte="Banque"
+                    contexte="Loisirs"
+                    sousContexte="Bibliotheque"
                     nbr={7}
                   />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Mairie"
-                    nbr={7}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Cinema" nbr={7} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Poste"
-                    nbr={7}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Musee" nbr={7} />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Administratif"
-                    sousContexte="Scolarite"
-                    nbr={7}
-                  />
+                  <Questions contexte="Loisirs" sousContexte="Sport" nbr={7} />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -215,9 +192,9 @@ class Administratif extends React.Component {
   }
 }
 
-Administratif.propTypes = {
+Loisirs.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Administratif);
+export default withStyles(styles, { withTheme: true })(Loisirs);

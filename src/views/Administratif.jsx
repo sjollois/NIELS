@@ -5,12 +5,13 @@ import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
-import HospitalIcons from "react-icons/lib/fa/hospital-o";
-import LocalPharmacy from "material-ui-icons/LocalPharmacy";
-import Medecin from "react-icons/lib/fa/stethoscope";
-import Questions from "../../components/Questions";
+import AttachMoney from "material-ui-icons/AttachMoney";
+import LocationCity from "material-ui-icons/LocationCity";
+import LocalPostOffice from "material-ui-icons/LocalPostOffice";
+import School from "material-ui-icons/School";
+import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
-import logo from "../../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -52,7 +53,7 @@ const styles = theme => ({
   }
 });
 
-class Sante extends React.Component {
+class Administratif extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,11 +80,11 @@ class Sante extends React.Component {
         </Typography>
         <Hidden smDown implementation="css">
           <br />
-          <Questions contexte="Sante" sousContexte="Generale" nbr={4} />
+          <Questions contexte="Administratif" sousContexte="Generale" nbr={4} />
           <br />
         </Hidden>
         <Hidden mdUp>
-          <Questions contexte="Sante" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Administratif" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
@@ -103,9 +104,10 @@ class Sante extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
-              <Tab icon={<Medecin fontSize="25px" />} label="Médecin" />
-              <Tab icon={<LocalPharmacy />} label="Pharmacie" />
+              <Tab icon={<AttachMoney />} label="Banque" />
+              <Tab icon={<LocationCity />} label="Mairie" />
+              <Tab icon={<LocalPostOffice />} label="Poste" />
+              <Tab icon={<School />} label="Scolarité" />
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
@@ -116,19 +118,36 @@ class Sante extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Sante" sousContexte="Hopital" nbr={9} />
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Banque"
+                    nbr={9}
+                  />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Sante" sousContexte="Medecin" nbr={9} />
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Mairie"
+                    nbr={9}
+                  />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Sante"
-                    sousContexte="Pharmacie"
+                    contexte="Administratif"
+                    sousContexte="Poste"
+                    nbr={9}
+                  />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Scolarite"
                     nbr={9}
                   />
                 </TabContainer>
@@ -143,19 +162,36 @@ class Sante extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Sante" sousContexte="Hopital" nbr={7} />
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Banque"
+                    nbr={7}
+                  />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Sante" sousContexte="Medecin" nbr={7} />
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Mairie"
+                    nbr={7}
+                  />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Sante"
-                    sousContexte="Pharmacie"
+                    contexte="Administratif"
+                    sousContexte="Poste"
+                    nbr={7}
+                  />
+                </TabContainer>
+              )}
+              {value === 3 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Administratif"
+                    sousContexte="Scolarite"
                     nbr={7}
                   />
                 </TabContainer>
@@ -179,9 +215,9 @@ class Sante extends React.Component {
   }
 }
 
-Sante.propTypes = {
+Administratif.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Sante);
+export default withStyles(styles, { withTheme: true })(Administratif);

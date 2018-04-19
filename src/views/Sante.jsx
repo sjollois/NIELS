@@ -5,14 +5,12 @@ import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
-import Store from "material-ui-icons/Store";
-import Hotel from "material-ui-icons/Hotel";
-import LocalLibrary from "material-ui-icons/LocalLibrary";
-import ShoppingBasket from "material-ui-icons/ShoppingBasket";
-import Restaurant from "material-ui-icons/Restaurant";
-import Questions from "../../components/Questions";
+import HospitalIcons from "react-icons/lib/fa/hospital-o";
+import LocalPharmacy from "material-ui-icons/LocalPharmacy";
+import Medecin from "react-icons/lib/fa/stethoscope";
+import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
-import logo from "../../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -54,7 +52,7 @@ const styles = theme => ({
   }
 });
 
-class Vente extends React.Component {
+class Sante extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,11 +79,11 @@ class Vente extends React.Component {
         </Typography>
         <Hidden smDown implementation="css">
           <br />
-          <Questions contexte="Vente" sousContexte="Generale" nbr={4} />
+          <Questions contexte="Sante" sousContexte="Generale" nbr={4} />
           <br />
         </Hidden>
         <Hidden mdUp>
-          <Questions contexte="Vente" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Sante" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
@@ -105,11 +103,9 @@ class Vente extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<Store />} label="Épicerie" />
-              <Tab icon={<Hotel />} label="Hôtel" />
-              <Tab icon={<LocalLibrary />} label="Librairie" />
-              <Tab icon={<ShoppingBasket />} label="Prêt-à-porter" />
-              <Tab icon={<Restaurant />} label="Restauration" />
+              <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
+              <Tab icon={<Medecin fontSize="25px" />} label="Médecin" />
+              <Tab icon={<LocalPharmacy />} label="Pharmacie" />
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
@@ -120,38 +116,20 @@ class Vente extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Vente" sousContexte="Epicerie" nbr={9} />
+                  <Questions contexte="Sante" sousContexte="Hopital" nbr={9} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Vente" sousContexte="Hotel" nbr={9} />
+                  <Questions contexte="Sante" sousContexte="Medecin" nbr={9} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Vente"
-                    sousContexte="Librairie"
+                    contexte="Sante"
+                    sousContexte="Pharmacie"
                     nbr={9}
-                  />
-                </TabContainer>
-              )}
-              {value === 3 && (
-                <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Vente"
-                    sousContexte="PretAPorter"
-                    nbr={7}
-                  />
-                </TabContainer>
-              )}
-              {value === 4 && (
-                <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Vente"
-                    sousContexte="Restauration"
-                    nbr={7}
                   />
                 </TabContainer>
               )}
@@ -165,37 +143,19 @@ class Vente extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Vente" sousContexte="Epicerie" nbr={7} />
+                  <Questions contexte="Sante" sousContexte="Hopital" nbr={7} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Vente" sousContexte="Hotel" nbr={7} />
+                  <Questions contexte="Sante" sousContexte="Medecin" nbr={7} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Vente"
-                    sousContexte="Librairie"
-                    nbr={7}
-                  />
-                </TabContainer>
-              )}
-              {value === 3 && (
-                <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Vente"
-                    sousContexte="PretAPorter"
-                    nbr={7}
-                  />
-                </TabContainer>
-              )}
-              {value === 4 && (
-                <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Vente"
-                    sousContexte="Restauration"
+                    contexte="Sante"
+                    sousContexte="Pharmacie"
                     nbr={7}
                   />
                 </TabContainer>
@@ -219,9 +179,9 @@ class Vente extends React.Component {
   }
 }
 
-Vente.propTypes = {
+Sante.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Vente);
+export default withStyles(styles, { withTheme: true })(Sante);

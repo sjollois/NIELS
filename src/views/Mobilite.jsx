@@ -5,14 +5,13 @@ import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
-import Livre from "react-icons/lib/fa/book";
-import LocalMovies from "material-ui-icons/LocalMovies";
-import AccountBalance from "material-ui-icons/AccountBalance";
-import Icon from "react-icons-kit";
-import { iosFootball } from "react-icons-kit/ionicons/iosFootball";
-import Questions from "../../components/Questions";
+import Flight from "material-ui-icons/Flight";
+import Bus from "material-ui-icons/DirectionsBus";
+import People from "material-ui-icons/People";
+import Tram from "material-ui-icons/Tram";
+import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
-import logo from "../../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -54,7 +53,7 @@ const styles = theme => ({
   }
 });
 
-class Loisirs extends React.Component {
+class Mobilite extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,11 +80,11 @@ class Loisirs extends React.Component {
         </Typography>
         <Hidden smDown implementation="css">
           <br />
-          <Questions contexte="Loisirs" sousContexte="Generale" nbr={4} />
+          <Questions contexte="Mobilite" sousContexte="Generale" nbr={4} />
           <br />
         </Hidden>
         <Hidden mdUp>
-          <Questions contexte="Loisirs" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Mobilite" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
@@ -105,10 +104,10 @@ class Loisirs extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<Livre fontSize="25px" />} label="Bibliothèque" />
-              <Tab icon={<LocalMovies />} label="Cinéma" />
-              <Tab icon={<AccountBalance />} label="Musée" />
-              <Tab icon={<Icon size={25} icon={iosFootball} />} label="Sport" />
+              <Tab icon={<Flight />} label="Avion" />
+              <Tab icon={<Bus />} label="Bus" />
+              <Tab icon={<People />} label="Espaces Publics" />
+              <Tab icon={<Tram />} label="Train" />
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
@@ -119,26 +118,26 @@ class Loisirs extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Loisirs"
-                    sousContexte="Bibliotheque"
-                    nbr={9}
-                  />
+                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={9} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Cinema" nbr={9} />
+                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={9} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Musee" nbr={9} />
+                  <Questions
+                    contexte="Mobilite"
+                    sousContexte="EspacesPublics"
+                    nbr={9}
+                  />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Sport" nbr={9} />
+                  <Questions contexte="Mobilite" sousContexte="Train" nbr={9} />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -151,26 +150,26 @@ class Loisirs extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions
-                    contexte="Loisirs"
-                    sousContexte="Bibliotheque"
-                    nbr={7}
-                  />
+                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={7} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Cinema" nbr={7} />
+                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={7} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Musee" nbr={7} />
+                  <Questions
+                    contexte="Mobilite"
+                    sousContexte="EspacesPublics"
+                    nbr={7}
+                  />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Loisirs" sousContexte="Sport" nbr={7} />
+                  <Questions contexte="Mobilite" sousContexte="Train" nbr={7} />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -192,9 +191,9 @@ class Loisirs extends React.Component {
   }
 }
 
-Loisirs.propTypes = {
+Mobilite.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Loisirs);
+export default withStyles(styles, { withTheme: true })(Mobilite);

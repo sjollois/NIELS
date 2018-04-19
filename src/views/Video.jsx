@@ -9,12 +9,12 @@ import {
   BigPlayButton
 } from "video-react";
 import Hidden from "material-ui/Hidden";
-import Questions from "../../components/Questions";
-import sematos from "../../assets/image/Sematos.png";
-import sematospetit from "../../assets/image/SematosPetit.png";
-import elix from "../../assets/image/ELIX-logo.png";
-import Link from "../../components/Link";
-import logo from "../../assets/image/logo.png";
+import Questions from "../components/Questions";
+import sematos from "../assets/image/Sematos.png";
+import sematospetit from "../assets/image/SematosPetit.png";
+import elix from "../assets/image/ELIX-logo.png";
+import Link from "../components/Link";
+import logo from "../assets/image/logo.png";
 
 const styles = theme => ({
   AppLogo: {
@@ -61,7 +61,7 @@ class Video extends React.Component {
         correctPath = videoPath.slice(0, -1);
       }
       correctPath = correctPath.replace(/ /g, "_");
-      const videoWatch = require(`../../assets/video/${correctPath}.mp4`);
+      const videoWatch = require(`../assets/video/${correctPath}.mp4`);
       var phrase = videoPath;
       if (videoPath.substr(-1) !== ".") {
         phrase = `${this.state.value} ?`;

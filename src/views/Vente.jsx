@@ -5,13 +5,14 @@ import { withStyles } from "material-ui/styles";
 import AppBar from "material-ui/AppBar";
 import Tabs, { Tab } from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
-import Flight from "material-ui-icons/Flight";
-import Bus from "material-ui-icons/DirectionsBus";
-import People from "material-ui-icons/People";
-import Tram from "material-ui-icons/Tram";
-import Questions from "../../components/Questions";
+import Store from "material-ui-icons/Store";
+import Hotel from "material-ui-icons/Hotel";
+import LocalLibrary from "material-ui-icons/LocalLibrary";
+import ShoppingBasket from "material-ui-icons/ShoppingBasket";
+import Restaurant from "material-ui-icons/Restaurant";
+import Questions from "../components/Questions";
 import Hidden from "material-ui/Hidden";
-import logo from "../../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 
 function TabContainer({ children, dir }) {
   return (
@@ -53,7 +54,7 @@ const styles = theme => ({
   }
 });
 
-class Mobilite extends React.Component {
+class Vente extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,11 +81,11 @@ class Mobilite extends React.Component {
         </Typography>
         <Hidden smDown implementation="css">
           <br />
-          <Questions contexte="Mobilite" sousContexte="Generale" nbr={4} />
+          <Questions contexte="Vente" sousContexte="Generale" nbr={4} />
           <br />
         </Hidden>
         <Hidden mdUp>
-          <Questions contexte="Mobilite" sousContexte="Generale" nbr={3} />
+          <Questions contexte="Vente" sousContexte="Generale" nbr={3} />
         </Hidden>
         <br />
         <Typography color="primary" variant="subheading">
@@ -104,10 +105,11 @@ class Mobilite extends React.Component {
               scrollable
               centered
             >
-              <Tab icon={<Flight />} label="Avion" />
-              <Tab icon={<Bus />} label="Bus" />
-              <Tab icon={<People />} label="Espaces Publics" />
-              <Tab icon={<Tram />} label="Train" />
+              <Tab icon={<Store />} label="Épicerie" />
+              <Tab icon={<Hotel />} label="Hôtel" />
+              <Tab icon={<LocalLibrary />} label="Librairie" />
+              <Tab icon={<ShoppingBasket />} label="Prêt-à-porter" />
+              <Tab icon={<Restaurant />} label="Restauration" />
             </Tabs>
           </AppBar>
           <Hidden smDown implementation="css">
@@ -118,26 +120,39 @@ class Mobilite extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={9} />
+                  <Questions contexte="Vente" sousContexte="Epicerie" nbr={9} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={9} />
+                  <Questions contexte="Vente" sousContexte="Hotel" nbr={9} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Mobilite"
-                    sousContexte="EspacesPublics"
+                    contexte="Vente"
+                    sousContexte="Librairie"
                     nbr={9}
                   />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Train" nbr={9} />
+                  <Questions
+                    contexte="Vente"
+                    sousContexte="PretAPorter"
+                    nbr={7}
+                  />
+                </TabContainer>
+              )}
+              {value === 4 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Vente"
+                    sousContexte="Restauration"
+                    nbr={7}
+                  />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -150,26 +165,39 @@ class Mobilite extends React.Component {
             >
               {value === 0 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Avion" nbr={7} />
+                  <Questions contexte="Vente" sousContexte="Epicerie" nbr={7} />
                 </TabContainer>
               )}
               {value === 1 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Bus" nbr={7} />
+                  <Questions contexte="Vente" sousContexte="Hotel" nbr={7} />
                 </TabContainer>
               )}
               {value === 2 && (
                 <TabContainer dir={theme.direction}>
                   <Questions
-                    contexte="Mobilite"
-                    sousContexte="EspacesPublics"
+                    contexte="Vente"
+                    sousContexte="Librairie"
                     nbr={7}
                   />
                 </TabContainer>
               )}
               {value === 3 && (
                 <TabContainer dir={theme.direction}>
-                  <Questions contexte="Mobilite" sousContexte="Train" nbr={7} />
+                  <Questions
+                    contexte="Vente"
+                    sousContexte="PretAPorter"
+                    nbr={7}
+                  />
+                </TabContainer>
+              )}
+              {value === 4 && (
+                <TabContainer dir={theme.direction}>
+                  <Questions
+                    contexte="Vente"
+                    sousContexte="Restauration"
+                    nbr={7}
+                  />
                 </TabContainer>
               )}
             </SwipeableViews>
@@ -191,9 +219,9 @@ class Mobilite extends React.Component {
   }
 }
 
-Mobilite.propTypes = {
+Vente.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Mobilite);
+export default withStyles(styles, { withTheme: true })(Vente);

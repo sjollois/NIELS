@@ -19,13 +19,13 @@ import Hidden from "material-ui/Hidden";
 import DeafIcon from "react-icons/lib/fa/deaf";
 import Tooltip from "material-ui/Tooltip";
 import SSwitch from "material-ui/Switch";
-import HomeHeader from "../../views/Home/HomeHeader";
-import SanteHeader from "../../views/Santé/SanteHeader";
-import AdministratifHeader from "../../views/Administratif/AdministratifHeader";
-import VenteHeader from "../../views/Vente/VenteHeader";
-import MobiliteHeader from "../../views/Mobilité/MobiliteHeader";
-import LoisirsHeader from "../../views/Loisirs/LoisirsHeader";
-import VideoHeader from "../../views/Video/VideoHeader";
+import HomeHeader from "./HomeHeader";
+import SanteHeader from "./SanteHeader";
+import AdministratifHeader from "./AdministratifHeader";
+import VenteHeader from "./VenteHeader";
+import MobiliteHeader from "./MobiliteHeader";
+import LoisirsHeader from "./LoisirsHeader";
+import VideoHeader from "./VideoHeader";
 
 const drawerWidth = 220;
 

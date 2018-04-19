@@ -8,11 +8,11 @@ import {
   VolumeMenuButton,
   BigPlayButton
 } from "video-react";
-import video from "../../assets/video/videoPresentation.m4v";
-import imageVideo from "../../assets/image/imageVideo.png";
-import logo from "../../assets/image/logo.png";
+import video from "../assets/video/videoPresentation.m4v";
+import imageVideo from "../assets/image/imageVideo.png";
+import logo from "../assets/image/logo.png";
 import Hidden from "material-ui/Hidden";
-import NIELS from "../../assets/image/NIELS.png";
+import NIELS from "../assets/image/NIELS.png";
 
 const styles = theme => ({
   AppLogo: {

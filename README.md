@@ -5,7 +5,7 @@ Vous pouvez trouver la version la plus récente de ce guide [ici](https://github
 
 Vous trouverez dans le dossier NIELS : 
 
-- Un lien vers l'application web mis en ligne [NIELS](https://niels.ovh) (attention certaines vidéos ne se lancent pas) ;
+- Un lien vers l'application web mis en ligne [NIELS](https://niels.ovh) ;
 - firebase.json qui constitue l'ensemble des informations nécessaire fin de déployer l'application web sur l'hébergeur firebase ;
 - nodes_modules, regroupant l'ensemble des modules installés pour faire tourner l'application ;
 - package-lock.json, regroupant l'ensemble des dépendances et informations de chaque module de l'application, très important lorsqu'on veut réinstaller tous les modules ;
@@ -17,7 +17,7 @@ Vous trouverez dans le dossier NIELS :
 
 Pour faire tourner NIELS à l'aide d'un serveur locale :
 
-- Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier NIELS : `serve -s build` (Mais les mêmes vidéos que sur le site ne se lancent pas encore une fois, cela doit donc être un problème au niveau de la compilation pour la production de l'application) ;
+- Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier NIELS : `serve -s build` ;
 
 - Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier NIELS : (`npm i` pour installer tous les modules NPM) et `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
 

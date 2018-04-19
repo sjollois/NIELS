@@ -15,11 +15,11 @@ Vous trouverez dans le dossier NIELS/code_source :
 - un fichier yarn.lock qui permet de d’avoir des installations cohérentes sur différents ordinateurs. En effet yarn a besoin de plus d’informations que les dépendances configurées dans notre package.json. Yarn a besoin de stocker précisément quelle version de chaque dépendance est installée ;
 - un dossier build qui représente l'ensemble du code source compilé et prêt pour la production et/ou le déploiement en ligne
 
-Pour faire tourner l'application web NIELS à l'aide d'un serveur locale :
+Pour lancer l'application web NIELS  depuis un serveur local, vous devez installer [Node.js](https://nodejs.org/fr/) et taper les commandes une fois dans le dossier code_source `npm install -g react-scripts` puis :
 
 - Le plus simple et d'utiliser le code source déjà compilé dans le dossier build en tapant dans le terminal une fois dans le dossier code_source : `serve -s build` ;
 
-- Pour pouvoir observer toutes les vidéos tourner sans accroc, vous devez installer [Node.js](https://nodejs.org/fr/) et taper la commande une fois dans le dossier code_source : `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
+- Pour pouvoir observer le code de développement compilé dynamiquement, lancez `npm start` pour compiler les fichiers de développement et avoir un aperçu en temps réel lorsqu'on développe;
 
 Auteur : Samuel JOLLOIS, ENSC 2ème année groupe de TD 2
 

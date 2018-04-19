@@ -100,7 +100,6 @@ class Sante extends React.Component {
               indicatorColor="primary"
               textColor="primary"
               fullWidth
-              scrollable
               centered
             >
               <Tab icon={<HospitalIcons fontSize="25px" />} label="Hôpital" />
